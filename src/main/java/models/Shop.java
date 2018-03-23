@@ -54,16 +54,6 @@ public class Shop {
     public void setStockItems(Set<StockItem> stockItems) {
         this.stockItems = stockItems;
     }
-//
-//    @OneToMany(mappedBy = "shop")
-//    @Column(name = "customers")
-//    public List<Customer> getCustomers() {
-//        return customers;
-//    }
-//
-//    public void setCustomers(List<Customer> customers) {
-//        this.customers = customers;
-//    }
 
     @Column(name = "total_cash")
     public int getTotalCash() {

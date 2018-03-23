@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -26,6 +27,7 @@ public class Customer {
         this.gender = gender;
         this.age = age;
         this.emailAddress = emailAddress;
+        this purchasedItems = new HashSet<>();
 //        this.shop = shop;
     }
 
@@ -90,16 +92,14 @@ public class Customer {
         return getFirstName() + " " + getLastName();
     }
 
-    //    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "id", nullable = false)
-//    @Column(name="purchased_items")
-//    public Set<StockItem> getPurchasedItems() {
-//        return purchasedItems;
-//    }
-//
-//    public void setPurchasedItems(Set<StockItem> purchasedItems) {
-//        this.purchasedItems = purchasedItems;
-//    }
+    public Set<StockItem> getPurchasedItems() {
+        return purchasedItems;
+    }
+
+    public void setPurchasedItems(Set<StockItem> purchasedItems) {
+        this.purchasedItems = purchasedItems;
+    }
+
 
 //    @Column(name = "shop")
 //    public Shop getShop() {

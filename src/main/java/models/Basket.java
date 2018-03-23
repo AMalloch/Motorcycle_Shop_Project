@@ -4,17 +4,18 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Basket {
     private int id;
     private int CustomerId;
-    private List<StockItem> basketItems;
+    private Set<StockItem> basketItems;
 
-    public Basket(int id, int customerId, List<StockItem> basketItems) {
+    public Basket(int id, int customerId) {
         this.id = id;
         CustomerId = customerId;
-        this.basketItems = basketItems;
+        this.basketItems = new HashSet<>();
     }
 
     @Id
@@ -37,11 +38,11 @@ public class Basket {
         CustomerId = customerId;
     }
 
-    public List<StockItem> getBasketItems() {
+    public Set<StockItem> getBasketItems() {
         return basketItems;
     }
 
-    public void setBasketItems(List<StockItem> basketItems) {
+    public void setBasketItems(Set<StockItem> basketItems) {
         this.basketItems = basketItems;
     }
 }
