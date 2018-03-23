@@ -20,8 +20,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int id, String firstName, String lastName, String gender, int age, String emailAddress, Set<StockItem> purchasedItems, Shop shop) {
-        this.id = id;
+    public Customer(String firstName, String lastName, String gender, int age, String emailAddress, Set<StockItem> purchasedItems, Shop shop) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;

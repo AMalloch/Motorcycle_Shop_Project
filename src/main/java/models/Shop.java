@@ -14,8 +14,7 @@ public class Shop {
     List<Customer> customers = new ArrayList<Customer>();
     int totalCash = 0;
 
-    public Shop(int id, String name, List<StockItem> stockItems, List<Customer> customers, int totalCash) {
-        this.id = id;
+    public Shop(String name, List<StockItem> stockItems, List<Customer> customers, int totalCash) {
         this.name = name;
         this.stockItems = stockItems;
         this.customers = customers;
