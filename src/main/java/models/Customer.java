@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "customers")
@@ -12,17 +13,21 @@ public class Customer {
     private String gender;
     private int age;
     private String emailAddress;
-//    private Set<StockItems> purchasedItems;
+    private Set<StockItems> purchasedItems;
+    private Shop shop;
 
     public Customer() {
     }
 
-    public Customer(String firstName, String lastName, String gender, int age, String emailAddress) {
+    public Customer(int id, String firstName, String lastName, String gender, int age, String emailAddress, Set<StockItems> purchasedItems, Shop shop) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.age = age;
         this.emailAddress = emailAddress;
+        this.purchasedItems = purchasedItems;
+        this.shop = shop;
     }
 
     @Id
@@ -81,7 +86,27 @@ public class Customer {
         this.emailAddress = emailAddress;
     }
 
+    @Column(name = "display_name")
     public String displayName(){
         return getFirstName() + " " + getLastName();
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "shop_id", nullable = false)
+    public Set<StockItems> getPurchasedItems() {
+        return purchasedItems;
+    }
+
+    public void setPurchasedItems(Set<StockItems> purchasedItems) {
+        this.purchasedItems = purchasedItems;
+    }
+
+    @Column(name = "shop")
+    public Shop getShop() {
+        return shop;
+    }
+
+    public void setShop(Shop shop) {
+        this.shop = shop;
     }
 }
