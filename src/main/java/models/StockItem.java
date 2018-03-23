@@ -3,7 +3,7 @@ package models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "stock_items")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class StockItem {
 
     private int id;
