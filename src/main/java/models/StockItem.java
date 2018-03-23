@@ -15,11 +15,11 @@ public abstract class StockItem {
     public StockItem() {
     }
 
-    public StockItem(String name, double price, int quantity, Shop shop) {
+    public StockItem(String name, double price, int quantity) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
-        this.shop = shop;
+//        this.shop = shop;
     }
 
     @Id
@@ -60,13 +60,13 @@ public abstract class StockItem {
         this.quantity = quantity;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "shop_id", nullable = false)
-    public Shop getShop() {
-        return shop;
-    }
-
-    public void setShop(Shop shop) {
-        this.shop = shop;
-    }
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "shop_id", nullable = false)
+//    public Shop getShop() {
+//        return shop;
+//    }
+//
+//    public void setShop(Shop shop) {
+//        this.shop = shop;
+//    }
 }

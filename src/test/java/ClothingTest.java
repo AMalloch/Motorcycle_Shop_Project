@@ -15,7 +15,7 @@ public class ClothingTest {
     @Before
     public void setUp() {
         shop = new Shop("Jurassic Motorcycles", 0);
-        clothing = new Clothing("Alpinestars Summer Gloves", 59.99, 3, shop, "black", "large", ClothingType.GLOVES);
+        clothing = new Clothing("Alpinestars Summer Gloves", 59.99, 3, "black", "large", ClothingType.GLOVES);
         DBHelper.save(clothing);
     }
 

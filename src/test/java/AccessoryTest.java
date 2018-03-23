@@ -12,7 +12,7 @@ public class AccessoryTest {
     @Before
     public void setUp() throws Exception {
         shop = new Shop("Jurassic Motorcycles", 0);
-        accessory = new Accessory("Carbon Fibre Part", 149.99, 3, shop);
+        accessory = new Accessory("Carbon Fibre Part", 149.99, 3);
     }
 
     @Test

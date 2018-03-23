@@ -45,15 +45,15 @@ public class Shop {
     public void setName(String name) {
         this.name = name;
     }
-
-    @OneToMany(mappedBy = "shop")
-    public Set<StockItem> getStockItems() {
-        return stockItems;
-    }
-
-    public void setStockItems(Set<StockItem> stockItems) {
-        this.stockItems = stockItems;
-    }
+//
+//    @OneToMany(mappedBy = "shop")
+//    public Set<StockItem> getStockItems() {
+//        return stockItems;
+//    }
+//
+//    public void setStockItems(Set<StockItem> stockItems) {
+//        this.stockItems = stockItems;
+//    }
 
     @Column(name = "total_cash")
     public int getTotalCash() {

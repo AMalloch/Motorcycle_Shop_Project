@@ -22,7 +22,7 @@ public class ShopTest {
     @Before
     public void setUp() throws Exception {
         shop = new Shop("Jurassic Motorcycles", 0);
-        bike = new Bike("Shredder", 99.9, 2, shop, "Black", 900, true);
+        bike = new Bike("Shredder", 99.9, 2, "Black", 900, true);
         customer = new Customer("Jane", "Losi", "F", 26, "fortheducksgmail.com");
         DBHelper.save(shop);
         DBHelper.save(bike);

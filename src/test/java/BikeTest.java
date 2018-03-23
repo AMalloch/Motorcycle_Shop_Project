@@ -8,13 +8,13 @@ import static org.junit.Assert.assertEquals;
 
 public class BikeTest {
 
-    private Shop shop;
+//    private Shop shop;
     private Bike bike;
 
     @Before
     public void setUp() {
-        shop = new Shop("Jurassic Motorcycles", 0);
-        bike = new Bike("Yamaha R1", 2995.99, 1, shop, "blue", 1000, false);
+//        shop = new Shop("Jurassic Motorcycles", 0);
+        bike = new Bike("Yamaha R1", 2995.99, 1, "blue", 1000, false);
         DBHelper.save(bike);
     }
 

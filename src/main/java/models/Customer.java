@@ -27,7 +27,7 @@ public class Customer {
         this.gender = gender;
         this.age = age;
         this.emailAddress = emailAddress;
-        this purchasedItems = new HashSet<>();
+        this.purchasedItems = new HashSet<>();
 //        this.shop = shop;
     }
 
@@ -87,17 +87,17 @@ public class Customer {
         this.emailAddress = emailAddress;
     }
 
-    @Column(name = "display_name")
+//    @Column(name = "purchased_items")
+//    public Set<StockItem> getPurchasedItems() {
+//        return purchasedItems;
+//    }
+//
+//    public void setPurchasedItems(Set<StockItem> purchasedItems) {
+//        this.purchasedItems = purchasedItems;
+//    }
+
     public String displayName(){
         return getFirstName() + " " + getLastName();
-    }
-
-    public Set<StockItem> getPurchasedItems() {
-        return purchasedItems;
-    }
-
-    public void setPurchasedItems(Set<StockItem> purchasedItems) {
-        this.purchasedItems = purchasedItems;
     }
 
 
