@@ -14,21 +14,19 @@ public class Customer {
     private int age;
     private String emailAddress;
 
-    private Set<StockItems> purchasedItems;
-    private Shop shop;
+//    private Set<StockItem> purchasedItems;
+//    private Shop shop;
 
     public Customer() {
     }
 
-    public Customer(int id, String firstName, String lastName, String gender, int age, String emailAddress, Set<StockItems> purchasedItems, Shop shop) {
-        this.id = id;
+    public Customer(String firstName, String lastName, String gender, int age, String emailAddress) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.age = age;
         this.emailAddress = emailAddress;
-        this.purchasedItems = purchasedItems;
-        this.shop = shop;
+//        this.shop = shop;
     }
 
     @Id
@@ -92,22 +90,23 @@ public class Customer {
         return getFirstName() + " " + getLastName();
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "shop_id", nullable = false)
-    public Set<StockItems> getPurchasedItems() {
-        return purchasedItems;
-    }
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "id", nullable = false)
+//    @Column(name="purchased_items")
+//    public Set<StockItem> getPurchasedItems() {
+//        return purchasedItems;
+//    }
+//
+//    public void setPurchasedItems(Set<StockItem> purchasedItems) {
+//        this.purchasedItems = purchasedItems;
+//    }
 
-    public void setPurchasedItems(Set<StockItems> purchasedItems) {
-        this.purchasedItems = purchasedItems;
-    }
-
-    @Column(name = "shop")
-    public Shop getShop() {
-        return shop;
-    }
-
-    public void setShop(Shop shop) {
-        this.shop = shop;
-    }
+//    @Column(name = "shop")
+//    public Shop getShop() {
+//        return shop;
+//    }
+//
+//    public void setShop(Shop shop) {
+//        this.shop = shop;
+//    }
 }

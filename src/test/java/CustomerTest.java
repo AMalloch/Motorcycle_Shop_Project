@@ -1,5 +1,6 @@
 import db.DBHelper;
 import models.Customer;
+import models.Shop;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,17 +10,19 @@ import static org.junit.Assert.assertEquals;
 public class CustomerTest {
 
     private Customer customer;
+    private Shop shop;
 
     @Before
     public void setUp() throws Exception {
-        customer = new Customer("First", "Customer", "M", 49, "me@mine.com");
+        shop = new Shop("Jurassic Motorcycles", 0);
+        customer = new Customer("First", "Customer", "M", 49, "me@me.com");
         DBHelper.save(customer);
     }
 
-    @After
-    public void tearDown() throws Exception {
-        DBHelper.deleteAll(Customer.class);
-    }
+//    @After
+//    public void tearDown() throws Exception {
+//        DBHelper.deleteAll(Customer.class);
+//    }
 
     @Test
     public void testCanAddCustomer() {

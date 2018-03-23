@@ -10,15 +10,12 @@ public class Shop {
 
     int id;
     String name;
-    List<StockItem> stockItems = new ArrayList<StockItem>();
-    List<Customer> customers = new ArrayList<Customer>();
+//    List<StockItem> stockItems = new ArrayList<>();
+//    List<Customer> customers = new ArrayList<>();
     int totalCash = 0;
 
-    public Shop(int id, String name, List<StockItem> stockItems, List<Customer> customers, int totalCash) {
-        this.id = id;
+    public Shop(String name, int totalCash) {
         this.name = name;
-        this.stockItems = stockItems;
-        this.customers = customers;
         this.totalCash = totalCash;
     }
 
@@ -29,7 +26,7 @@ public class Shop {
         return id;
     }
 
-    public Shop(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -42,25 +39,24 @@ public class Shop {
         this.name = name;
     }
 
-    @OneToMany(mappedBy = "shop")
-    @Column(name = "stock_items")
-    public List<StockItem> getStockItems() {
-        return stockItems;
-    }
-
-    public void setStockItems(List<StockItem> stockItems) {
-        this.stockItems = stockItems;
-    }
-
-    @OneToMany(mappedBy = "shop")
-    @Column(name = "customers")
-    public List<Customer> getCustomers() {
-        return customers;
-    }
-
-    public void setCustomers(List<Customer> customers) {
-        this.customers = customers;
-    }
+//    @Column(name = "stock_items")
+//    public List<StockItem> getStockItems() {
+//        return stockItems;
+//    }
+//
+//    public void setStockItems(List<StockItem> stockItems) {
+//        this.stockItems = stockItems;
+//    }
+//
+//    @OneToMany(mappedBy = "shop")
+//    @Column(name = "customers")
+//    public List<Customer> getCustomers() {
+//        return customers;
+//    }
+//
+//    public void setCustomers(List<Customer> customers) {
+//        this.customers = customers;
+//    }
 
     @Column(name = "total_cash")
     public int getTotalCash() {
