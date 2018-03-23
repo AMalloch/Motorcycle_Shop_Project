@@ -13,6 +13,7 @@ public class Customer {
     private String gender;
     private int age;
     private String emailAddress;
+
     private Set<StockItems> purchasedItems;
     private Shop shop;
 
