@@ -14,7 +14,7 @@ public class Customer {
     private int age;
     private String emailAddress;
 
-//    private Set<StockItem> purchasedItems;
+    private Set<StockItem> purchasedItems;
 //    private Shop shop;
 
     public Customer() {
@@ -90,7 +90,7 @@ public class Customer {
         return getFirstName() + " " + getLastName();
     }
 
-//    @ManyToOne(fetch = FetchType.LAZY)
+    //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "id", nullable = false)
 //    @Column(name="purchased_items")
 //    public Set<StockItem> getPurchasedItems() {

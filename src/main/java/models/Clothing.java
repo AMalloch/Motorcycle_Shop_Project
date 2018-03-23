@@ -1,11 +1,9 @@
 package models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-//@Table(name = "clothing")
+@Table(name = "clothing")
 public class Clothing extends StockItem {
 
     private String colour;
@@ -40,6 +38,7 @@ public class Clothing extends StockItem {
         this.size = size;
     }
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "type")
     public ClothingType getType() {
         return type;

@@ -14,7 +14,6 @@ public class CustomerTest {
 
     @Before
     public void setUp() throws Exception {
-        shop = new Shop("Jurassic Motorcycles", 0);
         customer = new Customer("First", "Customer", "M", 49, "me@me.com");
         DBHelper.save(customer);
     }
