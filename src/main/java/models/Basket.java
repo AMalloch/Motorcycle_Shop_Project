@@ -7,9 +7,9 @@ import javax.persistence.Id;
 import java.util.List;
 
 public class Basket {
-    int id;
-    int CustomerId;
-    List<StockItem> basketItems;
+    private int id;
+    private int CustomerId;
+    private List<StockItem> basketItems;
 
     public Basket(int id, int customerId, List<StockItem> basketItems) {
         this.id = id;
