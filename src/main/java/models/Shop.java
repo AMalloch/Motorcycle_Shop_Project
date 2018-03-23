@@ -13,13 +13,14 @@ public class Shop {
     private int id;
     private String name;
     private Set<StockItem> stockItems;
-//    List<Customer> customers = new ArrayList<>();
+    private Set<Customer> customers;
     int totalCash = 0;
 
     public Shop(String name, int totalCash) {
         this.name = name;
         this.totalCash = totalCash;
-        this.stockItems = new HashSet<StockItem>();
+        this.stockItems = new HashSet<>();
+        this.customers = new HashSet<>();
     }
 
     public Shop() {
@@ -77,7 +78,15 @@ public class Shop {
         return this.stockItems.size();
     }
 
+    public int countCustomers() {
+        return this.customers.size();
+    }
+
     public void addToStock(StockItem stockItem) {
         this.stockItems.add(stockItem);
+    }
+
+    public void addCustomer(Customer customer) {
+        this.customers.add(customer);
     }
 }
