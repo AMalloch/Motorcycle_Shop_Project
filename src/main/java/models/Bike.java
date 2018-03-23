@@ -15,8 +15,8 @@ public class Bike extends StockItem{
     public Bike() {
     }
 
-    public Bike(String name, double price, int quantity, String colour, int capacity, boolean isNew) {
-        super(name, price, quantity);
+    public Bike(String name, double price, int quantity, Shop shop, String colour, int capacity, boolean isNew) {
+        super(name, price, quantity, shop);
         this.colour = colour;
         this.capacity = capacity;
         this.isNew = isNew;

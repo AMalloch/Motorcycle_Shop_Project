@@ -2,21 +2,27 @@ package models;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "shop")
 public class Shop {
 
-    int id;
-    String name;
-//    List<StockItem> stockItems = new ArrayList<>();
+    private int id;
+    private String name;
+    private Set<StockItem> stockItems;
 //    List<Customer> customers = new ArrayList<>();
     int totalCash = 0;
 
     public Shop(String name, int totalCash) {
         this.name = name;
         this.totalCash = totalCash;
+        this.stockItems = new HashSet<StockItem>();
+    }
+
+    public Shop() {
     }
 
     @Id
@@ -39,14 +45,14 @@ public class Shop {
         this.name = name;
     }
 
-//    @Column(name = "stock_items")
-//    public List<StockItem> getStockItems() {
-//        return stockItems;
-//    }
-//
-//    public void setStockItems(List<StockItem> stockItems) {
-//        this.stockItems = stockItems;
-//    }
+    @OneToMany(mappedBy = "shop")
+    public Set<StockItem> getStockItems() {
+        return stockItems;
+    }
+
+    public void setStockItems(Set<StockItem> stockItems) {
+        this.stockItems = stockItems;
+    }
 //
 //    @OneToMany(mappedBy = "shop")
 //    @Column(name = "customers")
@@ -65,5 +71,13 @@ public class Shop {
 
     public void setTotalCash(int totalCash) {
         this.totalCash = totalCash;
+    }
+
+    public int countStock() {
+        return this.stockItems.size();
+    }
+
+    public void addToStock(StockItem stockItem) {
+        this.stockItems.add(stockItem);
     }
 }
