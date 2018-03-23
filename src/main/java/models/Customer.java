@@ -1,6 +1,8 @@
 package models;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "customers")
@@ -12,7 +14,9 @@ public class Customer {
     private String gender;
     private int age;
     private String emailAddress;
-//    private Set<StockItems> purchasedItems;
+
+    private Set<StockItem> purchasedItems;
+//    private Shop shop;
 
     public Customer() {
     }
@@ -23,6 +27,8 @@ public class Customer {
         this.gender = gender;
         this.age = age;
         this.emailAddress = emailAddress;
+        this.purchasedItems = new HashSet<>();
+//        this.shop = shop;
     }
 
     @Id
@@ -81,7 +87,26 @@ public class Customer {
         this.emailAddress = emailAddress;
     }
 
+//    @Column(name = "purchased_items")
+//    public Set<StockItem> getPurchasedItems() {
+//        return purchasedItems;
+//    }
+//
+//    public void setPurchasedItems(Set<StockItem> purchasedItems) {
+//        this.purchasedItems = purchasedItems;
+//    }
+
     public String displayName(){
         return getFirstName() + " " + getLastName();
     }
+
+
+//    @Column(name = "shop")
+//    public Shop getShop() {
+//        return shop;
+//    }
+//
+//    public void setShop(Shop shop) {
+//        this.shop = shop;
+//    }
 }
