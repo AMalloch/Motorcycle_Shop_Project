@@ -17,6 +17,9 @@
 
         <mapping class = "models.Customer"/>
         <mapping class = "models.Shop"/>
+        <mapping class = "models.Clothing"/>
+        <mapping class = "models.Bike"/>
+        <mapping class = "models.Accessory"/>
         <!--<mapping class= "models.Department"/>-->
         <!--<mapping class = "models.Manager"/>-->
         <!--<mapping class="models.Engineer"/>-->

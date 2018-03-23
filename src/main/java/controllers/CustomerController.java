@@ -19,16 +19,16 @@ public class CustomerController {
     }
 
     private void setupEndpoints() {
-
-        get("/customers", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            List<Customer> customers = DBHelper.getAll(Customer.class);
-            String loggedInUser = LoginController.getLoggedInUserName(req, res);
-            model.put("user", loggedInUser);
-            model.put("template", "templates/customers/index.vtl");
-            model.put("templates/customers", customers);
-            return new ModelAndView(model, "templates/layout.vtl");
-        }, new VelocityTemplateEngine());
+//
+//        get("/customers", (req, res) -> {
+//            Map<String, Object> model = new HashMap<>();
+//            List<Customer> customers = DBHelper.getAll(Customer.class);
+//            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+//            model.put("user", loggedInUser);
+//            model.put("template", "templates/customers/index.vtl");
+//            model.put("templates/customers", customers);
+//            return new ModelAndView(model, "templates/layout.vtl");
+//        }, new VelocityTemplateEngine());
 
     }
 }

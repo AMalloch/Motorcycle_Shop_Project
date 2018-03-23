@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "stock_items")
-public class StockItem {
+public abstract class StockItem {
 
     private int id;
     private String name;

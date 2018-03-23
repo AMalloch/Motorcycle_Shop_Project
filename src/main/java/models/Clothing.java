@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "clothing")
+//@Table(name = "clothing")
 public class Clothing extends StockItem {
 
     private String colour;
