@@ -1,7 +1,11 @@
 import db.DBHelper;
 import models.Customer;
 import models.Shop;
+import models.StockItem;
 import org.junit.Before;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShopTest {
 
@@ -9,7 +13,8 @@ public class ShopTest {
 
     @Before
     public void setUp() throws Exception {
-        shop = new Shop("First", "Customer", "M", 49, "me@mine.com");
+        shop = new Shop("Jurassic Motorcycles", 0);
         DBHelper.save(shop);
     }
+
 }

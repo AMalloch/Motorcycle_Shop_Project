@@ -14,10 +14,8 @@ public class Shop {
     List<Customer> customers = new ArrayList<Customer>();
     int totalCash = 0;
 
-    public Shop(String name, List<StockItem> stockItems, List<Customer> customers, int totalCash) {
+    public Shop(String name, int totalCash) {
         this.name = name;
-        this.stockItems = stockItems;
-        this.customers = customers;
         this.totalCash = totalCash;
     }
 

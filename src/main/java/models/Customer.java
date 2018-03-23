@@ -20,13 +20,12 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String firstName, String lastName, String gender, int age, String emailAddress, Set<StockItem> purchasedItems, Shop shop) {
+    public Customer(String firstName, String lastName, String gender, int age, String emailAddress, Shop shop) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.age = age;
         this.emailAddress = emailAddress;
-        this.purchasedItems = purchasedItems;
         this.shop = shop;
     }
 
