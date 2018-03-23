@@ -15,6 +15,7 @@ public class ShopTest {
 
     private Shop shop;
     private Bike bike;
+    private Customer customer;
 //
 //    String name, double price, int quantity, Shop shop, String colour, int capacity, boolean isNew
 
@@ -22,14 +23,23 @@ public class ShopTest {
     public void setUp() throws Exception {
         shop = new Shop("Jurassic Motorcycles", 0);
         bike = new Bike("Shredder", 99.9, 2, shop, "Black", 900, true);
+        customer = new Customer("Jane", "Losi", "F", 26, "fortheducksgmail.com");
         DBHelper.save(shop);
         DBHelper.save(bike);
+
+//        String firstName, String lastName, String gender, int age, String emailAddress
     }
 
     @Test
     public void addToStock(){
         shop.addToStock(bike);
         assertEquals(1, shop.countStock());
+    }
+
+    @Test
+    public void addCustomer(){
+        shop.addCustomer(customer);
+        assertEquals(1, shop.countCustomers());
     }
 
 }
