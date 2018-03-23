@@ -14,13 +14,13 @@ public class Customer {
     private int age;
     private String emailAddress;
 
-    private Set<StockItems> purchasedItems;
+    private Set<StockItem> purchasedItems;
     private Shop shop;
 
     public Customer() {
     }
 
-    public Customer(int id, String firstName, String lastName, String gender, int age, String emailAddress, Set<StockItems> purchasedItems, Shop shop) {
+    public Customer(int id, String firstName, String lastName, String gender, int age, String emailAddress, Set<StockItem> purchasedItems, Shop shop) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -94,11 +94,11 @@ public class Customer {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shop_id", nullable = false)
-    public Set<StockItems> getPurchasedItems() {
+    public Set<StockItem> getPurchasedItems() {
         return purchasedItems;
     }
 
-    public void setPurchasedItems(Set<StockItems> purchasedItems) {
+    public void setPurchasedItems(Set<StockItem> purchasedItems) {
         this.purchasedItems = purchasedItems;
     }
 

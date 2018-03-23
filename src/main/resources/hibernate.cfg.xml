@@ -16,6 +16,7 @@
         <property name="show_sql">true</property>
 
         <mapping class = "models.Customer"/>
+        <mapping class = "models.Shop"/>
         <!--<mapping class= "models.Department"/>-->
         <!--<mapping class = "models.Manager"/>-->
         <!--<mapping class="models.Engineer"/>-->
