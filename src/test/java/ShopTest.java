@@ -58,4 +58,14 @@ public class ShopTest {
         assertEquals(1, shop.countCustomers());
     }
 
+    @Test
+    public void canGetTotalCash(){
+        assertEquals(0, shop.getTotalCash());
+    }
+
+    @Test
+    public void canGetShopName(){
+        assertEquals("Jurassic Motorcycles", shop.getName());
+    }
+
 }
