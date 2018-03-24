@@ -1,5 +1,6 @@
 package controllers;
 
+import db.Seeds;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -14,6 +15,8 @@ public class MainController {
 
         CustomerController customerController = new CustomerController();
         ShopController shopController = new ShopController();
+
+        Seeds.seedData();
 
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
