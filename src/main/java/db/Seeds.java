@@ -24,5 +24,6 @@ public class Seeds {
         DBHelper.save(clothing1);
 
         Customer customer1 = new Customer("Will", "MacIntyre", "M", 32, "inferno@gmail.com");
+        DBHelper.save(customer1);
     }
 }
