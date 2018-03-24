@@ -13,6 +13,7 @@ public class MainController {
     public static void main(String[] args) {
 
         CustomerController customerController = new CustomerController();
+        ShopController shopController = new ShopController();
 
 //        get("/", (req, res) -> {
 //            Map<String, Object> model = new HashMap<>();
