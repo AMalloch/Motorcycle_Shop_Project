@@ -13,8 +13,8 @@ public class Clothing extends StockItem {
     public Clothing() {
     }
 
-    public Clothing(String name, double price, int quantity, Shop shop, String colour, String size, ClothingType type) {
-        super(name, price, quantity, shop);
+    public Clothing(String name, double price, int quantity, String colour, String size, ClothingType type) {
+        super(name, price, quantity);
         this.colour = colour;
         this.size = size;
         this.type = type;

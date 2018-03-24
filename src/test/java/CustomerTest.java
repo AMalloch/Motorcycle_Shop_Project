@@ -10,7 +10,6 @@ import static org.junit.Assert.assertEquals;
 public class CustomerTest {
 
     private Customer customer;
-    private Shop shop;
 
     @Before
     public void setUp() throws Exception {

@@ -12,15 +12,15 @@ public class Shop {
 
     private int id;
     private String name;
-    private Set<StockItem> stockItems;
-    private Set<Customer> customers;
+    private ArrayList<StockItem> stockItems;
+    private ArrayList<Customer> customers;
     int totalCash = 0;
 
     public Shop(String name, int totalCash) {
         this.name = name;
         this.totalCash = totalCash;
-        this.stockItems = new HashSet<>();
-        this.customers = new HashSet<>();
+        this.stockItems = new ArrayList<>();
+        this.customers = new ArrayList<>();
     }
 
     public Shop() {
@@ -46,12 +46,11 @@ public class Shop {
         this.name = name;
     }
 
-    @OneToMany(mappedBy = "shop")
-    public Set<StockItem> getStockItems() {
+    public ArrayList<StockItem> getStockItems() {
         return stockItems;
     }
 
-    public void setStockItems(Set<StockItem> stockItems) {
+    public void setStockItems(ArrayList<StockItem> stockItems) {
         this.stockItems = stockItems;
     }
 

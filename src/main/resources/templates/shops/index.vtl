@@ -1,0 +1,21 @@
+<p class="pageHeader">Jurassic Motorcycle Admin</p>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>All Stock</th>
+            <th>Online Customers</th>
+            <th>Total Cash (£)</th>
+            <th></th>
+        </tr>
+        #foreach($shop in $shops)
+        <tr>
+            <td>$shop.getName()</td>
+            <td>$shop.getStockItems()</td>
+            <td>$shop.getCustomers</td>
+            <td>$shop.getTotalCash()</td>
+        <tr>
+            #end
+    </table>
+</div>
