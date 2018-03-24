@@ -73,15 +73,13 @@ public class DBHelper {
         }
     }
 
-    public static <T> List<T> getAll(Class classType){
-        session = HibernateUtil.getSessionFactory().openSession();
+    public static <T> List<T> getList(Criteria criteria){
         List<T> results = null;
         try {
             transaction = session.beginTransaction();
-            Criteria cr = session.createCriteria(classType);
-            results = cr.list();
+            results = criteria.list();
             transaction.commit();
-        } catch (HibernateException e) {
+        } catch (HibernateException e){
             transaction.rollback();
             e.printStackTrace();
         } finally {
@@ -90,22 +88,36 @@ public class DBHelper {
         return results;
     }
 
-    public static <T> T find(int id, Class classType){
-        session = HibernateUtil.getSessionFactory().openSession();
+    public static <T> T getUnique(Criteria criteria){
         T result = null;
         try {
             transaction = session.beginTransaction();
-            Criteria cr = session.createCriteria(classType);
-            cr.add(Restrictions.eq("id", id));
-            result = (T)cr.uniqueResult();
+            result = (T)criteria.uniqueResult();
             transaction.commit();
-        } catch (HibernateException e) {
+        } catch (HibernateException e){
             transaction.rollback();
             e.printStackTrace();
         } finally {
             session.close();
         }
-        System.out.println(result);
         return result;
+    }
+
+    public static <T> T find(Class classType, int id){
+        session = HibernateUtil.getSessionFactory().openSession();
+        T result = null;
+        Criteria criteria = session.createCriteria(classType);
+        criteria.add(Restrictions.idEq(id));
+        result = getUnique(criteria);
+        return result;
+    }
+
+    public static <T> List<T> getAll(Class classType){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<T> results = null;
+        Criteria criteria = session.createCriteria(classType);
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        results = getList(criteria);
+        return results;
     }
 }

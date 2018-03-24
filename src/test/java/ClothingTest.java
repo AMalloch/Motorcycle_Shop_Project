@@ -9,12 +9,10 @@ import static org.junit.Assert.assertEquals;
 
 public class ClothingTest {
 
-    private Shop shop;
     private Clothing clothing;
 
     @Before
     public void setUp() {
-        shop = new Shop("Jurassic Motorcycles", 0);
         clothing = new Clothing("Alpinestars Summer Gloves", 59.99, 3, "black", "large", ClothingType.GLOVES);
         DBHelper.save(clothing);
     }
