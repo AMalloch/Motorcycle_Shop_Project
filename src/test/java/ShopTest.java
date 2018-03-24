@@ -50,4 +50,12 @@ public class ShopTest {
         assertEquals(1, shop.countStock());
     }
 
+    @Test
+    public void canDeleteCustomer(){
+        shop.addCustomer(customer);
+        shop.addCustomer(customer);
+        DBHelper.delete(customer);
+        assertEquals(1, shop.countCustomers());
+    }
+
 }
