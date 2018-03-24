@@ -16,7 +16,6 @@ public class Customer {
     private String emailAddress;
 
     private Set<StockItem> purchasedItems;
-//    private Shop shop;
 
     public Customer() {
     }
