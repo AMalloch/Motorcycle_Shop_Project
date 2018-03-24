@@ -12,9 +12,9 @@
         #foreach($shop in $shops)
         <tr>
             <td>$shop.getName()</td>
-            <td>$shop.getStock()</td>
-            <td>$shop.getDepartment().getTitle()</td>
-            <td>$shop.getSalary()</td>
+            <td>$shop.getStockItems()</td>
+            <td>$shop.getCustomers</td>
+            <td>$shop.getTotalCash()</td>
         <tr>
             #end
     </table>

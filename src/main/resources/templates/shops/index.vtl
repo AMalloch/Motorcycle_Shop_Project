@@ -12,8 +12,8 @@
         #foreach($shop in $shops)
         <tr>
             <td>$shop.getName()</td>
-            <td>$shop.getStock()</td>
-            <td></td>
+            <td>$shop.getStockItems()</td>
+            <td>$shop.getCustomers</td>
             <td>$shop.getTotalCash()</td>
         <tr>
             #end
