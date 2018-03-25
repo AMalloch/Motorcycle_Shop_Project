@@ -1,0 +1,25 @@
+<p class="pageHeader">All Stock Items</p>
+
+<div class="container">
+    <h1>Motorcycles</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Colour</th>
+            <th>Capacity</th>
+            <th>Is New</th>
+        </tr>
+        #foreach($bike in $Bikes)
+        <tr>
+            <td>$bike.getName()</td>
+            <td>$bike.getPrice()</td>
+            <td>$bike.getQuantity()</td>
+            <td>$bike.getColour()</td>
+            <td>$bike.getCapacity()</td>
+            <td>$bike.isNew()</td>
+        <tr>
+        #end
+    </table>
+</div>
