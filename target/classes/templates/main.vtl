@@ -1,3 +1,6 @@
 <h1>Jurassic Motorcycles</h1>
 
-<a href="/shop" class="button center">Admin Login</a>
+<tr>#foreach($shop in $shops)
+    <td><a href="/shops/$shop.getId()" class="button center">Admin Login</a></td>
+    #end
+</tr>
