@@ -1,5 +1,6 @@
 package db;
 
+import models.Bike;
 import models.Shop;
 import models.StockItem;
 import org.hibernate.Criteria;
@@ -133,14 +134,14 @@ public class DBHelper {
         return results;
     }
 
-    public static List<StockItem> findStockItemsForShop(Shop shop){
+    public static List<Bike> findBikeForShop(Shop shop){
         session = HibernateUtil.getSessionFactory().openSession();
-        List<StockItem> stockItems = null;
+        List<Bike> bikes = null;
         try {
             transaction = session.beginTransaction();
             Criteria cr = session.createCriteria(StockItem.class);
             cr.add(Restrictions.eq("shop", shop));
-            stockItems = cr.list();
+            bikes = cr.list();
 
             transaction.commit();
         } catch (HibernateException e) {
@@ -149,6 +150,6 @@ public class DBHelper {
         } finally {
             session.close();
         }
-        return stockItems;
+        return bikes;
     }
 }

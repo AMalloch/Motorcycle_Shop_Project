@@ -1,22 +1,5 @@
-<div>
-    <p> $shop.getName()</p>
-</div>
-
-<p class="pageHeader">Stock Items</p>
-<div class="container">
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th></th>
-        </tr>
-        #foreach($stockItem in $stockItems)
-            <tr>
-                <td>$stockItem.getName()</td>
-                <td>$stockItem.getPrice()</td>
-                <td>$stockItem.getQuantity()</td>
-            <tr>
-        #end
-    </table>
-</div>
+<tr>
+    #foreach($shop in $shops)
+    <td><a href="/shops/$shop.getId()" class="button center">Display All Stock</a></td>
+    #end
+</tr>

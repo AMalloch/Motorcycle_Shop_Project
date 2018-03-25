@@ -1,6 +1,7 @@
 package controllers;
 
 import db.DBHelper;
+import models.Bike;
 import models.Customer;
 import models.Shop;
 import models.StockItem;
@@ -34,10 +35,10 @@ public class ShopController {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Shop shop = DBHelper.find(intId, Shop.class);
-            List<StockItem> stockItems = DBHelper.findStockItemsForShop(shop);
+            List<Bike> bikes = DBHelper.findBikeForShop(shop);
             Map<String, Object> model = new HashMap<>();
-            model.put("stockItems", stockItems);
-            model.put("template", "templates/shops/index.vtl");
+            model.put("bikes", bikes);
+            model.put("template", "templates/shops/stock.vtl");
             model.put("shop", shop);
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
