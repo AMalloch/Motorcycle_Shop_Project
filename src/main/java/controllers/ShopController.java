@@ -21,11 +21,11 @@ public class ShopController {
 
     private void setupEndpoints() {
 
-        get("/shop", (req, res) -> {
+        get("/shops", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Shop> shops = DBHelper.getAll(Shop.class);
             model.put("template", "templates/shops/index.vtl");
-            model.put("templates/shops", shops);
+            model.put("shops", shops);
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 

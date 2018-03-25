@@ -10,12 +10,12 @@
             <th></th>
         </tr>
         #foreach($shop in $shops)
-        <tr>
-            <td>$shop.getName()</td>
-            <td>$shop.getStockItems()</td>
-            <td>$shop.getCustomers</td>
-            <td>$shop.getTotalCash()</td>
-        <tr>
+            <tr>
+                <td>$shop.getName()</td>
+                <td>$shop.getStockItems().getName()</td>
+                <td>$shop.getCustomers().getName()</td>
+                <td>$shop.getTotalCash()</td>
+            <tr>
         #end
     </table>
 </div>
