@@ -1,5 +1,8 @@
 package db;
 
+import models.Bike;
+import models.Shop;
+import models.StockItem;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -103,7 +106,7 @@ public class DBHelper {
         return result;
     }
 
-    public static <T> T find(Class classType, int id){
+    public static <T> T find(int id, Class classType){
         session = HibernateUtil.getSessionFactory().openSession();
         T result = null;
         Criteria criteria = session.createCriteria(classType);
