@@ -31,5 +31,15 @@ public class AccessoriesController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+        get("/accessories/:id", (req, res) -> {
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Accessory accessory = DBHelper.find(intId, Accessory.class);
+            Map<String, Object> model = new HashMap<>();
+            model.put("accessory", accessory);
+            model.put("template", "templates/accessories/show.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
     }
 }

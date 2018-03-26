@@ -15,18 +15,24 @@ public class Bike extends StockItem{
     private String colour;
     private int capacity;
     private boolean isNew;
-    private String imageUrl;
 
     public Bike() {
     }
 
-    public Bike(String name, double price, int quantity, String colour, int capacity, boolean isNew, String imageUrl) {
-        super(name, price, quantity);
+    public Bike(String name, double price, int quantity, String imageUrl, String colour, int capacity, boolean isNew) {
+        super(name, price, quantity, imageUrl);
         this.colour = colour;
         this.capacity = capacity;
         this.isNew = isNew;
-        this.imageUrl = imageUrl;
     }
+
+    //    public Bike(String name, double price, int quantity, String colour, int capacity, boolean isNew, String imageUrl) {
+//        super(name, price, quantity);
+//        this.colour = colour;
+//        this.capacity = capacity;
+//        this.isNew = isNew;
+//        this.imageUrl = imageUrl;
+//    }
 
     @Column(name = "colour")
     public String getColour() {
@@ -53,15 +59,6 @@ public class Bike extends StockItem{
 
     public void setNew(boolean aNew) {
         isNew = aNew;
-    }
-
-    @Column(name = "image_url")
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
     }
 
 }

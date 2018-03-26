@@ -36,7 +36,7 @@ public class ShopController {
             Map<String, Object> model = new HashMap<>();
             model.put("bikes", bikes);
             model.put("accessories", accessories);
-            model.put("clothings", clothes);
+            model.put("clothes", clothes);
             model.put("template", "templates/shops/stock.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
@@ -65,7 +65,7 @@ public class ShopController {
             int capacity = Integer.parseInt(req.queryParams("capacity"));
             Boolean isNew = Boolean.parseBoolean(req.queryParams("isNew"));
             String imageUrl = req.queryParams("imageUrl");
-            Bike bike = new Bike(name, price, quantity, colour, capacity, isNew, imageUrl);
+            Bike bike = new Bike(name, price, quantity, imageUrl, colour, capacity, isNew);
             DBHelper.save(bike);
             res.redirect("/shops/stock");
             return null;
