@@ -15,7 +15,10 @@
         #foreach($bike in $bikes)
             <tr>
                 <td><a href="/shops/bike/$bike.getId()/edit" class="button center">Edit bike details</a></td>
-                <td><a href="/shops/bike/delete" class="button center">Remove bike stock</a></td>
+                <td><form action="/shops/bike/$bike.getId()/delete" method="post">
+                    <input type="submit" value="Delete" class="button center">
+                    </form>
+                </td>
                 <td>$bike.getName()</td>
                 <td>$bike.getPrice()</td>
                 <td>$bike.getQuantity()</td>

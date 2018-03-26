@@ -91,5 +91,13 @@ public class ShopController {
             return null;
 
         }, new VelocityTemplateEngine());
+
+        post ("/shops/bike/:id/delete", (req, res) -> {
+            int id = Integer.parseInt(req.params(":id"));
+            Bike bikeToDelete = DBHelper.find(id, Bike.class);
+            DBHelper.delete(bikeToDelete);
+            res.redirect("/shops/stock");
+            return null;
+        }, new VelocityTemplateEngine());
     }
 }
