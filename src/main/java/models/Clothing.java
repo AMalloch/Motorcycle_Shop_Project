@@ -1,6 +1,9 @@
 package models;
 
+import db.CustomerDBHelper;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "clothing")

@@ -1,0 +1,24 @@
+<h2>All Bikes</h2>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Colour</th>
+            <th>Capacity</th>
+            <th>New?</th>
+        </tr>
+        #foreach($bike in $bikes)
+        <tr>
+            <td>$bike.getName()</td>
+            <td>$bike.getPrice()</td>
+            <td>$bike.getQuantity</td>
+            <td>$bike.getColour()</td>
+            <td>$bike.getCapacity()</td>
+            <td>$bike.isNew()</td>
+        <tr>
+        #end
+    </table>
+</div>

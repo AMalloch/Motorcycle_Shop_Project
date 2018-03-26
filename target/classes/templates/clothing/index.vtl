@@ -1,0 +1,24 @@
+<h2>All Clothing</h2>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Colour</th>
+            <th>Size</th>
+            <th>Type</th>
+        </tr>
+        #foreach($clothing in $clothes)
+        <tr>
+            <td>$clothing.getName()</td>
+            <td>$clothing.getPrice()</td>
+            <td>$clothing.getQuantity()</td>
+            <td>$clothing.getColour()</td>
+            <td>$clothing.getSize()</td>
+            <td>$clothing.getType()</td>
+        <tr>
+        #end
+    </table>
+</div>

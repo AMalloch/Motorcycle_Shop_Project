@@ -120,4 +120,13 @@ public class DBHelper {
         results = getList(criteria);
         return results;
     }
+
+    public static <T> List<T> getAvailableStock(Class classType){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<T> availableStock = null;
+        Criteria cr = session.createCriteria(classType);
+        cr.add(Restrictions.gt("quantity", 0));
+        availableStock = getList(cr);
+        return availableStock;
+    }
 }

@@ -1,8 +1,12 @@
 package models;
 
+import db.CustomerDBHelper;
+import db.DBHelper;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name = "bikes")
@@ -48,4 +52,9 @@ public class Bike extends StockItem{
     public void setNew(boolean aNew) {
         isNew = aNew;
     }
+
+//    public static List<Bike> findAllBikes(){
+//        List<Bike> allAvailableBikes = DBHelper.getAvailableStock(Bike.class);
+//        return allAvailableBikes;
+//    }
 }
