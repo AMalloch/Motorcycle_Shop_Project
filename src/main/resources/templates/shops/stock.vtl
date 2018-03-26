@@ -86,6 +86,11 @@
             <td>$accessory.getImageUrl()</td>
             <td><a href="/shops/accessory/$accessory.getId()/edit" class="button center">Edit</a></td>
         <tr>
+        <tr>
+            <td><form action="/shops/accessory/$accessory.getId()/delete" method="post">
+                <input type="submit" value="Delete" class="button center">
+            </form></td>
+        </tr>
             #end
     </table>
 </div>
