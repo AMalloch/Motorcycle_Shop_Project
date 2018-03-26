@@ -1,5 +1,6 @@
 package db;
 
+import models.Basket;
 import models.Bike;
 import models.Shop;
 import models.StockItem;
@@ -132,4 +133,14 @@ public class DBHelper {
         availableStock = getList(cr);
         return availableStock;
     }
+
+    public static List<Basket> findBasket(int custId){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Basket> basket = null;
+        Criteria criteria = session.createCriteria(Basket.class);
+        criteria.add(Restrictions.eq("customer_id", custId));
+        basket = getList(criteria);
+        return basket;
+    }
+
 }
