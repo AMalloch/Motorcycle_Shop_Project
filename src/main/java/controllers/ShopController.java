@@ -105,7 +105,9 @@ public class ShopController {
 
         get ("/shops/clothing/create", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
+            List<ClothingType> clothes = DBHelper.getClothingType();
             model.put("template", "templates/shops/create_clothing.vtl");
+            model.put("clothes", clothes);
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 //
@@ -121,20 +123,20 @@ public class ShopController {
 
 //        String name, double price, int quantity, String colour, String size, ClothingType type
 //
-        post ("/shops/stock/clothing", (req, res) -> {
-            int clothingId = Integer.parseInt(req.queryParams("clothing"));
-            Clothing clothes = DBHelper.find(clothingId, Clothing.class);
+        post ("/shops/clothing", (req, res) -> {
             String name = req.queryParams("name");
             Double price = Double.parseDouble(req.queryParams("price"));
             int quantity = Integer.parseInt(req.queryParams("quantity"));
             String colour = req.queryParams("colour");
             String size = req.queryParams("size");
-            ClothingType type = ClothingType.valueOf(req.queryParams("type"));
+            String stringType = req.queryParams("type");
+            ClothingType type = ClothingType.valueOf(stringType);
             Clothing clothing = new Clothing(name, price, quantity, colour, size, type);
             DBHelper.save(clothing);
             res.redirect("/shops/stock");
             return null;
         }, new VelocityTemplateEngine());
+
 //
 //        post ("/shops/bike/:id", (req, res) -> {
 //            String strId = req.params(":id");

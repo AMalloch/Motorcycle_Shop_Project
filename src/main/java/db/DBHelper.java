@@ -1,6 +1,7 @@
 package db;
 
 import models.Bike;
+import models.ClothingType;
 import models.Shop;
 import models.StockItem;
 import org.hibernate.Criteria;
@@ -9,6 +10,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DBHelper {
@@ -131,5 +133,12 @@ public class DBHelper {
         cr.add(Restrictions.gt("quantity", 0));
         availableStock = getList(cr);
         return availableStock;
+    }
+
+    public static List<ClothingType> getClothingType(){
+        ArrayList<ClothingType> clothes = new ArrayList<>();
+        for (ClothingType clothing : ClothingType.values())
+        { clothes.add(clothing);
+        } return clothes;
     }
 }
