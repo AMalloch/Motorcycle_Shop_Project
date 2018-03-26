@@ -31,11 +31,11 @@ public class ShopController {
         get("/shops/stock", (req, res) -> {
             List<Bike> bikes = DBHelper.getAll(Bike.class);
             List<Accessory> accessories = DBHelper.getAll(Accessory.class);
-            List<Clothing> clothings = DBHelper.getAll(Clothing.class);
+            List<Clothing> clothes = DBHelper.getAll(Clothing.class);
             Map<String, Object> model = new HashMap<>();
             model.put("bikes", bikes);
             model.put("accessories", accessories);
-            model.put("clothings", clothings);
+            model.put("clothings", clothes);
             model.put("template", "templates/shops/stock.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());

@@ -13,6 +13,7 @@
         </tr>
         #foreach($bike in $bikes)
             <tr>
+                <td><a href="/shops/stock" class="button center">Display All Stock</a></td>
                 <td>$bike.getName()</td>
                 <td>$bike.getPrice()</td>
                 <td>$bike.getQuantity()</td>
@@ -33,7 +34,7 @@
             <th>Size</th>
             <th>Type</th>
         </tr>
-        #foreach($clothing in $clothings)
+        #foreach($clothing in $clothes)
         <tr>
             <td>$clothing.getName()</td>
             <td>$clothing.getPrice()</td>
