@@ -19,6 +19,8 @@ public class Seeds {
 
         Accessory accessory1 = new Accessory("DSYJ Windproof Face Mask Cover", 0.76, 20);
         DBHelper.save(accessory1);
+        Accessory accessory2 = new Accessory("Arai RX7", 499.99, 0);
+        DBHelper.save(accessory2);
 
         Clothing clothing1 = new Clothing("All Black Waterproof Armoured Motorcycle Trousers", 44, 3, "Black", "All Sizes", ClothingType.TROUSER);
         DBHelper.save(clothing1);
