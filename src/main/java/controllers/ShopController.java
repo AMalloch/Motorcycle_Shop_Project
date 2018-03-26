@@ -41,6 +41,14 @@ public class ShopController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+        get("/shops/bike", (req, res) -> {
+            List<Bike> bikes = DBHelper.getAll(Bike.class);
+            Map<String, Object> model = new HashMap<>();
+            model.put("bikes", bikes);
+            model.put("template", "templates/shops/bike.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
         get ("/shops/bike/create", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             model.put("template", "templates/shops/create_bike.vtl");
@@ -104,6 +112,14 @@ public class ShopController {
         }, new VelocityTemplateEngine());
 
 //        ---------------------------------------------------------
+
+        get("/shops/clothing", (req, res) -> {
+            List<Clothing> clothes = DBHelper.getAll(Clothing.class);
+            Map<String, Object> model = new HashMap<>();
+            model.put("clothes", clothes);
+            model.put("template", "templates/shops/clothing.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
 
         get ("/shops/clothing/create", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
@@ -174,6 +190,14 @@ public class ShopController {
         }, new VelocityTemplateEngine());
 
 //        ---------------------------------------------------------
+
+        get("/shops/accessory", (req, res) -> {
+            List<Accessory> accessories = DBHelper.getAll(Accessory.class);
+            Map<String, Object> model = new HashMap<>();
+            model.put("accessories", accessories);
+            model.put("template", "templates/shops/accessory.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
 
         get ("/shops/accessory/create", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
