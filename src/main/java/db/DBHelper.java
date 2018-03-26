@@ -2,6 +2,7 @@ package db;
 
 import models.Basket;
 import models.Bike;
+import models.ClothingType;
 import models.Shop;
 import models.StockItem;
 import org.hibernate.Criteria;
@@ -10,6 +11,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DBHelper {
@@ -134,6 +136,13 @@ public class DBHelper {
         return availableStock;
     }
 
+    public static List<ClothingType> getClothingType(){
+        ArrayList<ClothingType> clothes = new ArrayList<>();
+        for (ClothingType clothing : ClothingType.values())
+        { clothes.add(clothing);
+        } return clothes;
+    }
+
     public static List<Basket> findBasket(int custId){
         session = HibernateUtil.getSessionFactory().openSession();
         List<Basket> basket = null;
@@ -142,5 +151,6 @@ public class DBHelper {
         basket = getList(criteria);
         return basket;
     }
+
 
 }

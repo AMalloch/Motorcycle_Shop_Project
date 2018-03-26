@@ -1,6 +1,6 @@
 <p class="pageHeader">New Clothing</p>
 
-<form action="/shops/stock/clothing" method="post">
+<form action="/shops/clothing" method="post">
     <label for="name">Clothing brand:</label>
     <input class="inputbox" type="text" name="name" required="true">
 
@@ -19,7 +19,7 @@
     <label for="type">Type:</label>
     <select id="type" name="type">
         #foreach( $clothing in $clothes )
-        <option value="$clothing.getId()">$clothing.getType()</option>
+        <option value="$clothing">$clothing</option>
         #end
     </select>
     <input type="submit" value="Save" class="button">
