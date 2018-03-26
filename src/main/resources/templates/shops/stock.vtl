@@ -14,7 +14,7 @@
         <td><a href="/shops/bike/create" class="button center">Add new bike stock</a></td>
         #foreach($bike in $bikes)
             <tr>
-                <td><a href="/shops/bike/edit" class="button center">Edit bike details</a></td>
+                <td><a href="/shops/bike/$bike.getId()/edit" class="button center">Edit bike details</a></td>
                 <td><a href="/shops/bike/delete" class="button center">Remove bike stock</a></td>
                 <td>$bike.getName()</td>
                 <td>$bike.getPrice()</td>
