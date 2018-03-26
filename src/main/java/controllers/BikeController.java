@@ -24,8 +24,8 @@ public class BikeController {
         get("/bikes", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Bike> bikes = DBHelper.getAvailableStock(Bike.class);
-//            String loggedInUser = LoginController.getLoggedInUserName(req, res);
-//            model.put("user", loggedInUser);
+            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+            model.put("user", loggedInUser);
             model.put("template", "templates/bikes/index.vtl");
             model.put("bikes", bikes);
             return new ModelAndView(model, "templates/layout.vtl");
@@ -36,6 +36,8 @@ public class BikeController {
             Integer intId = Integer.parseInt(strId);
             Bike bike = DBHelper.find(intId, Bike.class);
             Map<String, Object> model = new HashMap<>();
+            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+            model.put("user", loggedInUser);
             model.put("bike", bike);
             model.put("template", "templates/bikes/show.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
