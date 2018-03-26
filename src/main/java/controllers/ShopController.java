@@ -1,10 +1,7 @@
 package controllers;
 
 import db.DBHelper;
-import models.Bike;
-import models.Customer;
-import models.Shop;
-import models.StockItem;
+import models.*;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -31,19 +28,16 @@ public class ShopController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-        get("/shops/:id", (req, res) -> {
-            String strId = req.params(":id");
-            Integer intId = Integer.parseInt(strId);
-            Shop shop = DBHelper.find(intId, Shop.class);
-            List<Bike> bikes = DBHelper.findBikeForShop(shop);
+        get("/shops/stock", (req, res) -> {
+            List<Bike> bikes = DBHelper.getAll(Bike.class);
+            List<Accessory> accessories = DBHelper.getAll(Accessory.class);
+            List<Clothing> clothings = DBHelper.getAll(Clothing.class);
             Map<String, Object> model = new HashMap<>();
             model.put("bikes", bikes);
+            model.put("accessories", accessories);
+            model.put("clothings", clothings);
             model.put("template", "templates/shops/stock.vtl");
-            model.put("shop", shop);
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
-
-
-
     }
 }

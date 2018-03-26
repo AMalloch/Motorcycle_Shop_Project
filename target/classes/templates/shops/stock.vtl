@@ -5,21 +5,59 @@
     <table>
         <tr>
             <th>Name</th>
-            <th>Price</th>
+            <th>Price (£)</th>
             <th>Quantity</th>
             <th>Colour</th>
             <th>Capacity</th>
             <th>Is New</th>
         </tr>
-        #foreach($bike in $Bikes)
-        <tr>
-            <td>$bike.getName()</td>
-            <td>$bike.getPrice()</td>
-            <td>$bike.getQuantity()</td>
-            <td>$bike.getColour()</td>
-            <td>$bike.getCapacity()</td>
-            <td>$bike.isNew()</td>
-        <tr>
+        #foreach($bike in $bikes)
+            <tr>
+                <td>$bike.getName()</td>
+                <td>$bike.getPrice()</td>
+                <td>$bike.getQuantity()</td>
+                <td>$bike.getColour()</td>
+                <td>$bike.getCapacity()</td>
+                <td>$bike.isNew()</td>
+            <tr>
         #end
+    </table>
+
+    <h1>Clothing</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Price (£)</th>
+            <th>Quantity</th>
+            <th>Colour</th>
+            <th>Size</th>
+            <th>Type</th>
+        </tr>
+        #foreach($clothing in $clothings)
+        <tr>
+            <td>$clothing.getName()</td>
+            <td>$clothing.getPrice()</td>
+            <td>$clothing.getQuantity()</td>
+            <td>$clothing.getColour()</td>
+            <td>$clothing.getSize()</td>
+            <td>$clothing.getType()</td>
+        <tr>
+            #end
+    </table>
+
+    <h1>Accessories</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Price (£)</th>
+            <th>Quantity</th>
+        </tr>
+        #foreach($accessory in $accessories)
+        <tr>
+            <td>$accessory.getName()</td>
+            <td>$accessory.getPrice()</td>
+            <td>$accessory.getQuantity()</td>
+        <tr>
+            #end
     </table>
 </div>
