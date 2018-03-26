@@ -3,6 +3,7 @@
 <div class="container">
     <table>
         <tr>
+            <th></th>
             <th>Name</th>
             <th>Price</th>
             <th>Quantity</th>
@@ -12,9 +13,10 @@
         </tr>
         #foreach($bike in $bikes)
         <tr>
-            <td>$bike.getName()</td>
-            <td>$bike.getPrice()</td>
-            <td>$bike.getQuantity</td>
+            <td><a href="/bikes/$bike.getId()"><img src=$bike.getImageUrl() height="50" width="100"></a></td>
+            <td><a href="/bikes/$bike.getId()">$bike.getName()</a></td>
+            <td>£ $bike.getPrice()</td>
+            <td>$bike.getQuantity()</td>
             <td>$bike.getColour()</td>
             <td>$bike.getCapacity()</td>
             <td>$bike.isNew()</td>

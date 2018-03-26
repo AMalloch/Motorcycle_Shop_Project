@@ -14,7 +14,7 @@ public class Seeds {
         Shop shop = new Shop("Jurassic Motorcycles", 0);
         DBHelper.save(shop);
 
-        Bike bike1 = new Bike("Neiman Marcus Limited Edition Fighter", 11000000, 1, "Clockwork Metal", 120, true);
+        Bike bike1 = new Bike("Neiman Marcus Limited Edition Fighter", 11000000, 1, "Clockwork Metal", 120, true, "/images/neiman_marcus.jpeg");
         DBHelper.save(bike1);
 
         Accessory accessory1 = new Accessory("DSYJ Windproof Face Mask Cover", 0.76, 20);
