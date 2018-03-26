@@ -127,11 +127,12 @@ public class ShopController {
             String name = req.queryParams("name");
             Double price = Double.parseDouble(req.queryParams("price"));
             int quantity = Integer.parseInt(req.queryParams("quantity"));
+            String imageUrl = req.queryParams("imageUrl");
             String colour = req.queryParams("colour");
             String size = req.queryParams("size");
             String stringType = req.queryParams("type");
             ClothingType type = ClothingType.valueOf(stringType);
-            Clothing clothing = new Clothing(name, price, quantity, colour, size, type);
+            Clothing clothing = new Clothing(name, price, quantity, imageUrl, colour, size, type);
             DBHelper.save(clothing);
             res.redirect("/shops/stock");
             return null;
@@ -144,6 +145,7 @@ public class ShopController {
             String name = req.queryParams("name");
             Double price = Double.parseDouble(req.queryParams("price"));
             int quantity = Integer.parseInt(req.queryParams("quantity"));
+            String imageUrl = req.queryParams("imageUrl");
             String colour = req.queryParams("colour");
             String size = req.queryParams("size");
             String stringType = req.queryParams("type");
@@ -151,6 +153,7 @@ public class ShopController {
             clothing.setName(name);
             clothing.setPrice(price);
             clothing.setQuantity(quantity);
+            clothing.setImageUrl(imageUrl);
             clothing.setColour(colour);
             clothing.setSize(size);
             clothing.setType(type);
