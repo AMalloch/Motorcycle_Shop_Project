@@ -16,7 +16,11 @@
     </div>
 
 <!-- begin inner template-->
-    <p>Logged in as: $user <a href="/logout">Logout</a> <p>
+    #if($user == "")
+    <p><a href="/login">Login</a></p>
+    #else
+    <p>Logged in as: $user <a href="/logout">Logout</a></p>
+    #end
 
     <div class="container">
        #parse($template)

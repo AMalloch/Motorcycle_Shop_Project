@@ -10,14 +10,16 @@ public abstract class StockItem {
     private String name;
     private double price;
     private int quantity;
+    private String imageUrl;
 
     public StockItem() {
     }
 
-    public StockItem(String name, double price, int quantity) {
+    public StockItem(String name, double price, int quantity, String imageUrl) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
+        this.imageUrl = imageUrl;
     }
 
     @Id
@@ -58,7 +60,16 @@ public abstract class StockItem {
         this.quantity = quantity;
     }
 
-//    @ManyToOne(fetch = FetchType.EAGER)
+    @Column(name = "image_url")
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    //    @ManyToOne(fetch = FetchType.EAGER)
 //    @JoinColumn(name = "shop_id", nullable = false)
 //    public Shop getShop() {
 //        return shop;

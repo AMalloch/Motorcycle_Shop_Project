@@ -65,7 +65,7 @@ public class ShopController {
             int capacity = Integer.parseInt(req.queryParams("capacity"));
             Boolean isNew = Boolean.parseBoolean(req.queryParams("isNew"));
             String imageUrl = req.queryParams("imageUrl");
-            Bike bike = new Bike(name, price, quantity, colour, capacity, isNew, imageUrl);
+            Bike bike = new Bike(name, price, quantity, imageUrl, colour, capacity, isNew);
             DBHelper.save(bike);
             res.redirect("/shops/stock");
             return null;

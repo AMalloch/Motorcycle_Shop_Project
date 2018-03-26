@@ -24,10 +24,22 @@ public class AccessoriesController {
         get("/accessories", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Accessory> accessories = DBHelper.getAvailableStock(Accessory.class);
-//            String loggedInUser = LoginController.getLoggedInUserName(req, res);
-//            model.put("user", loggedInUser);
+            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+            model.put("user", loggedInUser);
             model.put("template", "templates/accessories/index.vtl");
             model.put("accessories", accessories);
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        get("/accessories/:id", (req, res) -> {
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Accessory accessory = DBHelper.find(intId, Accessory.class);
+            Map<String, Object> model = new HashMap<>();
+            String loggedInUser = LoginController.getLoggedInUserName(req, res);
+            model.put("user", loggedInUser);
+            model.put("accessory", accessory);
+            model.put("template", "templates/accessories/show.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 

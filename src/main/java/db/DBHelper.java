@@ -1,5 +1,6 @@
 package db;
 
+import models.Basket;
 import models.Bike;
 import models.ClothingType;
 import models.Shop;
@@ -141,4 +142,15 @@ public class DBHelper {
         { clothes.add(clothing);
         } return clothes;
     }
+
+    public static List<Basket> findBasket(int custId){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Basket> basket = null;
+        Criteria criteria = session.createCriteria(Basket.class);
+        criteria.add(Restrictions.eq("customer_id", custId));
+        basket = getList(criteria);
+        return basket;
+    }
+
+
 }
