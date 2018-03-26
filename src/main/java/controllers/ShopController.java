@@ -47,6 +47,16 @@ public class ShopController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+        get("/shops/bike/:id/edit", (req, res) -> {
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Bike bike = DBHelper.find(intId, Bike.class);
+            Map<String, Object> model = new HashMap<>();
+            model.put("bike", bike);
+            model.put("template", "templates/shops/edit_bike.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
         post ("/shops/stock", (req, res) -> {
             String name = req.queryParams("name");
             Double price = Double.parseDouble(req.queryParams("price"));
@@ -58,6 +68,28 @@ public class ShopController {
             DBHelper.save(bike);
             res.redirect("/shops/stock");
             return null;
+        }, new VelocityTemplateEngine());
+
+        post ("/shops/bike/:id", (req, res) -> {
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Bike bike = DBHelper.find(intId, Bike.class);
+            String name = req.queryParams("name");
+            Double price = Double.parseDouble(req.queryParams("price"));
+            int quantity = Integer.parseInt(req.queryParams("quantity"));
+            String colour = req.queryParams("colour");
+            int capacity = Integer.parseInt(req.queryParams("capacity"));
+            Boolean isNew = Boolean.parseBoolean(req.queryParams("isNew"));
+            bike.setName(name);
+            bike.setPrice(price);
+            bike.setQuantity(quantity);
+            bike.setColour(colour);
+            bike.setCapacity(capacity);
+            bike.setNew(isNew);
+            DBHelper.update(bike);
+            res.redirect("/shops/stock");
+            return null;
+
         }, new VelocityTemplateEngine());
     }
 }
