@@ -170,5 +170,24 @@ public class ShopController {
             res.redirect("/shops/stock");
             return null;
         }, new VelocityTemplateEngine());
+
+//        ---------------------------------------------------------
+
+        get ("/shops/accessory/create", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            model.put("template", "templates/shops/create_accessory.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        post ("/shops/accessory", (req, res) -> {
+            String name = req.queryParams("name");
+            Double price = Double.parseDouble(req.queryParams("price"));
+            int quantity = Integer.parseInt(req.queryParams("quantity"));
+            String imageUrl = req.queryParams("imageUrl");
+            Accessory accessory = new Accessory(name, price, quantity, imageUrl);
+            DBHelper.save(accessory);
+            res.redirect("/shops/stock");
+            return null;
+        }, new VelocityTemplateEngine());
     }
 }
