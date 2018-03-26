@@ -1,7 +1,11 @@
 package models;
 
+import db.CustomerDBHelper;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -99,7 +103,6 @@ public class Customer {
         return getFirstName() + " " + getLastName();
     }
 
-
 //    @Column(name = "shop")
 //    public Shop getShop() {
 //        return shop;
@@ -108,4 +111,15 @@ public class Customer {
 //    public void setShop(Shop shop) {
 //        this.shop = shop;
 //    }
+
+    public List<Bike> findAllAccessories(){
+        List<Bike> allAvailableAccessories = CustomerDBHelper.getAvailableStock(Accessory.class);
+        return allAvailableAccessories;
+    }
+
+    public List<Bike> findAllClothing(){
+        List<Bike> allAvailableClothing = CustomerDBHelper.getAvailableStock(Clothing.class);
+        return allAvailableClothing;
+    }
+
 }

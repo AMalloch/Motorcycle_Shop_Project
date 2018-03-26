@@ -1,0 +1,18 @@
+<h2>All Accessories</h2>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+        #foreach($accessory in $accessories)
+        <tr>
+            <td>$accessory.getName()</td>
+            <td>$accessory.getPrice()</td>
+            <td>$accessory.getQuantity()</td>
+        <tr>
+        #end
+    </table>
+</div>
