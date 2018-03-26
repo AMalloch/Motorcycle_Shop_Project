@@ -13,18 +13,21 @@ import java.util.List;
 import java.util.Map;
 
 import static spark.Spark.get;
+import static spark.SparkBase.staticFileLocation;
 
 public class MainController {
 
     public static void main(String[] args) {
+
+        staticFileLocation("/public");
+
+        Seeds.seedData();
 
         CustomerController customerController = new CustomerController();
         ShopController shopController = new ShopController();
         BikeController bikeController = new BikeController();
         ClothingController clothingController = new ClothingController();
         AccessoriesController accessoriesController = new AccessoriesController();
-
-        Seeds.seedData();
 
 
         get("/", (req, res) -> {

@@ -12,7 +12,7 @@ public class BikeTest {
 
     @Before
     public void setUp() {
-        bike = new Bike("Yamaha R1", 2995.99, 1, "blue", 1000, false);
+        bike = new Bike("Yamaha R1", 2995.99, 1, "blue", 1000, false, "/images/neiman_marcus.jpeg");
         DBHelper.save(bike);
     }
 

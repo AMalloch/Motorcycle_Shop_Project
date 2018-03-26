@@ -15,15 +15,17 @@ public class Bike extends StockItem{
     private String colour;
     private int capacity;
     private boolean isNew;
+    private String imageUrl;
 
     public Bike() {
     }
 
-    public Bike(String name, double price, int quantity, String colour, int capacity, boolean isNew) {
+    public Bike(String name, double price, int quantity, String colour, int capacity, boolean isNew, String imageUrl) {
         super(name, price, quantity);
         this.colour = colour;
         this.capacity = capacity;
         this.isNew = isNew;
+        this.imageUrl = imageUrl;
     }
 
     @Column(name = "colour")
@@ -53,8 +55,13 @@ public class Bike extends StockItem{
         isNew = aNew;
     }
 
-//    public static List<Bike> findAllBikes(){
-//        List<Bike> allAvailableBikes = DBHelper.getAvailableStock(Bike.class);
-//        return allAvailableBikes;
-//    }
+    @Column(name = "image_url")
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
 }
