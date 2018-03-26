@@ -78,12 +78,14 @@ public class ShopController {
             String name = req.queryParams("name");
             Double price = Double.parseDouble(req.queryParams("price"));
             int quantity = Integer.parseInt(req.queryParams("quantity"));
+            String imageUrl = req.queryParams("imageUrl");
             String colour = req.queryParams("colour");
             int capacity = Integer.parseInt(req.queryParams("capacity"));
             Boolean isNew = Boolean.parseBoolean(req.queryParams("isNew"));
             bike.setName(name);
             bike.setPrice(price);
             bike.setQuantity(quantity);
+            bike.setImageUrl(imageUrl);
             bike.setColour(colour);
             bike.setCapacity(capacity);
             bike.setNew(isNew);
@@ -179,6 +181,16 @@ public class ShopController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+        get("/shops/accessory/:id/edit", (req, res) -> {
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Accessory accessory = DBHelper.find(intId, Accessory.class);
+            Map<String, Object> model = new HashMap<>();
+            model.put("accessory", accessory);
+            model.put("template", "templates/shops/edit_accessory.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
         post ("/shops/accessory", (req, res) -> {
             String name = req.queryParams("name");
             Double price = Double.parseDouble(req.queryParams("price"));
@@ -188,6 +200,24 @@ public class ShopController {
             DBHelper.save(accessory);
             res.redirect("/shops/stock");
             return null;
+        }, new VelocityTemplateEngine());
+
+        post ("/shops/accessory/:id", (req, res) -> {
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Accessory accessory = DBHelper.find(intId, Accessory.class);
+            String name = req.queryParams("name");
+            Double price = Double.parseDouble(req.queryParams("price"));
+            int quantity = Integer.parseInt(req.queryParams("quantity"));
+            String imageUrl = req.queryParams("imageUrl");
+            accessory.setName(name);
+            accessory.setPrice(price);
+            accessory.setQuantity(quantity);
+            accessory.setImageUrl(imageUrl);
+            DBHelper.update(accessory);
+            res.redirect("/shops/stock");
+            return null;
+
         }, new VelocityTemplateEngine());
     }
 }
