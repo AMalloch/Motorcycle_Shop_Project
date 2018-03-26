@@ -133,23 +133,4 @@ public class DBHelper {
         results = getList(criteria);
         return results;
     }
-
-    public static List<Bike> findBikeForShop(Shop shop){
-        session = HibernateUtil.getSessionFactory().openSession();
-        List<Bike> bikes = null;
-        try {
-            transaction = session.beginTransaction();
-            Criteria cr = session.createCriteria(StockItem.class);
-            cr.add(Restrictions.eq("shop", shop));
-            bikes = cr.list();
-
-            transaction.commit();
-        } catch (HibernateException e) {
-            transaction.rollback();
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-        return bikes;
-    }
 }
