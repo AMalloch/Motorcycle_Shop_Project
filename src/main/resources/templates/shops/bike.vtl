@@ -1,0 +1,35 @@
+<p class="pageHeader">All Bikes</p>
+
+<div class="container">
+    <table>
+        <tr>
+            <h2><td><a href="/shops/bike/create" class="button center">Add new bike stock</a></td></h2>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <th>Price (£)</th>
+            <th>Quantity</th>
+            <th>Image Url</th>
+            <th>Colour</th>
+            <th>Capacity</th>
+            <th>Is New</th>
+        </tr>
+        #foreach($bike in $bikes)
+        <tr>
+            <td>$bike.getName()</td>
+            <td>$bike.getPrice()</td>
+            <td>$bike.getQuantity()</td>
+            <td>$bike.getImageUrl()</td>
+            <td>$bike.getColour()</td>
+            <td>$bike.getCapacity()</td>
+            <td>$bike.isNew()</td>
+            <td><a href="/shops/bike/$bike.getId()/edit" class="button center">Edit</a></td>
+        </tr>
+        <tr>
+            <td><form action="/shops/bike/$bike.getId()/delete" method="post">
+                <input type="submit" value="Delete" class="button center">
+            </form></td>
+        </tr>
+        #end
+    </table>
+</div>

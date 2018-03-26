@@ -1,0 +1,29 @@
+<p class="pageHeader">All Bikes</p>
+
+<div class="container">
+    <table>
+        <tr>
+            <h2><td><a href="/shops/accessory/create" class="button center">Add new accessory stock</a></td></h2>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <th>Price (£)</th>
+            <th>Quantity</th>
+            <th>Image Url</th>
+        </tr>
+        #foreach($accessory in $accessories)
+        <tr>
+            <td>$accessory.getName()</td>
+            <td>$accessory.getPrice()</td>
+            <td>$accessory.getQuantity()</td>
+            <td>$accessory.getImageUrl()</td>
+            <td><a href="/shops/accessory/$accessory.getId()/edit" class="button center">Edit</a></td>
+        <tr>
+        <tr>
+            <td><form action="/shops/accessory/$accessory.getId()/delete" method="post">
+                <input type="submit" value="Delete" class="button center">
+            </form></td>
+        </tr>
+        #end
+    </table>
+</div>
