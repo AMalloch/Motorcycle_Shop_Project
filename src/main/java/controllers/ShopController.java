@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import static spark.Spark.get;
+import static spark.Spark.post;
 
 public class ShopController {
 
@@ -38,6 +39,25 @@ public class ShopController {
             model.put("clothings", clothes);
             model.put("template", "templates/shops/stock.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        get ("/shops/bike/create", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            model.put("template", "templates/shops/create_bike.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        post ("/shops/stock", (req, res) -> {
+            String name = req.queryParams("name");
+            Double price = Double.parseDouble(req.queryParams("price"));
+            int quantity = Integer.parseInt(req.queryParams("quantity"));
+            String colour = req.queryParams("colour");
+            int capacity = Integer.parseInt(req.queryParams("capacity"));
+            Boolean isNew = Boolean.parseBoolean(req.queryParams("isNew"));
+            Bike bike = new Bike(name, price, quantity, colour, capacity, isNew);
+            DBHelper.save(bike);
+            res.redirect("/shops/stock");
+            return null;
         }, new VelocityTemplateEngine());
     }
 }

@@ -1,0 +1,24 @@
+<p class="pageHeader">New Bike</p>
+
+<form action="/shops/stock" method="post">
+    <label for="name">Model name:</label>
+    <input class="inputbox" type="text" name="name" required="true">
+
+    <label for="price">Price:</label>
+    <input class="inputbox" type="number" name="price" required="true">
+
+    <label for="quantity">Quantity:</label>
+    <input class="inputbox" type="number" name="quantity" required="true">
+
+    <label for="colour">Colour:</label>
+    <input class="inputbox" type="text" name="colour" required="true">
+
+    <label for="capacity">Capacity:</label>
+    <input class="inputbox" type="number" name="capacity" required="true">
+
+    <label for="isNew">Is new:</label>
+    <input class="inputbox" type="text" name="isNew" required="true">
+    <input type="submit" value="Save" class="button">
+</form>
+
+<a href="/shops/stock" class="button center">Cancel</a>
