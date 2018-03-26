@@ -1,0 +1,23 @@
+<p class="pageHeader">Edit Bike Details</p>
+
+<form action="/shops/bike/$bike.getId()" method="post">
+    <label for="name">Model name:</label>
+    <input class="inputbox" type="text" name="name" required="true" value="$bike.getTitle()">
+
+    <label for="price">Price:</label>
+    <input class="inputbox" type="number" name="price" required="true" value="$bike.getPrice()">
+
+    <label for="quantity">Quantity:</label>
+    <input class="inputbox" type="number" name="quantity" required="true" value="$bike.getQuantity()">
+
+    <label for="colour">Colour:</label>
+    <input class="inputbox" type="text" name="colour" required="true" value="$bike.getColour()">
+
+    <label for="capacity">Capacity:</label>
+    <input class="inputbox" type="number" name="capacity" required="true" value="$bike.getCapacity()">
+
+    <label for="isNew">Is new:</label>
+    <input class="inputbox" type="text" name="isNew" required="true" value="$bike.isNew()">
+    <input type="submit" value="Save" class="button">
+</form>
+<a href="/shops/bike/$bike.getId()" class="button center">Cancel</a>
