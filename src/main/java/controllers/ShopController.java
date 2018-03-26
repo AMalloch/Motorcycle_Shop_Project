@@ -160,12 +160,12 @@ public class ShopController {
 
         }, new VelocityTemplateEngine());
 
-//        post ("/shops/bike/:id/delete", (req, res) -> {
-//            int id = Integer.parseInt(req.params(":id"));
-//            Bike bikeToDelete = DBHelper.find(id, Bike.class);
-//            DBHelper.delete(bikeToDelete);
-//            res.redirect("/shops/stock");
-//            return null;
-//        }, new VelocityTemplateEngine());
+        post ("/shops/clothing/:id/delete", (req, res) -> {
+            int id = Integer.parseInt(req.params(":id"));
+            Clothing clothingToDelete = DBHelper.find(id, Clothing.class);
+            DBHelper.delete(clothingToDelete);
+            res.redirect("/shops/stock");
+            return null;
+        }, new VelocityTemplateEngine());
     }
 }
