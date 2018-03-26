@@ -1,0 +1,66 @@
+<p class="pageHeader">All Stock Items</p>
+
+<div class="container">
+    <h1>Motorcycles</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Price (£)</th>
+            <th>Quantity</th>
+            <th>Colour</th>
+            <th>Capacity</th>
+            <th>Is New</th>
+        </tr>
+        <td><a href="/shops/bike/create" class="button center">Add new bike stock</a></td>
+        #foreach($bike in $bikes)
+            <tr>
+                <td><a href="/shops/bike/edit" class="button center">Edit bike details</a></td>
+                <td><a href="/shops/bike/delete" class="button center">Remove bike stock</a></td>
+                <td>$bike.getName()</td>
+                <td>$bike.getPrice()</td>
+                <td>$bike.getQuantity()</td>
+                <td>$bike.getColour()</td>
+                <td>$bike.getCapacity()</td>
+                <td>$bike.isNew()</td>
+            <tr>
+        #end
+    </table>
+
+    <h1>Clothing</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Price (£)</th>
+            <th>Quantity</th>
+            <th>Colour</th>
+            <th>Size</th>
+            <th>Type</th>
+        </tr>
+        #foreach($clothing in $clothes)
+        <tr>
+            <td>$clothing.getName()</td>
+            <td>$clothing.getPrice()</td>
+            <td>$clothing.getQuantity()</td>
+            <td>$clothing.getColour()</td>
+            <td>$clothing.getSize()</td>
+            <td>$clothing.getType()</td>
+        <tr>
+            #end
+    </table>
+
+    <h1>Accessories</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Price (£)</th>
+            <th>Quantity</th>
+        </tr>
+        #foreach($accessory in $accessories)
+        <tr>
+            <td>$accessory.getName()</td>
+            <td>$accessory.getPrice()</td>
+            <td>$accessory.getQuantity()</td>
+        <tr>
+            #end
+    </table>
+</div>

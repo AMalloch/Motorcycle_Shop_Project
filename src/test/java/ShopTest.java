@@ -24,9 +24,6 @@ public class ShopTest {
         shop = new Shop("Jurassic Motorcycles", 0);
         bike = new Bike("Shredder", 99.9, 2, "Black", 900, true);
         customer = new Customer("Jane", "Losi", "F", 26, "fortheducksgmail.com");
-        DBHelper.save(shop);
-        DBHelper.save(bike);
-
 //        String firstName, String lastName, String gender, int age, String emailAddress
     }
 
@@ -40,6 +37,32 @@ public class ShopTest {
     public void addCustomer(){
         shop.addCustomer(customer);
         assertEquals(1, shop.countCustomers());
+    }
+
+//    @Test
+//    public void canDeleteStock(){
+//        shop.addToStock(bike);
+//        shop.addToStock(bike);
+//        DBHelper.delete(bike);
+//        assertEquals(1, shop.countStock());
+//    }
+//
+//    @Test
+//    public void canDeleteCustomer(){
+//        shop.addCustomer(customer);
+//        shop.addCustomer(customer);
+//        DBHelper.delete(customer);
+//        assertEquals(1, shop.countCustomers());
+//    }
+
+    @Test
+    public void canGetTotalCash(){
+        assertEquals(0, shop.getTotalCash());
+    }
+
+    @Test
+    public void canGetShopName(){
+        assertEquals("Jurassic Motorcycles", shop.getName());
     }
 
 }

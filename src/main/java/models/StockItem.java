@@ -10,7 +10,6 @@ public abstract class StockItem {
     private String name;
     private double price;
     private int quantity;
-    private Shop shop;
 
     public StockItem() {
     }
@@ -19,7 +18,6 @@ public abstract class StockItem {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
-//        this.shop = shop;
     }
 
     @Id
