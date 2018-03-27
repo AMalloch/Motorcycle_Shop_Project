@@ -58,6 +58,8 @@ public class ShopController {
         }, new VelocityTemplateEngine());
 
         post ("/shops/stock", (req, res) -> {
+            int basketId = Integer.parseInt(req.queryParams("basket"));
+            Basket basket = DBHelper.find(basketId, Basket.class);
             String name = req.queryParams("name");
             Double price = Double.parseDouble(req.queryParams("price"));
             int quantity = Integer.parseInt(req.queryParams("quantity"));
@@ -65,7 +67,7 @@ public class ShopController {
             int capacity = Integer.parseInt(req.queryParams("capacity"));
             Boolean isNew = Boolean.parseBoolean(req.queryParams("isNew"));
             String imageUrl = req.queryParams("imageUrl");
-            Bike bike = new Bike(name, price, quantity, imageUrl, colour, capacity, isNew);
+            Bike bike = new Bike(name, price, quantity, imageUrl, colour, capacity, isNew, basket);
             DBHelper.save(bike);
             res.redirect("/shops/stock");
             return null;
@@ -124,6 +126,8 @@ public class ShopController {
         }, new VelocityTemplateEngine());
 
         post ("/shops/clothing", (req, res) -> {
+            int basketId = Integer.parseInt(req.queryParams("basket"));
+            Basket basket = DBHelper.find(basketId, Basket.class);
             String name = req.queryParams("name");
             Double price = Double.parseDouble(req.queryParams("price"));
             int quantity = Integer.parseInt(req.queryParams("quantity"));
@@ -132,7 +136,7 @@ public class ShopController {
             String size = req.queryParams("size");
             String stringType = req.queryParams("type");
             ClothingType type = ClothingType.valueOf(stringType);
-            Clothing clothing = new Clothing(name, price, quantity, imageUrl, colour, size, type);
+            Clothing clothing = new Clothing(name, price, quantity, imageUrl, colour, size, type, basket);
             DBHelper.save(clothing);
             res.redirect("/shops/stock");
             return null;

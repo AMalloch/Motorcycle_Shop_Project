@@ -18,18 +18,23 @@ public class Customer {
     private String gender;
     private int age;
     private String emailAddress;
+    private String username;
+    private Basket basket;
 
     private Set<StockItem> purchasedItems;
 
     public Customer() {
     }
 
-    public Customer(String firstName, String lastName, String gender, int age, String emailAddress) {
+    public Customer(String firstName, String lastName, String gender, int age, String emailAddress, String username, Basket basket) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.age = age;
         this.emailAddress = emailAddress;
+        this.username = username;
+        this.basket = basket;
+
         this.purchasedItems = new HashSet<>();
 //        this.shop = shop;
     }
@@ -90,7 +95,25 @@ public class Customer {
         this.emailAddress = emailAddress;
     }
 
-//    @Column(name = "purchased_items")
+    @Column(name = "username")
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @OneToOne(fetch = FetchType.EAGER)
+    public Basket getBasket() {
+        return basket;
+    }
+
+    public void setBasket(Basket basket) {
+        this.basket = basket;
+    }
+
+    //    @Column(name = "purchased_items")
 //    public Set<StockItem> getPurchasedItems() {
 //        return purchasedItems;
 //    }

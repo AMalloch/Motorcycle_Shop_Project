@@ -1,2 +1,19 @@
-<h2>$customer.getFirstName()'s Basket</h2>
+<h2>$customer.displayName()'s Basket</h2>
 
+<div class="container">
+    <table>
+        <tr>
+            <th></th>
+            <th>Basket ID</th>
+            <th>Customer ID</th>
+            <th>Item ID</th>
+        </tr>
+        #foreach ($basketItem in $basketItems)
+        <tr>
+            <td>$basketItem.getId()</td>
+            <td>$basketItem.getCustomerId()</td>
+            <td>$basketItem.getStockItemId()</td>
+        <tr>
+        #end
+    </table>
+</div>

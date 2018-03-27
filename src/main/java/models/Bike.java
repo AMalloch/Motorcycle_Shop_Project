@@ -15,12 +15,13 @@ public class Bike extends StockItem{
     private String colour;
     private int capacity;
     private boolean isNew;
+//    private Basket basket;
 
     public Bike() {
     }
 
-    public Bike(String name, double price, int quantity, String imageUrl, String colour, int capacity, boolean isNew) {
-        super(name, price, quantity, imageUrl);
+    public Bike(String name, double price, int quantity, String imageUrl, String colour, int capacity, boolean isNew, Basket basket) {
+        super(name, price, quantity, imageUrl, basket);
         this.colour = colour;
         this.capacity = capacity;
         this.isNew = isNew;

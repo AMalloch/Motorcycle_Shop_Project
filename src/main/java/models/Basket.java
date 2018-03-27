@@ -1,21 +1,24 @@
 package models;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+@Table(name = "baskets")
 public class Basket {
     private int id;
-    private int CustomerId;
-    private Set<StockItem> basketItems;
+    private Customer customer;
+    private ArrayList<StockItem> stockItems;
 
-    public Basket(int id, int customerId) {
-        this.id = id;
-        CustomerId = customerId;
-        this.basketItems = new HashSet<>();
+
+    public Basket() {
+    }
+
+    public Basket(Customer customer) {
+        this.customer = customer;
+        this.stockItems = new ArrayList<>();
     }
 
     @Id
@@ -29,20 +32,28 @@ public class Basket {
         this.id = id;
     }
 
-    @Column(name = "colour")
-    public int getCustomerId() {
-        return CustomerId;
+    @OneToOne(fetch = FetchType.EAGER)
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerId(int customerId) {
-        CustomerId = customerId;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public Set<StockItem> getBasketItems() {
-        return basketItems;
+    @OneToMany(mappedBy = "basket")
+    public ArrayList<StockItem> getStockItems() {
+        return stockItems;
     }
 
-    public void setBasketItems(Set<StockItem> basketItems) {
-        this.basketItems = basketItems;
+    public void setStockItems(ArrayList<StockItem> stockItems) {
+        this.stockItems = stockItems;
+    }
+
+    public int countItemsInBasket(){
+        if (stockItems == null){
+            return 0;
+        }
+        return stockItems.size();
     }
 }

@@ -1,8 +1,5 @@
 import db.DBHelper;
-import models.Bike;
-import models.Customer;
-import models.Shop;
-import models.StockItem;
+import models.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,15 +13,17 @@ public class ShopTest {
     private Shop shop;
     private Bike bike;
     private Customer customer;
+    private Basket basket;
 //
 //    String name, double price, int quantity, Shop shop, String colour, int capacity, boolean isNew
 
     @Before
     public void setUp() throws Exception {
         shop = new Shop("Jurassic Motorcycles", 0);
-        bike = new Bike("Shredder", 99.9, 2, null, "Black", 900, true);
-        customer = new Customer("Jane", "Losi", "F", 26, "fortheducksgmail.com");
-//        String firstName, String lastName, String gender, int age, String emailAddress
+        bike = new Bike("Shredder", 99.9, 2, null, "Black", 900, true, basket);
+        basket = new Basket();
+        customer = new Customer("Jane", "Losi", "F", 26, "fortheducks@gmail.com", "jlosi", basket);
+//        String firstName, String lastName, String gender, int age, String emailAddress, String username
     }
 
     @Test
