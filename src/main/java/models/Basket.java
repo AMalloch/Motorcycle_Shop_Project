@@ -1,7 +1,6 @@
 package models;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -32,7 +31,7 @@ public class Basket {
         this.id = id;
     }
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "basket", cascade = CascadeType.ALL)
     public Customer getCustomer() {
         return customer;
     }
@@ -56,4 +55,15 @@ public class Basket {
         }
         return stockItems.size();
     }
+
+    public void addItem(StockItem pendingItems) {
+        stockItems.add(pendingItems);
+    }
+
+//    public void addToBasket(StockItem item, Basket basket){
+//        this.basket.addItem(item);
+//        stockItem.setBasket(basket);
+//        item.saveOrUpdate();
+//        basket.saveOrUpdate();
+//    }
 }

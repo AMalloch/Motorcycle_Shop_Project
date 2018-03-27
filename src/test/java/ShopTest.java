@@ -20,7 +20,7 @@ public class ShopTest {
     @Before
     public void setUp() throws Exception {
         shop = new Shop("Jurassic Motorcycles", 0);
-        bike = new Bike("Shredder", 99.9, 2, null, "Black", 900, true, basket);
+        bike = new Bike("Shredder", 99.9, 2, null, "Black", 900, true, null);
         basket = new Basket();
         customer = new Customer("Jane", "Losi", "F", 26, "fortheducks@gmail.com", "jlosi", basket);
 //        String firstName, String lastName, String gender, int age, String emailAddress, String username

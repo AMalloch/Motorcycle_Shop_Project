@@ -27,26 +27,40 @@ public class BasketController {
 
         LoginController loginController = new LoginController();
 
-        get("/basket/:custId", (req, res) -> {
-            String strCustId = req.params(":custId");
-            Integer intCustId = Integer.parseInt(strCustId);
-            Customer customer = DBHelper.find(intCustId, Customer.class);
-            String loggedInUser = LoginController.getLoggedInUserNameForBasket(req, res);
-            int itemCount = customer.getBasket().countItemsInBasket();
-            Map<String, Object> model = new HashMap<>();
-            model.put("user", loggedInUser);
-            model.put("customer", customer);
-            if (itemCount > 0) {
-                List<Basket> basketItems = DBHelper.findBasketItems(intCustId);
-//                Map<String, Object> model = new HashMap<>();
+//        get("/basket/:id", (req, res) -> {
+//            String strCustId = req.params(":id");
+//            Integer intCustId = Integer.parseInt(strCustId);
+//            Customer customer = DBHelper.find(intCustId, Customer.class);
 //            String loggedInUser = LoginController.getLoggedInUserNameForBasket(req, res);
-//                model.put("user", loggedInUser);
-//                model.put("customer", customer);
-                model.put("basketItems", basketItems);
-            }
-            model.put("template", "templates/basket/index.vtl");
-            return new ModelAndView(model, "templates/layout.vtl");
-        }, new VelocityTemplateEngine());
+//            int itemCount = customer.getBasket().countItemsInBasket();
+//            Map<String, Object> model = new HashMap<>();
+//            model.put("user", loggedInUser);
+//            model.put("customer", customer);
+////            if (itemCount > 0) {
+//            List<Basket> basketItems = DBHelper.findBasketItems(intCustId);
+////                Map<String, Object> model = new HashMap<>();
+////            String loggedInUser = LoginController.getLoggedInUserNameForBasket(req, res);
+////                model.put("user", loggedInUser);
+////                model.put("customer", customer);
+//                model.put("basketItems", basketItems);
+////            }
+//            model.put("template", "templates/basket/index.vtl");
+//            return new ModelAndView(model, "templates/layout.vtl");
+//        }, new VelocityTemplateEngine());
+
+        // findcustomerbyusername
+        // findbasketforcustomer
+        // findcontentsforbasket
+
+//        get("/basket", (req, res) -> {
+//            String loggedInUser = LoginController.getLoggedInUserNameForBasket(req, res);
+//            Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
+//
+//
+//
+//            model.put("template", "templates/basket/index.vtl");
+//            return new ModelAndView(model, "templates/layout.vtl");
+//        }, new VelocityTemplateEngine());
 
         get("/basket/:custId/add/:stockItemId", (req, res) -> {
             String strCustId = req.params(":custId");

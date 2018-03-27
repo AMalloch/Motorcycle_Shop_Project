@@ -71,8 +71,8 @@ public abstract class StockItem {
         this.imageUrl = imageUrl;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "basket_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "basket_id")
     public Basket getBasket() {
         return basket;
     }

@@ -14,7 +14,7 @@ public class BikeTest {
 
     @Before
     public void setUp() {
-        bike = new Bike("Yamaha R1", 2995.99, 1, null, "blue", 1000, false, basket);
+        bike = new Bike("Yamaha R1", 2995.99, 1, null, "blue", 1000, false, null);
         DBHelper.save(bike);
     }
 

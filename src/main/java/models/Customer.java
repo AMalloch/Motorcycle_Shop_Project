@@ -1,6 +1,7 @@
 package models;
 
 import db.CustomerDBHelper;
+import db.DBHelper;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class Customer {
     private String emailAddress;
     private String username;
     private Basket basket;
+    private Set<StockItem> pendingItems;
 
     private Set<StockItem> purchasedItems;
 
@@ -35,6 +37,7 @@ public class Customer {
         this.username = username;
         this.basket = basket;
 
+//        this.pendingItems = new Set<>();
         this.purchasedItems = new HashSet<>();
 //        this.shop = shop;
     }
@@ -104,7 +107,8 @@ public class Customer {
         this.username = username;
     }
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.LAZY)
+//    @PrimaryKeyJoinColumn
     public Basket getBasket() {
         return basket;
     }
@@ -135,14 +139,21 @@ public class Customer {
 //        this.shop = shop;
 //    }
 
-    public List<Bike> findAllAccessories(){
-        List<Bike> allAvailableAccessories = CustomerDBHelper.getAvailableStock(Accessory.class);
-        return allAvailableAccessories;
-    }
+//    public List<Bike> findAllAccessories(){
+//        List<Bike> allAvailableAccessories = CustomerDBHelper.getAvailableStock(Accessory.class);
+//        return allAvailableAccessories;
+//    }
+//
+//    public List<Bike> findAllClothing(){
+//        List<Bike> allAvailableClothing = CustomerDBHelper.getAvailableStock(Clothing.class);
+//        return allAvailableClothing;
+//    }
 
-    public List<Bike> findAllClothing(){
-        List<Bike> allAvailableClothing = CustomerDBHelper.getAvailableStock(Clothing.class);
-        return allAvailableClothing;
+    public void addToBasket(StockItem pendingItems, Basket basket){
+        basket.addItem(pendingItems);
+//        pendingItems.setBasket(basket);
+        DBHelper.saveOrUpdate(pendingItems);
+//        DBHelper.saveOrUpdate(basket);
     }
 
 }
