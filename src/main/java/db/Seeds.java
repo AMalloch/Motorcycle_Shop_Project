@@ -8,6 +8,7 @@ import java.util.List;
 
 public class Seeds {
     public static void main(String[] args) {
+
 //    public static void seedData() {
         DBHelper.deleteAll(Shop.class);
         DBHelper.deleteAll(Bike.class);
@@ -15,10 +16,13 @@ public class Seeds {
         DBHelper.deleteAll(Clothing.class);
         DBHelper.deleteAll(Customer.class);
 
+        Customer customer1 = new Customer("Will", "MacIntyre", "M", 32, "inferno@gmail.com", "willmac");
+        DBHelper.save(customer1);
+
         Shop shop = new Shop("Jurassic Motorcycles", 0);
         DBHelper.save(shop);
 
-        Basket basket = new Basket();
+        Basket basket = new Basket(customer1);
         DBHelper.save(basket);
 
         Bike bike1 = new Bike("Neiman Marcus Limited Edition Fighter", 11000000, 1, "/images/neiman_marcus.jpeg", "Clockwork Metal", 120, true, null);
@@ -32,21 +36,19 @@ public class Seeds {
         Clothing clothing1 = new Clothing("All Black Waterproof Armoured Motorcycle Trousers", 44, 3, "/images/black_trousers.jpeg", "Black", "All Sizes", ClothingType.TROUSER, null);
         DBHelper.save(clothing1);
 
-        Customer customer1 = new Customer("Will", "MacIntyre", "M", 32, "inferno@gmail.com", "willmac", basket);
-        DBHelper.save(customer1);
 
 //        basket = new Basket(customer1);
 //        DBHelper.save(basket);
 
-        int itemCount = customer1.getBasket().countItemsInBasket();
+//        int itemCount = customer1.getBasket().countItemsInBasket();
 
-        customer1.addToBasket(clothing1, basket);
+        DBHelper.addToBasket(clothing1, basket);
 
-        int itemCount2 = customer1.getBasket().countItemsInBasket();
+//        int itemCount2 = customer1.getBasket().countItemsInBasket();
 
         Customer testCust = DBHelper.findCustomerByUsername(customer1.getUsername());
 
-        List<Basket> testBasket = DBHelper.findBasketbyCustomer(testCust);
+        List<StockItem> testBasket = DBHelper.findItemsInBasket(basket);
 
     }
 

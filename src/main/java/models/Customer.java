@@ -28,14 +28,13 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String firstName, String lastName, String gender, int age, String emailAddress, String username, Basket basket) {
+    public Customer(String firstName, String lastName, String gender, int age, String emailAddress, String username) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.age = age;
         this.emailAddress = emailAddress;
         this.username = username;
-        this.basket = basket;
 
 //        this.pendingItems = new Set<>();
         this.purchasedItems = new HashSet<>();
@@ -148,12 +147,5 @@ public class Customer {
 //        List<Bike> allAvailableClothing = CustomerDBHelper.getAvailableStock(Clothing.class);
 //        return allAvailableClothing;
 //    }
-
-    public void addToBasket(StockItem pendingItems, Basket basket){
-        basket.addItem(pendingItems);
-//        pendingItems.setBasket(basket);
-        DBHelper.saveOrUpdate(pendingItems);
-//        DBHelper.saveOrUpdate(basket);
-    }
 
 }

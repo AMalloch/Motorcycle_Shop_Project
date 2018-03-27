@@ -1,5 +1,7 @@
 package models;
 
+import db.DBHelper;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,7 +12,6 @@ public class Basket {
     private int id;
     private Customer customer;
     private Set<StockItem> stockItems;
-
 
     public Basket() {
     }
@@ -59,11 +60,4 @@ public class Basket {
     public void addItem(StockItem pendingItems) {
         stockItems.add(pendingItems);
     }
-
-//    public void addToBasket(StockItem item, Basket basket){
-//        this.basket.addItem(item);
-//        stockItem.setBasket(basket);
-//        item.saveOrUpdate();
-//        basket.saveOrUpdate();
-//    }
 }

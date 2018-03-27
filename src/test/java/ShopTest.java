@@ -13,7 +13,6 @@ public class ShopTest {
     private Shop shop;
     private Bike bike;
     private Customer customer;
-    private Basket basket;
 //
 //    String name, double price, int quantity, Shop shop, String colour, int capacity, boolean isNew
 
@@ -21,8 +20,7 @@ public class ShopTest {
     public void setUp() throws Exception {
         shop = new Shop("Jurassic Motorcycles", 0);
         bike = new Bike("Shredder", 99.9, 2, null, "Black", 900, true, null);
-        basket = new Basket();
-        customer = new Customer("Jane", "Losi", "F", 26, "fortheducks@gmail.com", "jlosi", basket);
+        customer = new Customer("Jane", "Losi", "F", 26, "fortheducks@gmail.com", "jlosi");
 //        String firstName, String lastName, String gender, int age, String emailAddress, String username
     }
 

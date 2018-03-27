@@ -18,7 +18,7 @@ public class CustomerTest {
 
         basket = new Basket();
         DBHelper.save(basket);
-        customer = new Customer("First", "Customer", "M", 49, "me@me.com", "wibble", null);
+        customer = new Customer("First", "Customer", "M", 49, "me@me.com", "wibble");
         DBHelper.save(customer);
     }
 

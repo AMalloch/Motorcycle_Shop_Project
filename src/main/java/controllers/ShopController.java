@@ -224,7 +224,7 @@ public class ShopController {
             Double price = Double.parseDouble(req.queryParams("price"));
             int quantity = Integer.parseInt(req.queryParams("quantity"));
             String imageUrl = req.queryParams("imageUrl");
-            Accessory accessory = new Accessory(name, price, quantity, imageUrl);
+            Accessory accessory = new Accessory(name, price, quantity, imageUrl, null);
             DBHelper.save(accessory);
             res.redirect("/shops/stock");
             return null;

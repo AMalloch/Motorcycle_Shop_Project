@@ -162,13 +162,21 @@ public class DBHelper {
         return user;
     }
 
-    public static List<Basket> findBasketbyCustomer(Customer customer){
+    public static List<StockItem> findItemsInBasket(Basket basket){
         session = HibernateUtil.getSessionFactory().openSession();
-        List<Basket> basketItems = null;
-        Criteria criteria = session.createCriteria(Basket.class);
-        criteria.add(Restrictions.eq("customer", customer));
-        basketItems = getList(criteria);
-        return basketItems;
+        List<StockItem> items = null;
+        Criteria criteria = session.createCriteria(StockItem.class);
+        criteria.add(Restrictions.eq("basket", basket));
+        items = getList(criteria);
+        return items;
+    }
+
+
+    public static void addToBasket(StockItem item, Basket basket){
+        basket.addItem(item);
+        item.setBasket(basket);
+        saveOrUpdate(basket);
+        saveOrUpdate(item);
     }
 
 //    public static List<Basket> findBasketItems(int custId){
