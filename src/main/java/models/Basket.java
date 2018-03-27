@@ -33,6 +33,7 @@ public class Basket {
     }
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "basket", cascade = CascadeType.ALL)
+    @JoinColumn(name = "username")
     public Customer getCustomer() {
         return customer;
     }
@@ -41,7 +42,9 @@ public class Basket {
         this.customer = customer;
     }
 
-    @OneToMany(mappedBy = "basket")
+    @ManyToMany
+    @JoinTable(name = "basket_stockItem", joinColumns = @JoinColumn(name = "basket_id"),
+            inverseJoinColumns = @JoinColumn(name = "stockItem_id"))
     public Set<StockItem> getStockItems() {
         return stockItems;
     }

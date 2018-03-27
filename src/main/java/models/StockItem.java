@@ -1,6 +1,8 @@
 package models;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -11,17 +13,17 @@ public abstract class StockItem {
     private double price;
     private int quantity;
     private String imageUrl;
-    private Basket basket;
+    private Set<Basket> baskets;
 
     public StockItem() {
     }
 
-    public StockItem(String name, double price, int quantity, String imageUrl, Basket basket) {
+    public StockItem(String name, double price, int quantity, String imageUrl) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.imageUrl = imageUrl;
-        this.basket = basket;
+        this.baskets = new HashSet<>();
     }
 
     @Id
@@ -71,14 +73,13 @@ public abstract class StockItem {
         this.imageUrl = imageUrl;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "basket_id")
-    public Basket getBasket() {
-        return basket;
+    @ManyToMany(cascade = CascadeType.REMOVE , mappedBy = "stockItems")
+    public Set<Basket> getBaskets() {
+        return baskets;
     }
 
-    public void setBasket(Basket basket) {
-        this.basket = basket;
+    public void setBaskets(Set<Basket> baskets) {
+        this.baskets = baskets;
     }
 
     //    @ManyToOne(fetch = FetchType.EAGER)

@@ -172,12 +172,13 @@ public class DBHelper {
     }
 
 
-    public static void addToBasket(StockItem item, Basket basket){
+    public static void addToBasket(StockItem item, Customer customer, Basket basket){
         basket.addItem(item);
-        item.setBasket(basket);
+        customer.setBasket(basket);
         saveOrUpdate(basket);
         saveOrUpdate(item);
     }
+
 
 //    public static List<Basket> findBasketItems(int custId){
 //        session = HibernateUtil.getSessionFactory().openSession();

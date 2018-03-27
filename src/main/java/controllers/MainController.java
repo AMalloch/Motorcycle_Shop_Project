@@ -31,7 +31,6 @@ public class MainController {
         LoginController loginController = new LoginController();
         BasketController basketController = new BasketController();
 
-
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             String loggedInUser = LoginController.getLoggedInUserName(req, res);
