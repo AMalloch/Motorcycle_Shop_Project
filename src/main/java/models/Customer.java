@@ -1,6 +1,7 @@
 package models;
 
 import db.CustomerDBHelper;
+import db.DBHelper;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -18,18 +19,25 @@ public class Customer {
     private String gender;
     private int age;
     private String emailAddress;
+    private String username;
+    private Basket basket;
+    private Set<StockItem> pendingItems;
 
     private Set<StockItem> purchasedItems;
 
     public Customer() {
     }
 
-    public Customer(String firstName, String lastName, String gender, int age, String emailAddress) {
+    public Customer(String firstName, String lastName, String gender, int age, String emailAddress, String username, Basket basket) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.age = age;
         this.emailAddress = emailAddress;
+        this.username = username;
+        this.basket = basket;
+
+//        this.pendingItems = new Set<>();
         this.purchasedItems = new HashSet<>();
 //        this.shop = shop;
     }
@@ -90,7 +98,26 @@ public class Customer {
         this.emailAddress = emailAddress;
     }
 
-//    @Column(name = "purchased_items")
+    @Column(name = "username")
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @OneToOne(fetch = FetchType.LAZY)
+//    @PrimaryKeyJoinColumn
+    public Basket getBasket() {
+        return basket;
+    }
+
+    public void setBasket(Basket basket) {
+        this.basket = basket;
+    }
+
+    //    @Column(name = "purchased_items")
 //    public Set<StockItem> getPurchasedItems() {
 //        return purchasedItems;
 //    }
@@ -112,14 +139,21 @@ public class Customer {
 //        this.shop = shop;
 //    }
 
-    public List<Bike> findAllAccessories(){
-        List<Bike> allAvailableAccessories = CustomerDBHelper.getAvailableStock(Accessory.class);
-        return allAvailableAccessories;
-    }
+//    public List<Bike> findAllAccessories(){
+//        List<Bike> allAvailableAccessories = CustomerDBHelper.getAvailableStock(Accessory.class);
+//        return allAvailableAccessories;
+//    }
+//
+//    public List<Bike> findAllClothing(){
+//        List<Bike> allAvailableClothing = CustomerDBHelper.getAvailableStock(Clothing.class);
+//        return allAvailableClothing;
+//    }
 
-    public List<Bike> findAllClothing(){
-        List<Bike> allAvailableClothing = CustomerDBHelper.getAvailableStock(Clothing.class);
-        return allAvailableClothing;
+    public void addToBasket(StockItem pendingItems, Basket basket){
+        basket.addItem(pendingItems);
+//        pendingItems.setBasket(basket);
+        DBHelper.saveOrUpdate(pendingItems);
+//        DBHelper.saveOrUpdate(basket);
     }
 
 }

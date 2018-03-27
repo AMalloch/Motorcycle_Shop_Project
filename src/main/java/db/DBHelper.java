@@ -1,14 +1,11 @@
 package db;
 
-import models.Basket;
-import models.Bike;
-import models.ClothingType;
-import models.Shop;
-import models.StockItem;
+import models.*;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.ArrayList;
@@ -20,7 +17,6 @@ public class DBHelper {
     private static Session session;
 
     public static void save(Object object) {
-
         session = HibernateUtil.getSessionFactory().openSession();
         try {
             transaction = session.beginTransaction();
@@ -39,6 +35,20 @@ public class DBHelper {
         try {
             transaction = session.beginTransaction();
             session.update(object);
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
+    public static void saveOrUpdate(Object object) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            transaction = session.beginTransaction();
+            session.saveOrUpdate(object);
             transaction.commit();
         } catch (HibernateException e) {
             transaction.rollback();
@@ -130,9 +140,9 @@ public class DBHelper {
     public static <T> List<T> getAvailableStock(Class classType){
         session = HibernateUtil.getSessionFactory().openSession();
         List<T> availableStock = null;
-        Criteria cr = session.createCriteria(classType);
-        cr.add(Restrictions.gt("quantity", 0));
-        availableStock = getList(cr);
+        Criteria criteria = session.createCriteria(classType);
+        criteria.add(Restrictions.gt("quantity", 0));
+        availableStock = getList(criteria);
         return availableStock;
     }
 
@@ -143,14 +153,42 @@ public class DBHelper {
         } return clothes;
     }
 
-    public static List<Basket> findBasket(int custId){
+    public static Customer findCustomerByUsername(String username){
         session = HibernateUtil.getSessionFactory().openSession();
-        List<Basket> basket = null;
-        Criteria criteria = session.createCriteria(Basket.class);
-        criteria.add(Restrictions.eq("customer_id", custId));
-        basket = getList(criteria);
-        return basket;
+        Customer user = null;
+        Criteria criteria = session.createCriteria(Customer.class);
+        criteria.add(Restrictions.eq("username", username));
+        user = getUnique(criteria);
+        return user;
     }
+
+    public static List<Basket> findBasketbyCustomer(Customer customer){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Basket> basketItems = null;
+        Criteria criteria = session.createCriteria(Basket.class);
+        criteria.add(Restrictions.eq("customer", customer));
+        basketItems = getList(criteria);
+        return basketItems;
+    }
+
+//    public static List<Basket> findBasketItems(int custId){
+//        session = HibernateUtil.getSessionFactory().openSession();
+//        List<Basket> basketItems = null;
+//        Criteria criteria = session.createCriteria(Basket.class);
+//        criteria.add(Restrictions.eq("customerId", custId));
+//        basketItems = getList(criteria);
+//        return basketItems;
+//    }
+//
+//    public static long countItemsInBasket(int custId){
+//        session = HibernateUtil.getSessionFactory().openSession();
+//        long count = 0;
+//        Criteria criteria = session.createCriteria(Basket.class);
+//        criteria.add(Restrictions.eq("customerId", custId));
+//        criteria.setProjection(Projections.count("customerId"));
+//        count = getUnique(criteria);
+//        return count;
+//    }
 
 
 }

@@ -10,7 +10,7 @@ public class Accessory extends StockItem{
     public Accessory() {
     }
 
-    public Accessory(String name, double price, int quantity, String imageUrl) {
-        super(name, price, quantity, imageUrl);
+    public Accessory(String name, double price, int quantity, String imageUrl, Basket basket) {
+        super(name, price, quantity, imageUrl, basket);
     }
 }

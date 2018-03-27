@@ -11,15 +11,17 @@ public abstract class StockItem {
     private double price;
     private int quantity;
     private String imageUrl;
+    private Basket basket;
 
     public StockItem() {
     }
 
-    public StockItem(String name, double price, int quantity, String imageUrl) {
+    public StockItem(String name, double price, int quantity, String imageUrl, Basket basket) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.imageUrl = imageUrl;
+        this.basket = basket;
     }
 
     @Id
@@ -67,6 +69,16 @@ public abstract class StockItem {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "basket_id")
+    public Basket getBasket() {
+        return basket;
+    }
+
+    public void setBasket(Basket basket) {
+        this.basket = basket;
     }
 
     //    @ManyToOne(fetch = FetchType.EAGER)
