@@ -10,7 +10,7 @@ import java.util.Set;
 public class Basket {
     private int id;
     private Customer customer;
-    private ArrayList<StockItem> stockItems;
+    private Set<StockItem> stockItems;
 
 
     public Basket() {
@@ -18,7 +18,7 @@ public class Basket {
 
     public Basket(Customer customer) {
         this.customer = customer;
-        this.stockItems = new ArrayList<>();
+        this.stockItems = new HashSet<>();
     }
 
     @Id
@@ -42,11 +42,11 @@ public class Basket {
     }
 
     @OneToMany(mappedBy = "basket")
-    public ArrayList<StockItem> getStockItems() {
+    public Set<StockItem> getStockItems() {
         return stockItems;
     }
 
-    public void setStockItems(ArrayList<StockItem> stockItems) {
+    public void setStockItems(Set<StockItem> stockItems) {
         this.stockItems = stockItems;
     }
 
