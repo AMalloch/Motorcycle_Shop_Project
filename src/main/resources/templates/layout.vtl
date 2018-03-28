@@ -10,14 +10,21 @@
 </head>
 <body>
 
-    <h1>Jurassic Motorcycles</h1>
+    <div class="header">
+         <header>
+           <img src="/images/coollogo_com-93491085.png" alt="logo" />
+         </header>
+    </div>
 
     <div class="nav">
         <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/bikes">Bikes</a></li>
-        <li><a href="/accessories">Accessories</a></li>
-        <li><a href="/clothing">Clothing</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/bikes">Bikes</a></li>
+            <li><a href="/accessories">Accessories</a></li>
+            <li><a href="/clothing">Clothing</a></li>
+            #if($user == "")
+            <li><a href="basket">View Basket</a></li>
+            #end
         </ul>
     </div>
 

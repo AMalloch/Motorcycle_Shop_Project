@@ -1,5 +1,9 @@
 body {
-      background: black;
+      background-size: cover;
+      background: url("/images/pexels-photo-356010.jpeg");
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center center;
 }
 
 ul {
@@ -38,18 +42,18 @@ table {
 }
 
 tr {
-  border: 1px solid blue;
+  border: 1px solid black;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
 td {
-  border: 1px solid blue;
+  border: 1px solid black;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  width: 300px;
+  width: 500px;
 }
 
 
@@ -57,5 +61,9 @@ td {
 
 
 h1 {
+    color: white;
+}
+
+h2 {
     color: white;
 }
