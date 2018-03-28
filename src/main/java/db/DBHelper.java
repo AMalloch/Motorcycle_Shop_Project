@@ -1,15 +1,13 @@
 package db;
 
 import models.*;
-import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class DBHelper {
 
@@ -162,15 +160,13 @@ public class DBHelper {
         return user;
     }
 
-//    public static List<StockItem> findItemsInBasket(Basket basket){
-//        session = HibernateUtil.getSessionFactory().openSession();
-//        List<StockItem> items = null;
-//        Criteria criteria = session.createCriteria(StockItem.class);
-//        criteria.add(Restrictions.eq("basket", basket));
-//        items = getList(criteria);
-//        return items;
-//    }
-
+    public static Set<StockItem> findBasketItems(Basket basket){
+        session = HibernateUtil.getSessionFactory().openSession();
+        session.refresh(basket);
+        Hibernate.initialize(basket.getStockItems());
+        session.close();
+        return basket.getStockItems();
+    }
 
     public static void addToBasket(StockItem item, int ppQuanity, Customer customer, Basket basket){
         basket.addItem(item, ppQuanity);
@@ -179,14 +175,12 @@ public class DBHelper {
         DBHelper.save(basket);
     }
 
-
-    public static List<StockItem> findBasketItems(int basketId){
-        session = HibernateUtil.getSessionFactory().openSession();
-        List<StockItem> basketItems = null;
-        Criteria criteria = session.createCriteria(StockItem.class);
-        criteria.add(Restrictions.eq("basket", basketId));
-        basketItems = getList(criteria);
-        return basketItems;
+    public static Double calculateTotalBasketPrice(Set<StockItem> basketItems) {
+        Double totalPrice = 0.00;
+        for (StockItem basketItem : basketItems){
+            totalPrice += (basketItem.getPrice() * basketItem.getPendingPurchaseQuantity());
+        }
+        return totalPrice;
     }
 
 //    public static long countItemsInBasket(int custId){

@@ -3,17 +3,22 @@
 <div class="container">
     <table>
         <tr>
-            <th></th>
-            <th>Basket ID</th>
-            <th>Customer ID</th>
-            <th>Item ID</th>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Individual Item Price</th>
         </tr>
         #foreach ($basketItem in $basketItems)
         <tr>
-            <td>$basketItem.getId()</td>
-            <td>$basketItem.getCustomerId()</td>
-            <td>$basketItem.getStockItemId()</td>
+            <td>$basketItem.getName()</td>
+            <td>$basketItem.getPendingPurchaseQuantity()</td>
+            <td align="right">£$df.format($basketItem.getPrice())</td>
         <tr>
+
         #end
+        <tr>
+            <td></td>
+            <td align="right"><b>Total Price</b></td>
+            <td align="right"><b>£ $df.format($totalBasketPrice)</b></td>
+        </tr>
     </table>
 </div>

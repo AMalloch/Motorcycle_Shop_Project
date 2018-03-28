@@ -5,12 +5,15 @@ import models.Basket;
 import models.Bike;
 import models.Customer;
 import models.StockItem;
+import org.omg.CORBA.MARSHAL;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static spark.Spark.get;
 
@@ -27,42 +30,23 @@ public class BasketController {
 
         LoginController loginController = new LoginController();
 
-//        get("/basket/:id", (req, res) -> {
-//            String strCustId = req.params(":id");
-//            Integer intCustId = Integer.parseInt(strCustId);
-//            Customer customer = DBHelper.find(intCustId, Customer.class);
-//            String loggedInUser = LoginController.getLoggedInUserNameForBasket(req, res);
-//            int itemCount = customer.getBasket().countItemsInBasket();
-//            Map<String, Object> model = new HashMap<>();
-//            model.put("user", loggedInUser);
-//            model.put("customer", customer);
-////            if (itemCount > 0) {
-//            List<Basket> basketItems = DBHelper.findBasketItems(intCustId);
-////                Map<String, Object> model = new HashMap<>();
-////            String loggedInUser = LoginController.getLoggedInUserNameForBasket(req, res);
-////                model.put("user", loggedInUser);
-////                model.put("customer", customer);
-//                model.put("basketItems", basketItems);
-////            }
-//            model.put("template", "templates/basket/index.vtl");
-//            return new ModelAndView(model, "templates/layout.vtl");
-//        }, new VelocityTemplateEngine());
+        get("/basket", (req, res) -> {
+            String loggedInUser = LoginController.getLoggedInUserNameForBasket(req, res);
+            Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
+            Set<StockItem> basketItems = DBHelper.findBasketItems(customer.getBasket());
+            Double totalBasketPrice = DBHelper.calculateTotalBasketPrice(basketItems);
+            DecimalFormat df =new DecimalFormat("#0.00");
+            Map<String, Object> model = new HashMap<>();
+            model.put("user", loggedInUser);
+            model.put("customer", customer);
+            model.put("basketItems", basketItems);
+            model.put("totalBasketPrice", totalBasketPrice);
+            model.put("df", df);
+            model.put("template", "templates/basket/index.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
 
-        // findcustomerbyusername
-        // findbasketforcustomer
-        // findcontentsforbasket
-
-//        get("/basket", (req, res) -> {
-//            String loggedInUser = LoginController.getLoggedInUserNameForBasket(req, res);
-//            Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
-//
-//
-//
-//            model.put("template", "templates/basket/index.vtl");
-//            return new ModelAndView(model, "templates/layout.vtl");
-//        }, new VelocityTemplateEngine());
-
-        get("/basket/:custId/add/:stockItemId", (req, res) -> {
+        get("/basket/add/:stockItemId", (req, res) -> {
             String strCustId = req.params(":custId");
             String strItemId = req.params(":stockItemId");
             Integer intCustId = Integer.parseInt(strCustId);

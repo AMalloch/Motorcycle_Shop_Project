@@ -1,6 +1,8 @@
 package models;
 
 import db.DBHelper;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -45,6 +47,7 @@ public class Basket {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "basket_stockItem", joinColumns = @JoinColumn(name = "basket_id"),
             inverseJoinColumns = @JoinColumn(name = "stockItem_id"))
+    @LazyCollection(LazyCollectionOption.FALSE)
     public Set<StockItem> getStockItems() {
         return stockItems;
     }
