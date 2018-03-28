@@ -7,9 +7,7 @@ import sun.tools.asm.Cover;
 import java.util.List;
 
 public class Seeds {
-    public static void main(String[] args) {
-
-//    public static void seedData() {
+    public static void seedData() {
         DBHelper.deleteAll(Shop.class);
         DBHelper.deleteAll(Bike.class);
         DBHelper.deleteAll(Accessory.class);
@@ -40,7 +38,6 @@ public class Seeds {
         customer1.setBasket(basket);
 
 
-
 //        basket = new Basket(customer1);
 //        DBHelper.save(basket);
 
@@ -54,8 +51,9 @@ public class Seeds {
         testCust.setBasket(basket);
 
 //        List<StockItem> testBasket = DBHelper.findItemsInBasket(basket);
-
     }
+
+
 
 
 }
