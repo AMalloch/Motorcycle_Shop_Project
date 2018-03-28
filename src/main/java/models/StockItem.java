@@ -13,6 +13,7 @@ public abstract class StockItem {
     private double price;
     private int quantity;
     private String imageUrl;
+    private int pendingPurchaseQuantity;
     private Set<Basket> baskets;
 
     public StockItem() {
@@ -23,6 +24,7 @@ public abstract class StockItem {
         this.price = price;
         this.quantity = quantity;
         this.imageUrl = imageUrl;
+        this.pendingPurchaseQuantity = 0;
         this.baskets = new HashSet<>();
     }
 
@@ -71,6 +73,15 @@ public abstract class StockItem {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    @Column(name = "pp_quantity")
+    public int getPendingPurchaseQuantity() {
+        return pendingPurchaseQuantity;
+    }
+
+    public void setPendingPurchaseQuantity(int pendingPurchaseQuantity) {
+        this.pendingPurchaseQuantity = pendingPurchaseQuantity;
     }
 
     @ManyToMany(cascade = CascadeType.REMOVE , mappedBy = "stockItems")
