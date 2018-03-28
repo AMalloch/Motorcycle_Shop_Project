@@ -21,7 +21,7 @@ public class MainController {
 
         staticFileLocation("/public");
 
-//        Seeds.seedData();
+        Seeds.seedData();
 
         CustomerController customerController = new CustomerController();
         ShopController shopController = new ShopController();
@@ -30,7 +30,6 @@ public class MainController {
         AccessoriesController accessoriesController = new AccessoriesController();
         LoginController loginController = new LoginController();
         BasketController basketController = new BasketController();
-
 
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();

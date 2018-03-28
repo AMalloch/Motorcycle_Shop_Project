@@ -75,7 +75,7 @@ public class ShopController {
             int capacity = Integer.parseInt(req.queryParams("capacity"));
             Boolean isNew = Boolean.parseBoolean(req.queryParams("isNew"));
             String imageUrl = req.queryParams("imageUrl");
-            Bike bike = new Bike(name, price, quantity, imageUrl, colour, capacity, isNew, basket);
+            Bike bike = new Bike(name, price, quantity, imageUrl, colour, capacity, isNew);
             DBHelper.save(bike);
             res.redirect("/shops/stock");
             return null;
@@ -154,7 +154,7 @@ public class ShopController {
             String size = req.queryParams("size");
             String stringType = req.queryParams("type");
             ClothingType type = ClothingType.valueOf(stringType);
-            Clothing clothing = new Clothing(name, price, quantity, imageUrl, colour, size, type, basket);
+            Clothing clothing = new Clothing(name, price, quantity, imageUrl, colour, size, type);
             DBHelper.save(clothing);
             res.redirect("/shops/stock");
             return null;
@@ -224,7 +224,7 @@ public class ShopController {
             Double price = Double.parseDouble(req.queryParams("price"));
             int quantity = Integer.parseInt(req.queryParams("quantity"));
             String imageUrl = req.queryParams("imageUrl");
-            Accessory accessory = new Accessory(name, price, quantity, imageUrl, null);
+            Accessory accessory = new Accessory(name, price, quantity, imageUrl);
             DBHelper.save(accessory);
             res.redirect("/shops/stock");
             return null;

@@ -107,7 +107,6 @@ public class Customer {
     }
 
     @OneToOne(fetch = FetchType.LAZY)
-//    @PrimaryKeyJoinColumn
     public Basket getBasket() {
         return basket;
     }
@@ -128,6 +127,13 @@ public class Customer {
     public String displayName(){
         return getFirstName() + " " + getLastName();
     }
+
+//    public static void addToBasket(StockItem item, Basket basket){
+//        basket.addItem(item);
+//        item.setBaskets(basket);
+//        DBHelper.saveOrUpdate(basket);
+//        DBHelper.saveOrUpdate(item);
+//    }
 
 //    @Column(name = "shop")
 //    public Shop getShop() {
