@@ -44,7 +44,7 @@ public class Basket {
         this.customer = customer;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "basket_stockItem", joinColumns = @JoinColumn(name = "basket_id"),
             inverseJoinColumns = @JoinColumn(name = "stockItem_id"))
     @LazyCollection(LazyCollectionOption.FALSE)

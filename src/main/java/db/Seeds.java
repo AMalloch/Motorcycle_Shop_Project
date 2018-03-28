@@ -24,6 +24,8 @@ public class Seeds {
 
         Basket basket1 = new Basket(customer1);
         DBHelper.save(basket1);
+        customer1.setBasket(basket1);
+        DBHelper.update(customer1);
 
         Bike bike1 = new Bike("Neiman Marcus Limited Edition Fighter", 11000000, 1, "/images/neiman_marcus.jpeg", "Clockwork Metal", 120, true);
         DBHelper.save(bike1);
@@ -38,10 +40,15 @@ public class Seeds {
         Clothing clothing1 = new Clothing("All Black Waterproof Armoured Motorcycle Trousers", 44, 3, "/images/black_trousers.jpeg", "Black", "All Sizes", ClothingType.TROUSER);
         DBHelper.save(clothing1);
 
-        DBHelper.addToBasket(bike1, 1, customer1, basket1);
-        DBHelper.addToBasket(accessory1, 2, customer1, basket1);
-        DBHelper.addToBasket(clothing1, 1, customer1, basket1);
-        DBHelper.addToBasket(clothing2, 1, customer1, basket1);
+//        DBHelper.addToBasket(bike1, 1, customer1, basket1);
+//        DBHelper.addToBasket(accessory1, 2, customer1, basket1);
+//        DBHelper.addToBasket(clothing1, 1, customer1, basket1);
+//        DBHelper.addToBasket(clothing2, 1, customer1, basket1);
+//
+        DBHelper.addToBasket2(bike1, 1, basket1);
+        DBHelper.addToBasket2(accessory1, 2, basket1);
+        DBHelper.addToBasket2(clothing1, 1, basket1);
+        DBHelper.addToBasket2(clothing2, 1, basket1);
 
 
 //        Customer testCust = DBHelper.findCustomerByUsername(customer1.getUsername());

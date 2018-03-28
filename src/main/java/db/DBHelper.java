@@ -168,10 +168,20 @@ public class DBHelper {
         return basket.getStockItems();
     }
 
-    public static void addToBasket(StockItem item, int ppQuanity, Customer customer, Basket basket){
-        basket.addItem(item, ppQuanity);
-        customer.setBasket(basket);
-        DBHelper.saveOrUpdate(customer);
+    public static void addToBasket2(StockItem item, int ppQuantity, Basket basket){
+        session = HibernateUtil.getSessionFactory().openSession();
+//        session.refresh(basket);
+        basket.addItem(item, ppQuantity);
+        DBHelper.update(basket);
+
+    }
+
+    public static void addToBasket(StockItem item, int ppQuantity, Customer customer, Basket basket){
+        basket.addItem(item, ppQuantity);
+        if (customer.getBasket() == null) {
+            customer.setBasket(basket);
+            DBHelper.saveOrUpdate(customer);
+        }
         DBHelper.save(basket);
     }
 

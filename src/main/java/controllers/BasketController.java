@@ -5,17 +5,16 @@ import models.Basket;
 import models.Bike;
 import models.Customer;
 import models.StockItem;
-import org.omg.CORBA.MARSHAL;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import static spark.Spark.get;
+import static spark.Spark.post;
 
 public class BasketController {
 
@@ -46,16 +45,33 @@ public class BasketController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-        get("/basket/add/:stockItemId", (req, res) -> {
-            String strCustId = req.params(":custId");
+        post("/basket/add/:stockItemId", (req, res) -> {
             String strItemId = req.params(":stockItemId");
-            Integer intCustId = Integer.parseInt(strCustId);
             Integer intItemId = Integer.parseInt(strItemId);
-            Customer customer = DBHelper.find(intCustId, Customer.class);
-//            Basket basket = null; //DBHelper.findBasket(intCustId);
-            StockItem stockItem = DBHelper.find(intItemId, StockItem.class);
-            Map<String, Object> model = new HashMap<>();
             String loggedInUser = LoginController.getLoggedInUserNameForBasket(req, res);
+            Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
+            Basket basket = customer.getBasket();
+            StockItem stockItem = DBHelper.find(intItemId, StockItem.class);
+            DBHelper.addToBasket2(stockItem, 1, basket);
+//            DBHelper.addToBasket(stockItem, 1, customer, basket);
+            res.redirect("/basket");
+            return null;
+        }, new VelocityTemplateEngine());
+
+
+
+////  addToBasket(StockItem item, int ppQuanity, Customer customer, Basket basket)
+//
+//
+//            String strCustId = req.params(":custId");
+//            String strItemId = req.params(":stockItemId");
+//            Integer intCustId = Integer.parseInt(strCustId);
+//            Integer intItemId = Integer.parseInt(strItemId);
+//            Customer customer = DBHelper.find(intCustId, Customer.class);
+////            Basket basket = null; //DBHelper.findBasket(intCustId);
+//            StockItem stockItem = DBHelper.find(intItemId, StockItem.class);
+//            Map<String, Object> model = new HashMap<>();
+//            String loggedInUser = LoginController.getLoggedInUserNameForBasket(req, res);
 //            model.put("user", loggedInUser);
 //            model.put("customer", customer);
 //            model.put("basket", basket);
@@ -70,9 +86,9 @@ public class BasketController {
 //            Basket basket = new Basket(customer.getId(), stockItem.getId());
 //            Basket newBasket = new Basket(1, 1);
 //            DBHelper.save(newBasket);
-            res.redirect("/basket/" + customer.getId());
-            return null;
-        }, new VelocityTemplateEngine());
+//            res.redirect("/basket/" + customer.getId());
+//            return null;
+//        }, new VelocityTemplateEngine());
     }
 
 
