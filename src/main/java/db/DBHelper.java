@@ -179,7 +179,6 @@ public class DBHelper {
         saveOrUpdate(item);
     }
 
-
 //    public static List<Basket> findBasketItems(int custId){
 //        session = HibernateUtil.getSessionFactory().openSession();
 //        List<Basket> basketItems = null;

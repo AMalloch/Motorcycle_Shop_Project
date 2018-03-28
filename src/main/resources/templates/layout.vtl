@@ -18,23 +18,21 @@
 
     <div class="nav">
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/bikes">Bikes</a></li>
-            <li><a href="/accessories">Accessories</a></li>
-            <li><a href="/clothing">Clothing</a></li>
+            <li><a href="/">HOME</a></li>
+            <li><a href="/bikes">BIKES</a></li>
+            <li><a href="/accessories">ACCESSORIES</a></li>
+            <li><a href="/clothing">CLOTHING</a></li>
             #if($user == "")
-            <li><a href="basket">View Basket</a></li>
+            <li><a href="/login">LOGIN</a></li>
+            #else
+            <li><a href="basket">VIEW BASKET</a></li>
+            <li>Welcome: $user </li>
+            <li><a href="/logout">LOGOUT</a></li>
             #end
-        </ul>
+        </ul >
     </div>
 
 <!-- begin inner template-->
-    #if($user == "")
-    <p><a href="/login">Login</a></p>
-    #else
-    <p>Logged in as: $user <a href="/logout">Logout</a></p>
-    #end
-
     <div class="container">
        #parse($template)
     </div>
