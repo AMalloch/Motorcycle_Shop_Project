@@ -19,6 +19,11 @@ li {
     float: left;
 }
 
+li.login{
+    float: right;
+    padding-right: 5px;
+}
+
 li.create {
     display: inline-block;
     padding: 5px;
@@ -38,9 +43,6 @@ li a {
 li a:hover {
     background-color: #111;
 }
-
-
-
 
 
 table {
@@ -71,41 +73,35 @@ td {
 
 
 
-
+h1.feature {
+    color: white;
+    padding: 5px;
+    text-shadow: 0 0 3px #FF0000;
+}
 
 h1 {
     color: white;
+    padding: 5px;
+    text-shadow: 2px 2px 2px #000000;
 }
 
 h2 {
     color: white;
+    padding: 5px;
+    text-shadow: 2px 2px 2px #000000;
 }
 
 
 
 
-a.nav:link {
-    color: white;
-}
 
 a:link {
     color: white;
 }
 
-a.nav:visited {
-    color: white;
-}
 
 a:visited {
     color: white;
-}
-
-a.nav:hover {
-    color: red;
-}
-
-a.nav:active {
-    color: red;
 }
 
 a:hover {
@@ -133,6 +129,41 @@ a.one:hover {
 a.one:active {
     color: red;
 }
+
+a.two{
+       display: inline-block;
+       padding: 5px 5px;
+       font-size: 14px;
+       cursor: pointer;
+       text-align: center;
+       text-decoration: none;
+       text-shadow: 1px black;
+       outline: none;
+       color: white;
+       background-color: red;
+       border: none;
+       border-radius: 15px;
+       box-shadow: 0 6px #999;
+       margin-bottom: 5px;
+}
+
+input[type=submit]{
+       display: inline-block;
+       padding: 5px 5px;
+       font-size: 10px;
+       cursor: pointer;
+       text-align: center;
+       text-decoration: none;
+       text-shadow: 1px black;
+       outline: none;
+       color: white;
+       background-color: red;
+       border: none;
+       border-radius: 15px;
+       box-shadow: 0 6px #999;
+       margin-bottom: 5px;
+}
+
 
 ul.show{
     background: white;
@@ -171,7 +202,7 @@ label.loginyn{
 
 .show2 {
     text-align: left;
-    width: 500px;
+    width: 400px;
     padding: 5px;
     margin: 5px;
     border: 2px solid grey;
@@ -232,4 +263,42 @@ div.desc {
 .description {
     margin-left: 333px;
 }
+
+.news {
+  color: lightyellow;
+  border-radius: 12px;
+  margin: 0px 0px 5px 950px;
+  display: inline-block;
+  border: 3px groove grey;
+  background-color: black;
+  font-weight: bold;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 12px
+}
+
+.adminlogin {
+    margin: -300px 0px 5px 1195px;
+}
+
+img.logo{
+    @extend .layout;
+    width: 100%;
+    height: auto;
+    max-width: 700px;
+    display: inline-block;
+    margin-bottom: -49px;
+}
+
+nav{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 69%;
+    height: auto;
+    border: 5px solid $red;
+    bottom: 0px;
+    display: inline-block;
+    vertical-align: bottom;
 

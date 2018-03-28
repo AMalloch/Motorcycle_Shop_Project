@@ -1,9 +1,8 @@
-<p class="pageHeader">All Bikes</p>
 
 <div class="container">
     <table>
         <tr>
-            <h2><td><a class="one" href="/shops/bike/create" class="button center">Add new bike stock</a></td></h2>
+            <h2><td><a class="two" href="/shops/bike/create" class="button center">Add new bike stock</a></td></h2>
         </tr>
         <tr>
             <th>Name</th>
@@ -23,11 +22,11 @@
             <td>$bike.getColour()</td>
             <td>$bike.getCapacity()</td>
             <td>$bike.isNew()</td>
-            <td><a class="one" href="/shops/bike/$bike.getId()/edit" class="button center">Edit</a></td>
+            <td><a class="two" href="/shops/bike/$bike.getId()/edit" class="button center">Edit</a></td>
         </tr>
         <tr>
             <td><form action="/shops/bike/$bike.getId()/delete" method="post">
-                <input type="submit" value="Delete" class="button center">
+                <input type="submit" value="Delete" class="two">
             </form></td>
         </tr>
         #end

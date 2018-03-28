@@ -12,7 +12,7 @@
 
     <div class="header">
          <header>
-           <img src="/images/coollogo_com-93491085.png" alt="logo" />
+           <img class="logo" src="/images/imageedit_14_7592117376.png" alt="logo" />
          </header>
     </div>
 
@@ -23,11 +23,11 @@
             <li><a href="/accessories">ACCESSORIES</a></li>
             <li><a href="/clothing">CLOTHING</a></li>
             #if($user == "")
-            <li><a href="/login">LOGIN</a></li>
+            <li class="login"><a href="/login">LOGIN</a></li>
             #else
             <li><a href="basket">VIEW BASKET</a></li>
-            <li>Welcome: $user </li>
-            <li><a href="/logout">LOGOUT</a></li>
+            <li class="login">Welcome: $user </li>
+            <li class="login"><a href="/logout">LOGOUT</a></li>
             #end
         </ul >
     </div>

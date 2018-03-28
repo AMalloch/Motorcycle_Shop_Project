@@ -1,9 +1,8 @@
-<p class="pageHeader">All Bikes</p>
 
 <div class="container">
     <table>
         <tr>
-            <h2><td><a class="one" href="/shops/accessory/create" class="button center">Add new accessory stock</a></td></h2>
+            <h2><td><a class="two" href="/shops/accessory/create" class="button center">Add new accessory stock</a></td></h2>
         </tr>
         <tr>
             <th>Name</th>
@@ -17,11 +16,11 @@
             <td>$accessory.getPrice()</td>
             <td>$accessory.getQuantity()</td>
             <td>$accessory.getImageUrl()</td>
-            <td><a class="one" href="/shops/accessory/$accessory.getId()/edit" class="button center">Edit</a></td>
+            <td><a class="two" href="/shops/accessory/$accessory.getId()/edit" class="button center">Edit</a></td>
         <tr>
         <tr>
             <td><form action="/shops/accessory/$accessory.getId()/delete" method="post">
-                <input type="submit" value="Delete" class="button center">
+                <input type="submit" value="Delete" class="two">
             </form></td>
         </tr>
         #end
