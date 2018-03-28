@@ -162,21 +162,17 @@ public class DBHelper {
         return user;
     }
 
-    public static List<StockItem> findItemsInBasket(Basket basket){
-        session = HibernateUtil.getSessionFactory().openSession();
-        List<StockItem> items = null;
-        Criteria criteria = session.createCriteria(StockItem.class);
-        criteria.add(Restrictions.eq("basket", basket));
-        items = getList(criteria);
-        return items;
-    }
+//    public static List<StockItem> findItemsInBasket(Basket basket){
+//        session = HibernateUtil.getSessionFactory().openSession();
+//        List<StockItem> items = null;
+//        Criteria criteria = session.createCriteria(StockItem.class);
+//        criteria.add(Restrictions.eq("basket", basket));
+//        items = getList(criteria);
+//        return items;
+//    }
 
 
     public static void addToBasket(StockItem item, int ppQuanity, Customer customer, Basket basket){
-//        basket.addItem(item);
-//        customer.setBasket(basket);
-//        saveOrUpdate(basket);
-//        saveOrUpdate(item);
         basket.addItem(item, ppQuanity);
         customer.setBasket(basket);
         DBHelper.saveOrUpdate(customer);
@@ -184,11 +180,11 @@ public class DBHelper {
     }
 
 
-    public static List<Basket> findBasketItems(int custId){
+    public static List<StockItem> findBasketItems(int basketId){
         session = HibernateUtil.getSessionFactory().openSession();
-        List<Basket> basketItems = null;
-        Criteria criteria = session.createCriteria(Basket.class);
-        criteria.add(Restrictions.eq("customerId", custId));
+        List<StockItem> basketItems = null;
+        Criteria criteria = session.createCriteria(StockItem.class);
+        criteria.add(Restrictions.eq("basket", basketId));
         basketItems = getList(criteria);
         return basketItems;
     }

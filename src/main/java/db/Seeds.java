@@ -56,7 +56,10 @@ public class Seeds {
         Customer testCust = DBHelper.findCustomerByUsername(customer1.getUsername());
 //        testCust.setBasket(basket1);
 
-//        List<StockItem> testBasket = DBHelper.findItemsInBasket(basket1);
+        int BasketID = testCust.getBasket().getId();
+
+//        List<StockItem> testBasket = DBHelper.findItemsInBasket(testCust.getBasket());
+        List<StockItem> testBasketCust1 = DBHelper.findBasketItems(customer1.getBasket().getId());
     }
 
 

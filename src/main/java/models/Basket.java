@@ -42,7 +42,7 @@ public class Basket {
         this.customer = customer;
     }
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "basket_stockItem", joinColumns = @JoinColumn(name = "basket_id"),
             inverseJoinColumns = @JoinColumn(name = "stockItem_id"))
     public Set<StockItem> getStockItems() {

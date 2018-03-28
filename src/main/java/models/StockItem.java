@@ -84,7 +84,7 @@ public abstract class StockItem {
         this.pendingPurchaseQuantity = pendingPurchaseQuantity;
     }
 
-    @ManyToMany(cascade = CascadeType.REMOVE , mappedBy = "stockItems")
+    @ManyToMany(cascade = CascadeType.REMOVE , mappedBy = "stockItems", fetch = FetchType.EAGER)
     public Set<Basket> getBaskets() {
         return baskets;
     }
