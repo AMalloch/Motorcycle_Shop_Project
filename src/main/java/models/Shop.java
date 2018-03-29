@@ -14,9 +14,9 @@ public class Shop {
     private String name;
     private ArrayList<StockItem> stockItems;
     private ArrayList<Customer> customers;
-    int totalCash = 0;
+    Double totalCash = 0.00;
 
-    public Shop(String name, int totalCash) {
+    public Shop(String name, Double totalCash) {
         this.name = name;
         this.totalCash = totalCash;
         this.stockItems = new ArrayList<>();
@@ -55,11 +55,11 @@ public class Shop {
     }
 
     @Column(name = "total_cash")
-    public int getTotalCash() {
+    public Double getTotalCash() {
         return totalCash;
     }
 
-    public void setTotalCash(int totalCash) {
+    public void setTotalCash(Double totalCash) {
         this.totalCash = totalCash;
     }
 

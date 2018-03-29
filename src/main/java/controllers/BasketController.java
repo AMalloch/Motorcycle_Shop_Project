@@ -1,10 +1,7 @@
 package controllers;
 
 import db.DBHelper;
-import models.Basket;
-import models.Bike;
-import models.Customer;
-import models.StockItem;
+import models.*;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -50,11 +47,32 @@ public class BasketController {
             Integer intItemId = Integer.parseInt(strItemId);
             String loggedInUser = LoginController.getLoggedInUserNameForBasket(req, res);
             Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
-            Basket basket = customer.getBasket();
             StockItem stockItem = DBHelper.find(intItemId, StockItem.class);
-            DBHelper.addToBasket2(stockItem, 1, basket);
-//            DBHelper.addToBasket(stockItem, 1, customer, basket);
+            DBHelper.addToBasket(stockItem, 1, customer);
             res.redirect("/basket");
+            return null;
+        }, new VelocityTemplateEngine());
+
+        post("/basket/delete/:stockItemId", (req, res) -> {
+            String strItemId = req.params(":stockItemId");
+            Integer intItemId = Integer.parseInt(strItemId);
+            String loggedInUser = LoginController.getLoggedInUserNameForBasket(req, res);
+            Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
+            StockItem stockItem = DBHelper.find(intItemId, StockItem.class);
+            DBHelper.deleteFromBasket(stockItem, customer);
+            res.redirect("/basket");
+            return null;
+        }, new VelocityTemplateEngine());
+
+        post("/basket/buy", (req, res) -> {
+            String loggedInUser = LoginController.getLoggedInUserNameForBasket(req, res);
+            Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
+            Set<StockItem> purchasedItems = DBHelper.findBasketItems(customer.getBasket());
+            for (StockItem purchasedItem : purchasedItems){
+                DBHelper.deleteFromBasket(purchasedItem, customer);
+            }
+            DBHelper.addSaleToShopCash(DBHelper.calculateTotalBasketPrice(purchasedItems));
+            res.redirect("/");
             return null;
         }, new VelocityTemplateEngine());
 

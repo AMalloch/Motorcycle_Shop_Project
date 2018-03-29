@@ -19,7 +19,7 @@ public class Seeds {
         Customer customer1 = new Customer("Will", "MacIntyre", "M", 32, "inferno@gmail.com", "willmac");
         DBHelper.save(customer1);
 
-        Shop shop = new Shop("Jurassic Motorcycles", 0);
+        Shop shop = new Shop("Jurassic Motorcycles", 0.00);
         DBHelper.save(shop);
 
         Basket basket1 = new Basket(customer1);
@@ -45,15 +45,18 @@ public class Seeds {
 //        DBHelper.addToBasket(clothing1, 1, customer1, basket1);
 //        DBHelper.addToBasket(clothing2, 1, customer1, basket1);
 //
-        DBHelper.addToBasket2(bike1, 1, basket1);
-        DBHelper.addToBasket2(accessory1, 2, basket1);
-        DBHelper.addToBasket2(clothing1, 1, basket1);
-        DBHelper.addToBasket2(clothing2, 1, basket1);
+//        DBHelper.addToBasket(bike1, 1, customer1);
+        DBHelper.addToBasket(accessory1, 2, customer1);
+        DBHelper.addToBasket(clothing1, 1, customer1);
+        DBHelper.addToBasket(clothing2, 1, customer1);
 
 
-//        Customer testCust = DBHelper.findCustomerByUsername(customer1.getUsername());
+//        StockItem stockItemToDelete = DBHelper.find(5, StockItem.class);
 //
-//
+//        DBHelper.deleteFromBasket(stockItemToDelete, customer1);
+////        Customer testCust = DBHelper.findCustomerByUsername(customer1.getUsername());
+////
+////
 //        Set<StockItem> testBasketCust1 = DBHelper.findBasketItems(customer1.getBasket());
     }
 

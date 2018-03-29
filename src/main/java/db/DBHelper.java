@@ -168,21 +168,18 @@ public class DBHelper {
         return basket.getStockItems();
     }
 
-    public static void addToBasket2(StockItem item, int ppQuantity, Basket basket){
+    public static void addToBasket(StockItem item, int ppQuantity, Customer customer){
         session = HibernateUtil.getSessionFactory().openSession();
-//        session.refresh(basket);
+        Basket basket = find(customer.getBasket().getId(), Basket.class);
         basket.addItem(item, ppQuantity);
         DBHelper.update(basket);
-
     }
 
-    public static void addToBasket(StockItem item, int ppQuantity, Customer customer, Basket basket){
-        basket.addItem(item, ppQuantity);
-        if (customer.getBasket() == null) {
-            customer.setBasket(basket);
-            DBHelper.saveOrUpdate(customer);
-        }
-        DBHelper.save(basket);
+    public static void deleteFromBasket(StockItem item, Customer customer) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        Basket basket = find(customer.getBasket().getId(), Basket.class);
+        basket.deleteItem(item);
+        DBHelper.update(basket);
     }
 
     public static Double calculateTotalBasketPrice(Set<StockItem> basketItems) {
@@ -192,6 +189,22 @@ public class DBHelper {
         }
         return totalPrice;
     }
+
+    public static void addSaleToShopCash(Double saleTotal) {
+        Shop shop = DBHelper.find(1, Shop.class);
+        Double newCash = (shop.getTotalCash() + saleTotal);
+        shop.setTotalCash(newCash);
+        DBHelper.update(shop);
+    }
+
+//    public static void addToBasket(StockItem item, int ppQuantity, Customer customer, Basket basket){
+//        basket.addItem(item, ppQuantity);
+//        if (customer.getBasket() == null) {
+//            customer.setBasket(basket);
+//            DBHelper.saveOrUpdate(customer);
+//        }
+//        DBHelper.save(basket);
+//    }
 
 //    public static long countItemsInBasket(int custId){
 //        session = HibernateUtil.getSessionFactory().openSession();

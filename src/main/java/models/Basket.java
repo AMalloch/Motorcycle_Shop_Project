@@ -71,6 +71,13 @@ public class Basket {
         }
     }
 
+    public void deleteItem(StockItem item) {
+        item.setPendingPurchaseQuantity(0);
+        DBHelper.update(item);
+//        stockItems.remove(item);
+        DBHelper.delete(stockItems);
+    }
+
     public boolean availableStock(StockItem requestedItem, int requestedQuantity){
         if (requestedItem.getQuantity() >= requestedQuantity){
             return true;
