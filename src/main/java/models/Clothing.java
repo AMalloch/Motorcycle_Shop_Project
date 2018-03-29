@@ -1,6 +1,9 @@
 package models;
 
+import db.CustomerDBHelper;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "clothing")
@@ -13,8 +16,8 @@ public class Clothing extends StockItem {
     public Clothing() {
     }
 
-    public Clothing(String name, double price, int quantity, String colour, String size, ClothingType type) {
-        super(name, price, quantity);
+    public Clothing(String name, double price, int quantity, String imageUrl, String colour, String size, ClothingType type) {
+        super(name, price, quantity, imageUrl);
         this.colour = colour;
         this.size = size;
         this.type = type;

@@ -1,8 +1,5 @@
 import db.DBHelper;
-import models.Bike;
-import models.Customer;
-import models.Shop;
-import models.StockItem;
+import models.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,13 +18,10 @@ public class ShopTest {
 
     @Before
     public void setUp() throws Exception {
-        shop = new Shop("Jurassic Motorcycles", 0);
-        bike = new Bike("Shredder", 99.9, 2, "Black", 900, true);
-        customer = new Customer("Jane", "Losi", "F", 26, "fortheducksgmail.com");
-        DBHelper.save(shop);
-        DBHelper.save(bike);
-
-//        String firstName, String lastName, String gender, int age, String emailAddress
+        shop = new Shop("Jurassic Motorcycles", 0.00);
+        bike = new Bike("Shredder", 99.9, 2, null, "Black", 900, true);
+        customer = new Customer("Jane", "Losi", "F", 26, "fortheducks@gmail.com", "jlosi");
+//        String firstName, String lastName, String gender, int age, String emailAddress, String username
     }
 
     @Test
@@ -40,6 +34,32 @@ public class ShopTest {
     public void addCustomer(){
         shop.addCustomer(customer);
         assertEquals(1, shop.countCustomers());
+    }
+
+//    @Test
+//    public void canDeleteStock(){
+//        shop.addToStock(bike);
+//        shop.addToStock(bike);
+//        DBHelper.delete(bike);
+//        assertEquals(1, shop.countStock());
+//    }
+//
+//    @Test
+//    public void canDeleteCustomer(){
+//        shop.addCustomer(customer);
+//        shop.addCustomer(customer);
+//        DBHelper.delete(customer);
+//        assertEquals(1, shop.countCustomers());
+//    }
+
+    @Test
+    public void canGetTotalCash(){
+        assertEquals(0.00, shop.getTotalCash(), 0.01);
+    }
+
+    @Test
+    public void canGetShopName(){
+        assertEquals("Jurassic Motorcycles", shop.getName());
     }
 
 }

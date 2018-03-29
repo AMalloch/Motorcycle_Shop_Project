@@ -1,0 +1,37 @@
+<ul class="show2">
+    <h2>Edit clothing information in the fields below and save.</h2>
+<form action="/shops/clothing/$clothing.getId()" method="post">
+    <li class="create"><label for="name">Clothing brand:</label>
+        <input class="inputbox" type="text" name="name" required="true" value="$clothing.getName()"></li>
+
+    <li class="create"><label for="price">Price (£):</label>
+        <input class="inputbox" type="number" name="price" required="true" value="$clothing.getPrice()"></li>
+
+    <li class="create"><label for="quantity">Quantity:</label>
+        <input class="inputbox" type="number" name="quantity" required="true" value="$clothing.getQuantity()"></li>
+
+    <li class="create"><label for="imageUrl">Image URL:</label>
+        <input class="inputbox" type="text" name="imageUrl" required="true" value="$clothing.getImageUrl()"></li>
+
+    <li class="create"><label for="colour">Colour:</label>
+        <input class="inputbox" type="text" name="colour" required="true" value="$clothing.getColour()"></li>
+
+    <li class="create"><label for="size">Size:</label>
+        <input class="inputbox" type="text" name="size" required="true" value="$clothing.getSize()"></li>
+
+    <li class="create"><label for="type">Type:</label>
+    <select id="type" name="type">
+        #foreach( $clothingType in $clothes )
+
+        <option value="$clothing"
+        #if($clothing.getType() == $clothingType)
+           selected
+        #end
+        >$clothingType</option>
+        #end
+    </select></li>
+    <li class="create"><input type="submit" value="Save" class="button"></li>
+</form>
+</ul>
+
+<a class="one" href="/shops/stock" class="button center">Cancel</a>

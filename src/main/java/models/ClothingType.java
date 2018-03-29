@@ -3,6 +3,7 @@ package models;
 public enum ClothingType {
     GLOVES,
     JACKET,
-    HELMENT,
+    TROUSER,
+    HELMET,
     BOOTS;
 }

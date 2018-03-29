@@ -1,18 +1,18 @@
 import db.DBHelper;
 import models.Accessory;
+import models.Basket;
 import models.Shop;
 import org.junit.Before;
 import org.junit.Test;
 
 public class AccessoryTest {
 
-    private Shop shop;
     private Accessory accessory;
+    private Basket basket;
 
     @Before
     public void setUp() throws Exception {
-        shop = new Shop("Jurassic Motorcycles", 0);
-        accessory = new Accessory("Carbon Fibre Part", 149.99, 3);
+        accessory = new Accessory("Carbon Fibre Part", 149.99, 3, null);
     }
 
     @Test

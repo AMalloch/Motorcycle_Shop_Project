@@ -1,4 +1,5 @@
 import db.DBHelper;
+import models.Basket;
 import models.Clothing;
 import models.ClothingType;
 import models.Shop;
@@ -9,13 +10,12 @@ import static org.junit.Assert.assertEquals;
 
 public class ClothingTest {
 
-    private Shop shop;
     private Clothing clothing;
+    private Basket basket;
 
     @Before
     public void setUp() {
-        shop = new Shop("Jurassic Motorcycles", 0);
-        clothing = new Clothing("Alpinestars Summer Gloves", 59.99, 3, "black", "large", ClothingType.GLOVES);
+        clothing = new Clothing("Alpinestars Summer Gloves", 59.99, 3, null, "black", "large", ClothingType.GLOVES);
         DBHelper.save(clothing);
     }
 

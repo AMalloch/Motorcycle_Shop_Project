@@ -1,0 +1,29 @@
+
+<div>
+    <ul class="show">
+        <img src=$bike.getImageUrl()>
+        <p class = "showtext">$bike.getName()</p>
+        <p class = "showtext">Price : £ $bike.getPrice()</p>
+        <p class = "showtext">In stock : $bike.getQuantity()</p>
+        <p class = "showtext">Colour : $bike.getColour()</p>
+        <p class = "showtext">Capacity : $bike.getCapacity()</p>
+        <p class = "showtext">New : $bike.isNew()</p>
+        #if($user != "")
+        <form action="/basket/add/$bike.getId()" method="post">
+            <input type="submit" value="Buy Now" class="button">
+        </form>
+        #else
+        <p>Login in to purchase this item.</p>
+        #end
+    </ul>
+</div>
+
+
+<div class ="description">
+    <ul class="show">
+        <h3>INFO</h3>
+        <p> </p>
+        <p class = "showtext">This baby can get to a speed of 190 mph with its ultra light carbon fiber frame, mixed with aluminum and titanium.</p>
+        <p class = "showtext">A custom braking system, lots of high-tech gadgets and bragging rights its one of the most expensive and rarest bikes ever made!</p>
+    </ul>
+</div>

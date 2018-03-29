@@ -1,4 +1,5 @@
 import db.DBHelper;
+import models.Basket;
 import models.Customer;
 import models.Shop;
 import org.junit.After;
@@ -10,11 +11,14 @@ import static org.junit.Assert.assertEquals;
 public class CustomerTest {
 
     private Customer customer;
-    private Shop shop;
+    private Basket basket;
 
     @Before
     public void setUp() throws Exception {
-        customer = new Customer("First", "Customer", "M", 49, "me@me.com");
+
+        basket = new Basket();
+        DBHelper.save(basket);
+        customer = new Customer("First", "Customer", "M", 49, "me@me.com", "wibble");
         DBHelper.save(customer);
     }
 

@@ -1,0 +1,19 @@
+<ul class="show2">
+<h2>Enter accessory information and save.</h2>
+
+<form action="/shops/accessory" method="post">
+    <li class="create"><label for="name">Accessory:</label>
+        <input class="inputbox" type="text" name="name" required="true"></li>
+
+    <li class="create"><label for="price">Price (£):</label>
+        <input class="inputbox" type="number" name="price" required="true"></li>
+
+    <li class="create"><label for="quantity">Quantity:</label>
+        <input class="inputbox" type="number" name="quantity" required="true"></li>
+
+    <li class="create"><label for="imageUrl">Image URL:</label>
+        <input class="inputbox" type="text" name="imageUrl" required="true"></li>
+    <li class="create"><input type="submit" value="Save" class="button"></li>
+<a class="one" href="/shops/stock" class="button center">Cancel</a>
+</form>
+</ul>

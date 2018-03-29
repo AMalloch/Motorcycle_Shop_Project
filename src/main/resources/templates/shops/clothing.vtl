@@ -1,0 +1,34 @@
+
+<div class="container">
+    <table>
+        <tr>
+            <h2><td><a class="two" href="/shops/clothing/create" class="button center">Add new clothing stock</a></td></h2>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Image Url</th>
+            <th>Colour</th>
+            <th>Size</th>
+            <th>Type</th>
+        </tr>
+        #foreach($clothing in $clothes)
+        <tr>
+            <td>$clothing.getName()</td>
+            <td>£ $clothing.getPrice()</td>
+            <td>$clothing.getQuantity()</td>
+            <td>$clothing.getImageUrl()</td>
+            <td>$clothing.getColour()</td>
+            <td>$clothing.getSize()</td>
+            <td>$clothing.getType()</td>
+            <td><a class="two" href="/shops/clothing/$clothing.getId()/edit" class="button center">Edit</a></td>
+        <tr>
+        <tr>
+            <td><form action="/shops/clothing/$clothing.getId()/delete" method="post">
+                <input type="submit" value="Delete" class="two">
+            </form></td>
+        </tr>
+        #end
+    </table>
+</div>

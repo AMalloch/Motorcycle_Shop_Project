@@ -1,0 +1,76 @@
+<p class="pageHeader"><h1>All Stock Items</h1></p>
+<h2>In order to update or delete please use the filters below.</h2>
+<table>
+    <tr>
+         <td><a class="one" href="/shops/bike" class="button center"><h3>Filter by bikes</h3></a></td>
+         <td><a class="one" href="/shops/clothing" class="button center"><h3>Filter by clothes</h3></a></td>
+         <td><a class="one" href="/shops/accessory" class="button center"><h3>Filter by accessories</h3></a></td>
+    </tr>
+</table>
+<div class="container">
+    <h1>Motorcycles</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Image Url</th>
+            <th>Colour</th>
+            <th>Capacity</th>
+            <th>Is New</th>
+        </tr>
+        #foreach($bike in $bikes)
+            <tr>
+                <td>$bike.getName()</td>
+                <td>£ $bike.getPrice()</td>
+                <td>$bike.getQuantity()</td>
+                <td>$bike.getImageUrl()</td>
+                <td>$bike.getColour()</td>
+                <td>$bike.getCapacity()</td>
+                <td>$bike.isNew()</td>
+            </tr>
+        #end
+    </table>
+
+    <h1>Clothing</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Image Url</th>
+            <th>Colour</th>
+            <th>Size</th>
+            <th>Type</th>
+        </tr>
+        #foreach($clothing in $clothes)
+        <tr>
+            <td>$clothing.getName()</td>
+            <td>£ $clothing.getPrice()</td>
+            <td>$clothing.getQuantity()</td>
+            <td>$clothing.getImageUrl()</td>
+            <td>$clothing.getColour()</td>
+            <td>$clothing.getSize()</td>
+            <td>$clothing.getType()</td>
+        <tr>
+            #end
+    </table>
+
+    <h1>Accessories</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Image Url</th>
+        </tr>
+        #foreach($accessory in $accessories)
+        <tr>
+            <td>$accessory.getName()</td>
+            <td>£ $accessory.getPrice()</td>
+            <td>$accessory.getQuantity()</td>
+            <td>$accessory.getImageUrl()</td>
+        <tr>
+            #end
+    </table>
+</div>
