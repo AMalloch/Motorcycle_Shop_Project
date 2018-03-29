@@ -32,7 +32,7 @@ public class Seeds {
 
         Accessory accessory1 = new Accessory("DSYJ Windproof Face Mask Cover", 0.76, 20, "/images/DSYJ_facemask.jpeg");
         DBHelper.save(accessory1);
-        Clothing clothing2 = new Clothing("Arai RX7", 499.99, 1, "/images/arai_rx7.jpg", "multi", "58", ClothingType.HELMENT);
+        Clothing clothing2 = new Clothing("Arai RX7", 499.99, 1, "/images/arai_rx7.jpg", "multi", "58", ClothingType.HELMET);
         DBHelper.save(clothing2);
         Clothing clothing3 = new Clothing("Gloves", 49.99, 0, "null", "black", "large", ClothingType.GLOVES);
         DBHelper.save(clothing3);
@@ -53,11 +53,18 @@ public class Seeds {
 
 //        StockItem stockItemToDelete = DBHelper.find(5, StockItem.class);
 //
+//        Basket baskettest = DBHelper.find(customer1.getBasket().getId(), Basket.class);
+//
 //        DBHelper.deleteFromBasket(stockItemToDelete, customer1);
 ////        Customer testCust = DBHelper.findCustomerByUsername(customer1.getUsername());
 ////
 ////
 //        Set<StockItem> testBasketCust1 = DBHelper.findBasketItems(customer1.getBasket());
+
+//        Shop testshop = DBHelper.find(1, Shop.class);
+//        DBHelper.addSaleToShopCash(100.00, testshop);
+//
+//        Double newShopTotal = testshop.getTotalCash();
     }
 
 

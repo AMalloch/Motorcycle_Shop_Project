@@ -6,9 +6,13 @@
         <p class = "showtext">$accessory.getName()</p>
         <p class = "showtext">Price : £ $accessory.getPrice()</p>
         <p class = "showtext">In stock  : $accessory.getQuantity()</p>
-        <form action="#" method="post">
+        #if($user != "")
+        <form action="/basket/add/$accessory.getId()" method="post">
             <input type="submit" value="Buy Now" class="button">
         </form>
+        #else
+        <p>Login in to purchase this item.</p>
+        #end
     </ul>
 </div>
 <div class ="description">

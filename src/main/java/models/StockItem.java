@@ -97,6 +97,18 @@ public abstract class StockItem {
         this.baskets = baskets;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        StockItem otherItem = (StockItem) obj;
+
+        if(otherItem.getId() == this.getId()){
+            return true;
+        }
+
+        return false;
+    }
+
+
     //    @ManyToOne(fetch = FetchType.EAGER)
 //    @JoinColumn(name = "shop_id", nullable = false)
 //    public Shop getShop() {

@@ -44,7 +44,7 @@ public class Basket {
         this.customer = customer;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @JoinTable(name = "basket_stockItem", joinColumns = @JoinColumn(name = "basket_id"),
             inverseJoinColumns = @JoinColumn(name = "stockItem_id"))
     @LazyCollection(LazyCollectionOption.FALSE)
@@ -74,8 +74,8 @@ public class Basket {
     public void deleteItem(StockItem item) {
         item.setPendingPurchaseQuantity(0);
         DBHelper.update(item);
-//        stockItems.remove(item);
-        DBHelper.delete(stockItems);
+        stockItems.remove(item);
+//        stockItems.clear();
     }
 
     public boolean availableStock(StockItem requestedItem, int requestedQuantity){

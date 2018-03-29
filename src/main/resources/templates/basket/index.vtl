@@ -1,7 +1,7 @@
 <h2>$customer.displayName()'s Basket</h2>
 
 <div class="container">
-    <form action="/basket/buy" method="post">
+
     <table>
         <tr>
             <th>Item</th>
@@ -14,7 +14,12 @@
             <td>$basketItem.getName()</td>
             <td>$basketItem.getPendingPurchaseQuantity()</td>
             <td align="right">£$df.format($basketItem.getPrice())</td>
-            <td><a href="/basket/delete/$basketItem.getId()">DELETE</a></td>
+            <td>
+                <form action="/basket/delete/$basketItem.getId()" method="post">
+                    <input type="submit" value="DELETE" class="button">
+                </form>
+
+            </td>
         <tr>
         #end
         <tr>
@@ -24,6 +29,7 @@
             <td></td>
         </tr>
     </table>
+    <form action="/basket/buy" method="post">
         <label for="voucherCode">Voucher Code:</label>
         <input class="inputbox" type="text" name="voucherCode" id="voucherCode">
         <br/>

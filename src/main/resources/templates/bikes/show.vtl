@@ -8,20 +8,16 @@
         <p class = "showtext">Colour : $bike.getColour()</p>
         <p class = "showtext">Capacity : $bike.getCapacity()</p>
         <p class = "showtext">New : $bike.isNew()</p>
-        <form action="/basket/$customer.getId()/add/$bike.getId()" method="post">
+        #if($user != "")
+        <form action="/basket/add/$bike.getId()" method="post">
             <input type="submit" value="Buy Now" class="button">
         </form>
+        #else
+        <p>Login in to purchase this item.</p>
+        #end
     </ul>
 </div>
 
-<!--<a href="/managers/$manager.getId()/edit" class="button center">Edit</a>-->
-#if($user != "")
-<form action="/basket/add/$bike.getId()" method="post">
-    <input type="submit" value="Buy Now" class="button">
-</form>
-#else
-<p>Login in to purchase this item.</p>
-#end
 
 <div class ="description">
     <ul class="show">

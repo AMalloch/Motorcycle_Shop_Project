@@ -4,6 +4,6 @@ public enum ClothingType {
     GLOVES,
     JACKET,
     TROUSER,
-    HELMENT,
+    HELMET,
     BOOTS;
 }

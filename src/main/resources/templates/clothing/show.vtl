@@ -8,9 +8,13 @@
         <p class = "showtext">Colour : $clothing.getColour()</p>
         <p class = "showtext">Size : $clothing.getSize()</p>
         <p class = "showtext">Type : $clothing.getType()</p>
-        <form action="/basket/$customer.getId()/add/$clothing.getId()" method="post">
+        #if($user != "")
+        <form action="/basket/add/$clothing.getId()" method="post">
             <input type="submit" value="Buy Now" class="button">
         </form>
+        #else
+        <p>Login in to purchase this item.</p>
+        #end
     </ul>
 </div>
 <div class ="description">

@@ -68,10 +68,11 @@ public class BasketController {
             String loggedInUser = LoginController.getLoggedInUserNameForBasket(req, res);
             Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
             Set<StockItem> purchasedItems = DBHelper.findBasketItems(customer.getBasket());
+            Shop shop = DBHelper.find(1, Shop.class);
             for (StockItem purchasedItem : purchasedItems){
                 DBHelper.deleteFromBasket(purchasedItem, customer);
             }
-            DBHelper.addSaleToShopCash(DBHelper.calculateTotalBasketPrice(purchasedItems));
+            DBHelper.addSaleToShopCash(DBHelper.calculateTotalBasketPrice(purchasedItems), shop);
             res.redirect("/");
             return null;
         }, new VelocityTemplateEngine());

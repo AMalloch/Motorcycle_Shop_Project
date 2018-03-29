@@ -178,6 +178,8 @@ public class DBHelper {
     public static void deleteFromBasket(StockItem item, Customer customer) {
         session = HibernateUtil.getSessionFactory().openSession();
         Basket basket = find(customer.getBasket().getId(), Basket.class);
+
+        session = HibernateUtil.getSessionFactory().openSession();
         basket.deleteItem(item);
         DBHelper.update(basket);
     }
@@ -191,20 +193,21 @@ public class DBHelper {
         return totalPrice;
     }
 
-    public static void addSaleToShopCash(Double saleTotal) {
-        Shop shop = DBHelper.find(1, Shop.class);
+    public static void addSaleToShopCash(Double saleTotal, Shop shop) {
+//        Shop shop = DBHelper.find(1, Shop.class);
         Double newCash = (shop.getTotalCash() + saleTotal);
         shop.setTotalCash(newCash);
         DBHelper.update(shop);
-
-    public static List<Basket> findBasketItems(int custId){
-        session = HibernateUtil.getSessionFactory().openSession();
-        List<Basket> basketItems = null;
-        Criteria criteria = session.createCriteria(Basket.class);
-        criteria.add(Restrictions.eq("customerId", custId));
-        basketItems = getList(criteria);
-        return basketItems;
     }
+
+//    public static List<Basket> findBasketItems(int custId){
+//        session = HibernateUtil.getSessionFactory().openSession();
+//        List<Basket> basketItems = null;
+//        Criteria criteria = session.createCriteria(Basket.class);
+//        criteria.add(Restrictions.eq("customerId", custId));
+//        basketItems = getList(criteria);
+//        return basketItems;
+//    }
 
 //    public static void addToBasket(StockItem item, int ppQuantity, Customer customer, Basket basket){
 //        basket.addItem(item, ppQuantity);
