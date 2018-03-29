@@ -178,8 +178,6 @@ public class DBHelper {
     public static void deleteFromBasket(StockItem item, Customer customer) {
         session = HibernateUtil.getSessionFactory().openSession();
         Basket basket = find(customer.getBasket().getId(), Basket.class);
-
-        session = HibernateUtil.getSessionFactory().openSession();
         basket.deleteItem(item);
         DBHelper.update(basket);
     }
