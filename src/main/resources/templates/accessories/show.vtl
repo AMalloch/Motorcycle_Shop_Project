@@ -1,13 +1,22 @@
-<div class="stockItemImage">
-    <img src=$accessory.getImageUrl()>
-</div>
-<div>
-    <p>Name: $accessory.getName()</p>
-    <p>Price : £ $accessory.getPrice()</p>
-    <p>Quantity : $accessory.getQuantity()</p>
-</div>
 
-<!--<a href="/managers/$manager.getId()/edit" class="button center">Edit</a>-->
-<form action="#" method="post">
-    <input type="submit" value="Buy Now" class="button">
-</form>
+<div>
+    <ul class="show">
+        <li><a href="/bikes">Bikes</a></li>
+        <img src=$accessory.getImageUrl()>
+        <p class = "showtext">$accessory.getName()</p>
+        <p class = "showtext">Price : £ $accessory.getPrice()</p>
+        <p class = "showtext">In stock  : $accessory.getQuantity()</p>
+        <form action="#" method="post">
+            <input type="submit" value="Buy Now" class="button">
+        </form>
+    </ul>
+</div>
+<div class ="description">
+    <ul class="show">
+        <h3>INFO</h3>
+        <p class = "showtext">This neck face mask is ideal for motorcyclists cyclists skiing fishing and hiking and for winter use!</p>
+        <p class = "showtext">Very warm and lightweight to wear.</p>
+        <p class = "showtext">A cutout for nose breathing.</p>
+        <p class = "showtext">Perfect protection against cold snow wind and sun in winter.</p>
+    </ul>
+</div>
