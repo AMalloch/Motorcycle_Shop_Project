@@ -60,7 +60,18 @@ public class Basket {
         return stockItems.size();
     }
 
-    public void addItem(StockItem pendingItems) {
-        stockItems.add(pendingItems);
+    public void addItem(StockItem pendingItems, int pendingQuantity) {
+        if (availableStock(pendingItems, pendingQuantity)) {
+            pendingItems.setPendingPurchaseQuantity(pendingQuantity);
+            DBHelper.update(pendingItems);
+            stockItems.add(pendingItems);
+        }
+    }
+
+    public boolean availableStock(StockItem requestedItem, int requestedQuantity){
+        if (requestedItem.getQuantity() >= requestedQuantity){
+            return true;
+        }
+        return false;
     }
 }

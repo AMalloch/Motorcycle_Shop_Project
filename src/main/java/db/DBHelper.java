@@ -172,22 +172,26 @@ public class DBHelper {
     }
 
 
-    public static void addToBasket(StockItem item, Customer customer, Basket basket){
-        basket.addItem(item);
+    public static void addToBasket(StockItem item, int ppQuanity, Customer customer, Basket basket){
+//        basket.addItem(item);
+//        customer.setBasket(basket);
+//        saveOrUpdate(basket);
+//        saveOrUpdate(item);
+        basket.addItem(item, ppQuanity);
         customer.setBasket(basket);
-        saveOrUpdate(basket);
-        saveOrUpdate(item);
+        DBHelper.saveOrUpdate(customer);
+        DBHelper.save(basket);
     }
 
-//    public static List<Basket> findBasketItems(int custId){
-//        session = HibernateUtil.getSessionFactory().openSession();
-//        List<Basket> basketItems = null;
-//        Criteria criteria = session.createCriteria(Basket.class);
-//        criteria.add(Restrictions.eq("customerId", custId));
-//        basketItems = getList(criteria);
-//        return basketItems;
-//    }
-//
+    public static List<Basket> findBasketItems(int custId){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Basket> basketItems = null;
+        Criteria criteria = session.createCriteria(Basket.class);
+        criteria.add(Restrictions.eq("customerId", custId));
+        basketItems = getList(criteria);
+        return basketItems;
+    }
+
 //    public static long countItemsInBasket(int custId){
 //        session = HibernateUtil.getSessionFactory().openSession();
 //        long count = 0;
