@@ -75,7 +75,6 @@ public class Basket {
         item.setPendingPurchaseQuantity(0);
         DBHelper.update(item);
         stockItems.remove(item);
-//        stockItems.clear();
     }
 
     public boolean availableStock(StockItem requestedItem, int requestedQuantity){

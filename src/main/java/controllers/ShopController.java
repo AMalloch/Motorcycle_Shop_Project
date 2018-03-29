@@ -66,8 +66,6 @@ public class ShopController {
         }, new VelocityTemplateEngine());
 
         post ("/shops/stock", (req, res) -> {
-//            int basketId = Integer.parseInt(req.queryParams("basket"));
-//            Basket basket = DBHelper.find(basketId, Basket.class);
             String name = req.queryParams("name");
             Double price = Double.parseDouble(req.queryParams("price"));
             int quantity = Integer.parseInt(req.queryParams("quantity"));
@@ -130,7 +128,7 @@ public class ShopController {
             model.put("clothes", clothes);
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
-//
+
         get("/shops/clothing/:id/edit", (req, res) -> {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
@@ -182,7 +180,6 @@ public class ShopController {
             DBHelper.update(clothing);
             res.redirect("/shops/stock");
             return null;
-
         }, new VelocityTemplateEngine());
 
         post ("/shops/clothing/:id/delete", (req, res) -> {
@@ -245,7 +242,6 @@ public class ShopController {
             DBHelper.update(accessory);
             res.redirect("/shops/stock");
             return null;
-
         }, new VelocityTemplateEngine());
 
         post ("/shops/accessory/:id/delete", (req, res) -> {
@@ -255,5 +251,7 @@ public class ShopController {
             res.redirect("/shops/stock");
             return null;
         }, new VelocityTemplateEngine());
+
     }
+
 }

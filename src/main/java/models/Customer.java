@@ -1,12 +1,7 @@
 package models;
 
-import db.CustomerDBHelper;
-import db.DBHelper;
-
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -36,9 +31,7 @@ public class Customer {
         this.emailAddress = emailAddress;
         this.username = username;
 
-//        this.pendingItems = new Set<>();
         this.purchasedItems = new HashSet<>();
-//        this.shop = shop;
     }
 
     @Id
@@ -115,43 +108,8 @@ public class Customer {
         this.basket = basket;
     }
 
-    //    @Column(name = "purchased_items")
-//    public Set<StockItem> getPurchasedItems() {
-//        return purchasedItems;
-//    }
-//
-//    public void setPurchasedItems(Set<StockItem> purchasedItems) {
-//        this.purchasedItems = purchasedItems;
-//    }
-
     public String displayName(){
         return getFirstName() + " " + getLastName();
     }
-
-//    public static void addToBasket(StockItem item, Basket basket){
-//        basket.addItem(item);
-//        item.setBaskets(basket);
-//        DBHelper.saveOrUpdate(basket);
-//        DBHelper.saveOrUpdate(item);
-//    }
-
-//    @Column(name = "shop")
-//    public Shop getShop() {
-//        return shop;
-//    }
-//
-//    public void setShop(Shop shop) {
-//        this.shop = shop;
-//    }
-
-//    public List<Bike> findAllAccessories(){
-//        List<Bike> allAvailableAccessories = CustomerDBHelper.getAvailableStock(Accessory.class);
-//        return allAvailableAccessories;
-//    }
-//
-//    public List<Bike> findAllClothing(){
-//        List<Bike> allAvailableClothing = CustomerDBHelper.getAvailableStock(Clothing.class);
-//        return allAvailableClothing;
-//    }
 
 }

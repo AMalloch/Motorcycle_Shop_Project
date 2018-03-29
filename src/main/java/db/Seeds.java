@@ -40,17 +40,14 @@ public class Seeds {
         Clothing clothing1 = new Clothing("All Black Waterproof Armoured Motorcycle Trousers", 44, 3, "/images/black_trousers.jpeg", "Black", "All Sizes", ClothingType.TROUSER);
         DBHelper.save(clothing1);
 
-//        DBHelper.addToBasket(bike1, 1, customer1, basket1);
-//        DBHelper.addToBasket(accessory1, 2, customer1, basket1);
-//        DBHelper.addToBasket(clothing1, 1, customer1, basket1);
-//        DBHelper.addToBasket(clothing2, 1, customer1, basket1);
-//
 //        DBHelper.addToBasket(bike1, 1, customer1);
         DBHelper.addToBasket(accessory1, 2, customer1);
         DBHelper.addToBasket(clothing1, 1, customer1);
         DBHelper.addToBasket(clothing2, 1, customer1);
 
 
+//        Testing Section
+//
 //        StockItem stockItemToDelete = DBHelper.find(5, StockItem.class);
 //
 //        Basket baskettest = DBHelper.find(customer1.getBasket().getId(), Basket.class);
@@ -65,6 +62,8 @@ public class Seeds {
 //        DBHelper.addSaleToShopCash(100.00, testshop);
 //
 //        Double newShopTotal = testshop.getTotalCash();
+//
+//        End of Testing Section
     }
 
 

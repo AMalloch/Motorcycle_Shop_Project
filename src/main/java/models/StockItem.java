@@ -101,11 +101,9 @@ public abstract class StockItem {
     @Override
     public boolean equals(Object obj) {
         StockItem otherItem = (StockItem) obj;
-
         if(otherItem.getId() == this.getId()){
             return true;
         }
-
         return false;
     }
 
@@ -114,13 +112,4 @@ public abstract class StockItem {
         return Objects.hash(id);
     }
 
-    //    @ManyToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "shop_id", nullable = false)
-//    public Shop getShop() {
-//        return shop;
-//    }
-//
-//    public void setShop(Shop shop) {
-//        this.shop = shop;
-//    }
 }
