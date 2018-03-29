@@ -11,7 +11,7 @@
         <tr>
             <td><a href="/bikes/$bike.getId()"><img src=$bike.getImageUrl() height="50" width="100"></a></td>
             <td><a class="one" href="/bikes/$bike.getId()">$bike.getName()</a></td>
-            <td>£ $bike.getPrice()</td>
+            <td>£ $df.format($bike.getPrice())</td>
         <tr>
         #end
     </table>

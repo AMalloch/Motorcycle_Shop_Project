@@ -1,3 +1,6 @@
 <tr>
     <td><a href="/shops/stock" class="button center"><h1>Display All Stock</h1></a></td>
+    #foreach($shop in $shops)
+    <td><h2>Current Cash in Shop : £ $shop.getTotalCash()</h2></td>
+    #end
 </tr>

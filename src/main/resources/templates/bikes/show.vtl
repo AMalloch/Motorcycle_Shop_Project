@@ -3,7 +3,7 @@
     <ul class="show">
         <img src=$bike.getImageUrl()>
         <p class = "showtext">$bike.getName()</p>
-        <p class = "showtext">Price : £ $bike.getPrice()</p>
+        <p class = "showtext">Price : £ $df.format($bike.getPrice())</p>
         <p class = "showtext">In stock : $bike.getQuantity()</p>
         <p class = "showtext">Colour : $bike.getColour()</p>
         <p class = "showtext">Capacity : $bike.getCapacity()</p>

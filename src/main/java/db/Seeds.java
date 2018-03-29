@@ -16,7 +16,7 @@ public class Seeds {
         DBHelper.deleteAll(Clothing.class);
         DBHelper.deleteAll(Customer.class);
 
-        Customer customer1 = new Customer("Will", "MacIntyre", "M", 32, "inferno@gmail.com", "willmac");
+        Customer customer1 = new Customer("Angus", "Malloch", "M", 32, "inferno@gmail.com", "angus");
         DBHelper.save(customer1);
 
         Shop shop = new Shop("Jurassic Motorcycles", 0.00);
@@ -42,8 +42,8 @@ public class Seeds {
 
 //        DBHelper.addToBasket(bike1, 1, customer1);
         DBHelper.addToBasket(accessory1, 2, customer1);
-        DBHelper.addToBasket(clothing1, 1, customer1);
-        DBHelper.addToBasket(clothing2, 1, customer1);
+//        DBHelper.addToBasket(clothing1, 1, customer1);
+//        DBHelper.addToBasket(clothing2, 1, customer1);
 
 
 //        Testing Section
