@@ -6,7 +6,7 @@
         </tr>
         <tr>
             <th>Name</th>
-            <th>Price (£)</th>
+            <th>Price</th>
             <th>Quantity</th>
             <th>Image Url</th>
             <th>Colour</th>
@@ -16,7 +16,7 @@
         #foreach($clothing in $clothes)
         <tr>
             <td>$clothing.getName()</td>
-            <td>$clothing.getPrice()</td>
+            <td>£ $clothing.getPrice()</td>
             <td>$clothing.getQuantity()</td>
             <td>$clothing.getImageUrl()</td>
             <td>$clothing.getColour()</td>

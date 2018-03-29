@@ -150,17 +150,17 @@ a.two{
 input[type=submit]{
        display: inline-block;
        padding: 5px 5px;
-       font-size: 10px;
+       font-size: 15px;
        cursor: pointer;
        text-align: center;
        text-decoration: none;
        text-shadow: 1px black;
        outline: none;
-       color: white;
-       background-color: red;
-       border: none;
+       color: black;
+       background-color: yellow;
+       border: 1px solid black;
        border-radius: 15px;
-       box-shadow: 0 6px #999;
+       box-shadow: 0 7px #999;
        margin-bottom: 5px;
 }
 

@@ -12,7 +12,7 @@
     <table>
         <tr>
             <th>Name</th>
-            <th>Price (£)</th>
+            <th>Price</th>
             <th>Quantity</th>
             <th>Image Url</th>
             <th>Colour</th>
@@ -22,7 +22,7 @@
         #foreach($bike in $bikes)
             <tr>
                 <td>$bike.getName()</td>
-                <td>$bike.getPrice()</td>
+                <td>£ $bike.getPrice()</td>
                 <td>$bike.getQuantity()</td>
                 <td>$bike.getImageUrl()</td>
                 <td>$bike.getColour()</td>
@@ -36,7 +36,7 @@
     <table>
         <tr>
             <th>Name</th>
-            <th>Price (£)</th>
+            <th>Price</th>
             <th>Quantity</th>
             <th>Image Url</th>
             <th>Colour</th>
@@ -46,7 +46,7 @@
         #foreach($clothing in $clothes)
         <tr>
             <td>$clothing.getName()</td>
-            <td>$clothing.getPrice()</td>
+            <td>£ $clothing.getPrice()</td>
             <td>$clothing.getQuantity()</td>
             <td>$clothing.getImageUrl()</td>
             <td>$clothing.getColour()</td>
@@ -60,14 +60,14 @@
     <table>
         <tr>
             <th>Name</th>
-            <th>Price (£)</th>
+            <th>Price</th>
             <th>Quantity</th>
             <th>Image Url</th>
         </tr>
         #foreach($accessory in $accessories)
         <tr>
             <td>$accessory.getName()</td>
-            <td>$accessory.getPrice()</td>
+            <td>£ $accessory.getPrice()</td>
             <td>$accessory.getQuantity()</td>
             <td>$accessory.getImageUrl()</td>
         <tr>
