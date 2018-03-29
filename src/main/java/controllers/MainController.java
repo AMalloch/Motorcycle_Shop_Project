@@ -21,7 +21,7 @@ public class MainController {
 
         staticFileLocation("/public");
 
-//        Seeds.seedData();
+        Seeds.seedData();
 
         CustomerController customerController = new CustomerController();
         ShopController shopController = new ShopController();

@@ -1,15 +1,13 @@
 package db;
 
 import models.*;
-import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class DBHelper {
 
@@ -162,26 +160,42 @@ public class DBHelper {
         return user;
     }
 
-    public static List<StockItem> findItemsInBasket(Basket basket){
+    public static Set<StockItem> findBasketItems(Basket basket){
         session = HibernateUtil.getSessionFactory().openSession();
-        List<StockItem> items = null;
-        Criteria criteria = session.createCriteria(StockItem.class);
-        criteria.add(Restrictions.eq("basket", basket));
-        items = getList(criteria);
-        return items;
+        session.refresh(basket);
+        Hibernate.initialize(basket.getStockItems());
+        session.close();
+        return basket.getStockItems();
+    }
+
+    public static void addToBasket(StockItem item, int ppQuantity, Customer customer){
+        session = HibernateUtil.getSessionFactory().openSession();
+        Basket basket = find(customer.getBasket().getId(), Basket.class);
+        basket.addItem(item, ppQuantity);
+        DBHelper.update(basket);
+    }
+
+    public static void deleteFromBasket(StockItem item, Customer customer) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        Basket basket = find(customer.getBasket().getId(), Basket.class);
+        basket.deleteItem(item);
+        DBHelper.update(basket);
     }
 
 
-    public static void addToBasket(StockItem item, int ppQuanity, Customer customer, Basket basket){
-//        basket.addItem(item);
-//        customer.setBasket(basket);
-//        saveOrUpdate(basket);
-//        saveOrUpdate(item);
-        basket.addItem(item, ppQuanity);
-        customer.setBasket(basket);
-        DBHelper.saveOrUpdate(customer);
-        DBHelper.save(basket);
+    public static Double calculateTotalBasketPrice(Set<StockItem> basketItems) {
+        Double totalPrice = 0.00;
+        for (StockItem basketItem : basketItems){
+            totalPrice += (basketItem.getPrice() * basketItem.getPendingPurchaseQuantity());
+        }
+        return totalPrice;
     }
+
+    public static void addSaleToShopCash(Double saleTotal) {
+        Shop shop = DBHelper.find(1, Shop.class);
+        Double newCash = (shop.getTotalCash() + saleTotal);
+        shop.setTotalCash(newCash);
+        DBHelper.update(shop);
 
     public static List<Basket> findBasketItems(int custId){
         session = HibernateUtil.getSessionFactory().openSession();
@@ -191,6 +205,15 @@ public class DBHelper {
         basketItems = getList(criteria);
         return basketItems;
     }
+
+//    public static void addToBasket(StockItem item, int ppQuantity, Customer customer, Basket basket){
+//        basket.addItem(item, ppQuantity);
+//        if (customer.getBasket() == null) {
+//            customer.setBasket(basket);
+//            DBHelper.saveOrUpdate(customer);
+//        }
+//        DBHelper.save(basket);
+//    }
 
 //    public static long countItemsInBasket(int custId){
 //        session = HibernateUtil.getSessionFactory().openSession();

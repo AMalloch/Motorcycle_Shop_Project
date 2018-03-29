@@ -1,6 +1,8 @@
 package models;
 
 import db.DBHelper;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -42,9 +44,10 @@ public class Basket {
         this.customer = customer;
     }
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "basket_stockItem", joinColumns = @JoinColumn(name = "basket_id"),
             inverseJoinColumns = @JoinColumn(name = "stockItem_id"))
+    @LazyCollection(LazyCollectionOption.FALSE)
     public Set<StockItem> getStockItems() {
         return stockItems;
     }
@@ -66,6 +69,13 @@ public class Basket {
             DBHelper.update(pendingItems);
             stockItems.add(pendingItems);
         }
+    }
+
+    public void deleteItem(StockItem item) {
+        item.setPendingPurchaseQuantity(0);
+        DBHelper.update(item);
+//        stockItems.remove(item);
+        DBHelper.delete(stockItems);
     }
 
     public boolean availableStock(StockItem requestedItem, int requestedQuantity){

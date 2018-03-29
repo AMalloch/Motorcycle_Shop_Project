@@ -18,7 +18,7 @@ public class ShopTest {
 
     @Before
     public void setUp() throws Exception {
-        shop = new Shop("Jurassic Motorcycles", 0);
+        shop = new Shop("Jurassic Motorcycles", 0.00);
         bike = new Bike("Shredder", 99.9, 2, null, "Black", 900, true);
         customer = new Customer("Jane", "Losi", "F", 26, "fortheducks@gmail.com", "jlosi");
 //        String firstName, String lastName, String gender, int age, String emailAddress, String username
@@ -54,7 +54,7 @@ public class ShopTest {
 
     @Test
     public void canGetTotalCash(){
-        assertEquals(0, shop.getTotalCash());
+        assertEquals(0.00, shop.getTotalCash(), 0.01);
     }
 
     @Test

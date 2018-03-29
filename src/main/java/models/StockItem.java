@@ -1,5 +1,8 @@
 package models;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -84,7 +87,8 @@ public abstract class StockItem {
         this.pendingPurchaseQuantity = pendingPurchaseQuantity;
     }
 
-    @ManyToMany(cascade = CascadeType.REMOVE , mappedBy = "stockItems")
+    @ManyToMany(cascade = CascadeType.REMOVE , mappedBy = "stockItems", fetch = FetchType.EAGER)
+    @LazyCollection(LazyCollectionOption.FALSE)
     public Set<Basket> getBaskets() {
         return baskets;
     }

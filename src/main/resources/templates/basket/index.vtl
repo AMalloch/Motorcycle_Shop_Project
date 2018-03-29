@@ -1,18 +1,32 @@
 <h2>$customer.displayName()'s Basket</h2>
 
 <div class="container">
+    <form action="/basket/buy" method="post">
     <table>
         <tr>
-            <th>Basket ID</th>
-            <th>Customer ID</th>
-            <th>Item ID</th>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Individual Item Price</th>
+            <th>Delete Item</th>
         </tr>
         #foreach ($basketItem in $basketItems)
         <tr>
-            <td>$basketItem.getId()</td>
-            <td>$basketItem.getCustomerId()</td>
-            <td>$basketItem.getStockItemId()</td>
+            <td>$basketItem.getName()</td>
+            <td>$basketItem.getPendingPurchaseQuantity()</td>
+            <td align="right">£$df.format($basketItem.getPrice())</td>
+            <td><a href="/basket/delete/$basketItem.getId()">DELETE</a></td>
         <tr>
         #end
+        <tr>
+            <td></td>
+            <td align="right"><b>Total Price</b></td>
+            <td align="right"><b>£ $df.format($totalBasketPrice)</b></td>
+            <td></td>
+        </tr>
     </table>
+        <label for="voucherCode">Voucher Code:</label>
+        <input class="inputbox" type="text" name="voucherCode" id="voucherCode">
+        <br/>
+        <input type="submit" value="Buy ALL Items in Basket" class="button">
+    </form>
 </div>
