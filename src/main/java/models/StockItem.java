@@ -5,6 +5,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -108,6 +109,10 @@ public abstract class StockItem {
         return false;
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 
     //    @ManyToOne(fetch = FetchType.EAGER)
 //    @JoinColumn(name = "shop_id", nullable = false)
