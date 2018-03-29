@@ -15,7 +15,6 @@ public class Bike extends StockItem{
     private String colour;
     private int capacity;
     private boolean isNew;
-//    private Basket basket;
 
     public Bike() {
     }
@@ -26,14 +25,6 @@ public class Bike extends StockItem{
         this.capacity = capacity;
         this.isNew = isNew;
     }
-
-    //    public Bike(String name, double price, int quantity, String colour, int capacity, boolean isNew, String imageUrl) {
-//        super(name, price, quantity);
-//        this.colour = colour;
-//        this.capacity = capacity;
-//        this.isNew = isNew;
-//        this.imageUrl = imageUrl;
-//    }
 
     @Column(name = "colour")
     public String getColour() {

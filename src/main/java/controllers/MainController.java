@@ -1,15 +1,10 @@
 package controllers;
 
-import db.CustomerDBHelper;
-import db.DBHelper;
 import db.Seeds;
-import models.Bike;
-import models.Customer;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static spark.Spark.get;

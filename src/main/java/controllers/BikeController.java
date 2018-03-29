@@ -5,7 +5,6 @@ import models.Bike;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,4 +43,5 @@ public class BikeController {
         }, new VelocityTemplateEngine());
 
     }
+
 }

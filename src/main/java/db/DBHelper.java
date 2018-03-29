@@ -2,7 +2,6 @@ package db;
 
 import models.*;
 import org.hibernate.*;
-import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.ArrayList;
@@ -147,8 +146,10 @@ public class DBHelper {
     public static List<ClothingType> getClothingType(){
         ArrayList<ClothingType> clothes = new ArrayList<>();
         for (ClothingType clothing : ClothingType.values())
-        { clothes.add(clothing);
-        } return clothes;
+        {
+            clothes.add(clothing);
+        }
+        return clothes;
     }
 
     public static Customer findCustomerByUsername(String username){
@@ -182,7 +183,6 @@ public class DBHelper {
         DBHelper.update(basket);
     }
 
-
     public static Double calculateTotalBasketPrice(Set<StockItem> basketItems) {
         Double totalPrice = 0.00;
         for (StockItem basketItem : basketItems){
@@ -192,39 +192,9 @@ public class DBHelper {
     }
 
     public static void addSaleToShopCash(Double saleTotal, Shop shop) {
-//        Shop shop = DBHelper.find(1, Shop.class);
         Double newCash = (shop.getTotalCash() + saleTotal);
         shop.setTotalCash(newCash);
         DBHelper.update(shop);
     }
-
-//    public static List<Basket> findBasketItems(int custId){
-//        session = HibernateUtil.getSessionFactory().openSession();
-//        List<Basket> basketItems = null;
-//        Criteria criteria = session.createCriteria(Basket.class);
-//        criteria.add(Restrictions.eq("customerId", custId));
-//        basketItems = getList(criteria);
-//        return basketItems;
-//    }
-
-//    public static void addToBasket(StockItem item, int ppQuantity, Customer customer, Basket basket){
-//        basket.addItem(item, ppQuantity);
-//        if (customer.getBasket() == null) {
-//            customer.setBasket(basket);
-//            DBHelper.saveOrUpdate(customer);
-//        }
-//        DBHelper.save(basket);
-//    }
-
-//    public static long countItemsInBasket(int custId){
-//        session = HibernateUtil.getSessionFactory().openSession();
-//        long count = 0;
-//        Criteria criteria = session.createCriteria(Basket.class);
-//        criteria.add(Restrictions.eq("customerId", custId));
-//        criteria.setProjection(Projections.count("customerId"));
-//        count = getUnique(criteria);
-//        return count;
-//    }
-
 
 }

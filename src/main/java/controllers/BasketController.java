@@ -69,46 +69,14 @@ public class BasketController {
             Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
             Set<StockItem> purchasedItems = DBHelper.findBasketItems(customer.getBasket());
             Shop shop = DBHelper.find(1, Shop.class);
+            DBHelper.addSaleToShopCash(DBHelper.calculateTotalBasketPrice(purchasedItems), shop);
             for (StockItem purchasedItem : purchasedItems){
                 DBHelper.deleteFromBasket(purchasedItem, customer);
             }
-            DBHelper.addSaleToShopCash(DBHelper.calculateTotalBasketPrice(purchasedItems), shop);
             res.redirect("/");
             return null;
         }, new VelocityTemplateEngine());
 
-
-
-////  addToBasket(StockItem item, int ppQuanity, Customer customer, Basket basket)
-//
-//
-//            String strCustId = req.params(":custId");
-//            String strItemId = req.params(":stockItemId");
-//            Integer intCustId = Integer.parseInt(strCustId);
-//            Integer intItemId = Integer.parseInt(strItemId);
-//            Customer customer = DBHelper.find(intCustId, Customer.class);
-////            Basket basket = null; //DBHelper.findBasket(intCustId);
-//            StockItem stockItem = DBHelper.find(intItemId, StockItem.class);
-//            Map<String, Object> model = new HashMap<>();
-//            String loggedInUser = LoginController.getLoggedInUserNameForBasket(req, res);
-//            model.put("user", loggedInUser);
-//            model.put("customer", customer);
-//            model.put("basket", basket);
-//            model.put("stockItem", stockItem);
-//            model.put("template", "templates/basket/add.vtl");
-//            return new ModelAndView(model, "templates/layout.vtl");
-//            if (basket.getId() <= 1){
-//                basket = new Basket();
-//            }
-//            basket.setCustomerId(customer.getId());
-//            basket.setStockItemId(stockItem.getId());
-//            Basket basket = new Basket(customer.getId(), stockItem.getId());
-//            Basket newBasket = new Basket(1, 1);
-//            DBHelper.save(newBasket);
-//            res.redirect("/basket/" + customer.getId());
-//            return null;
-//        }, new VelocityTemplateEngine());
     }
-
 
 }
