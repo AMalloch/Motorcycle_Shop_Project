@@ -10,6 +10,7 @@ import java.util.Set;
 public class Seeds {
 //    public static void main(String[] args) {
     public static void seedData() {
+
         DBHelper.deleteAll(Shop.class);
         DBHelper.deleteAll(Bike.class);
         DBHelper.deleteAll(Accessory.class);
@@ -32,7 +33,7 @@ public class Seeds {
 
         Accessory accessory1 = new Accessory("DSYJ Windproof Face Mask Cover", 0.76, 20, "/images/DSYJ_facemask.jpeg");
         DBHelper.save(accessory1);
-        Clothing clothing2 = new Clothing("Arai RX7", 499.99, 1, "/images/arai_rx7.jpg", "multi", "58", ClothingType.HELMENT);
+        Clothing clothing2 = new Clothing("Arai RX7", 499.99, 1, "/images/arai_rx7.jpg", "multi", "58", ClothingType.HELMET);
         DBHelper.save(clothing2);
         Clothing clothing3 = new Clothing("Gloves", 49.99, 0, "null", "black", "large", ClothingType.GLOVES);
         DBHelper.save(clothing3);

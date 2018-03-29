@@ -196,6 +196,7 @@ public class DBHelper {
         Double newCash = (shop.getTotalCash() + saleTotal);
         shop.setTotalCash(newCash);
         DBHelper.update(shop);
+    }
 
     public static List<Basket> findBasketItems(int custId){
         session = HibernateUtil.getSessionFactory().openSession();
