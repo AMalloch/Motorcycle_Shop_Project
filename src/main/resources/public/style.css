@@ -12,10 +12,24 @@ ul {
     padding: 0;
     overflow: hidden;
     background: red;
+    opacity: 0.9;
 }
 
 li {
     float: left;
+}
+
+li.login{
+    float: right;
+    padding-right: 5px;
+}
+
+li.create {
+    display: inline-block;
+    padding: 5px;
+    margin: 10px;
+    width: 150px;
+    height: 75px;
 }
 
 li a {
@@ -31,14 +45,13 @@ li a:hover {
 }
 
 
-
-
-
 table {
   background: white;
-  table-layout: fixed;
-  width: 1000px;
+  table-layout: auto;
+  width: 1200px;
   border: 1px solid red;
+  margin: 5px;
+  padding: 10px;
 }
 
 tr {
@@ -54,16 +67,238 @@ td {
   white-space: nowrap;
   text-overflow: ellipsis;
   width: 500px;
+  padding: 5px;
+  text-align: center;
 }
 
 
 
-
+h1.feature {
+    color: white;
+    padding: 5px;
+    text-shadow: 0 0 3px #FF0000;
+}
 
 h1 {
     color: white;
+    padding: 5px;
+    text-shadow: 2px 2px 2px #000000;
 }
 
 h2 {
     color: white;
+    padding: 5px;
+    text-shadow: 2px 2px 2px #000000;
 }
+
+
+
+
+
+a:link {
+    color: white;
+}
+
+
+a:visited {
+    color: white;
+}
+
+a:hover {
+    color: red;
+}
+
+a:active {
+    color: red;
+}
+
+
+
+a.one:link {
+    color: black;
+}
+
+a.one:visited {
+    color: black;
+}
+
+a.one:hover {
+    color: red;
+}
+
+a.one:active {
+    color: red;
+}
+
+a.two{
+       display: inline-block;
+       padding: 5px 5px;
+       font-size: 14px;
+       cursor: pointer;
+       text-align: center;
+       text-decoration: none;
+       text-shadow: 1px black;
+       outline: none;
+       color: white;
+       background-color: red;
+       border: none;
+       border-radius: 15px;
+       box-shadow: 0 6px #999;
+       margin-bottom: 5px;
+}
+
+input[type=submit]{
+       display: inline-block;
+       padding: 5px 5px;
+       font-size: 15px;
+       cursor: pointer;
+       text-align: center;
+       text-decoration: none;
+       text-shadow: 1px black;
+       outline: none;
+       color: black;
+       background-color: yellow;
+       border: 1px solid black;
+       border-radius: 15px;
+       box-shadow: 0 7px #999;
+       margin-bottom: 5px;
+}
+
+
+ul.show{
+    background: white;
+    color: black;
+    opacity: 1;
+    width: 400;
+}
+
+p.showtext{
+    color: black;
+}
+
+label.loginyn{
+    color:white;
+    text-shadow: 1px 1px black;
+}
+
+
+
+.container {
+    width: 100%;
+}
+
+.stockItemImage {
+    margin: auto auto;
+}
+
+.show {
+    width: 333px;
+    padding: 5px;
+    margin: 5px;
+    border: 2px solid grey;
+    position: absolute;
+    border-radius: 10px;
+}
+
+.show2 {
+    text-align: left;
+    width: 400px;
+    padding: 5px;
+    margin: 5px;
+    border: 2px solid grey;
+    border-radius: 10px;
+}
+
+
+
+
+div.gallery {
+    border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+}
+
+div.gallery img {
+    width: 100%;
+    height: 100%;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+    color: white;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.responsive {
+    padding: 0 6px;
+    float: left;
+    width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+    .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .responsive {
+        width: 100%;
+    }
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.description {
+    margin-left: 333px;
+}
+
+.news {
+  color: lightyellow;
+  border-radius: 12px;
+  margin: 0px 0px 5px 950px;
+  display: inline-block;
+  border: 3px groove grey;
+  background-color: black;
+  font-weight: bold;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 12px
+}
+
+.adminlogin {
+    margin: -300px 0px 5px 1195px;
+}
+
+img.logo{
+    @extend .layout;
+    width: 100%;
+    height: auto;
+    max-width: 700px;
+    display: inline-block;
+    margin-bottom: -49px;
+}
+
+nav{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 69%;
+    height: auto;
+    border: 5px solid $red;
+    bottom: 0px;
+    display: inline-block;
+    vertical-align: bottom;
+

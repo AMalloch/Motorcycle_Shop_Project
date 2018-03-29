@@ -1,31 +1,33 @@
-<p class="pageHeader">New Clothing</p>
+<ul class="show2">
+    <h2>Enter clothing information and save.</h2>
 
 <form action="/shops/clothing" method="post">
-    <label for="name">Clothing brand:</label>
-    <input class="inputbox" type="text" name="name" required="true">
+    <li class="create"><label for="name">Clothing brand:</label>
+        <input class="inputbox" type="text" name="name" required="true"></li>
 
-    <label for="price">Price:</label>
-    <input class="inputbox" type="number" name="price" required="true">
+    <li class="create"><label for="price">Price (£):</label>
+        <input class="inputbox" type="number" name="price" required="true"></li>
 
-    <label for="quantity">Quantity:</label>
-    <input class="inputbox" type="number" name="quantity" required="true">
+    <li class="create"><label for="quantity">Quantity:</label>
+        <input class="inputbox" type="number" name="quantity" required="true"></li>
 
-    <label for="imageUrl">Image URL:</label>
-    <input class="inputbox" type="text" name="imageUrl" required="true">
+    <li class="create"><label for="imageUrl">Image URL:</label>
+        <input class="inputbox" type="text" name="imageUrl" required="true"></li>
 
-    <label for="colour">Colour:</label>
-    <input class="inputbox" type="text" name="colour" required="true">
+    <li class="create"><label for="colour">Colour:</label>
+        <input class="inputbox" type="text" name="colour" required="true"></li>
 
-    <label for="size">Size:</label>
-    <input class="inputbox" type="number" name="size" required="true">
+    <li class="create"><label for="size">Size:</label>
+        <input class="inputbox" type="number" name="size" required="true"></li>
 
-    <label for="type">Type:</label>
+    <li class="create"><label for="type">Type:</label>
     <select id="type" name="type">
         #foreach( $clothing in $clothes )
         <option value="$clothing">$clothing</option>
         #end
-    </select>
-    <input type="submit" value="Save" class="button">
+    </select></li>
+    <li class="create"><input type="submit" value="Save" class="button"></li>
 </form>
 
-<a href="/shops/stock" class="button center">Cancel</a>
+<a class="one" href="/shops/stock" class="button center">Cancel</a>
+</ul>

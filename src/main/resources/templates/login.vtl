@@ -10,20 +10,28 @@
 </head>
 <body>
 
-<h1>Jurassic Motorcycles</h1>
-
-<div class="nav">
-    <a href="/">Home</a> | <a href="/bikes">Bikes</a> | <a href="/accessories">Accessories</a> | <a href="/clothing">Clothing</a>
+<div class="header">
+    <header>
+        <img class="logo" src="/images/imageedit_14_7592117376.png" alt="logo" />
+    </header>
 </div>
 
-<h2>Login</h2>
+<div class="nav">
+    <ul>
+        <li><a href="/">HOME</a></li>
+        <li><a href="/bikes">BIKES</a></li>
+        <li><a href="/accessories">ACCESSORIES</a></li>
+        <li><a href="/clothing">CLOTHING</a></li>
+    </ul >
+</div>
+
+<h2>Please Login</h2>
 <form action="/login" method="post">
-    <label for="username">Your name</label>
+    <label class="loginyn" for="username">Your name</label>
     <input id="username" name="username" type="text">
     <input type="hidden" name="referer" value="$referer">
     <button type="submit">Submit name</button>
 </form>
-
 
 </body>
 </html>

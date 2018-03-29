@@ -1,15 +1,25 @@
-<div class="stockItemImage">
-    <img src=$clothing.getImageUrl()>
-</div>
-<div>
-    <p>Name: $clothing.getName()</p>
-    <p>Price : £ $clothing.getPrice()</p>
-    <p>Quantity : $chothing.getQuantity()</p>
-    <p>Size : $clothing.getSize()</p>
-    <p>Type : $clothing.getType()</p>
-</div>
 
-<!--<a href="/managers/$manager.getId()/edit" class="button center">Edit</a>-->
-<form action="#" method="post">
-    <input type="submit" value="Buy Now" class="button">
-</form>
+<div>
+    <ul class="show">
+        <img src=$clothing.getImageUrl()>
+        <p class = "showtext">$clothing.getName()</p>
+        <p class = "showtext">Price : £ $clothing.getPrice()</p>
+        <p class = "showtext">In stock  : $clothing.getQuantity()</p>
+        <p class = "showtext">Colour : $clothing.getColour()</p>
+        <p class = "showtext">Size : $clothing.getSize()</p>
+        <p class = "showtext">Type : $clothing.getType()</p>
+        <form action="/basket/$customer.getId()/add/$clothing.getId()" method="post">
+            <input type="submit" value="Buy Now" class="button">
+        </form>
+    </ul>
+</div>
+<div class ="description">
+    <ul class="show">
+        <h3>INFO</h3>
+        <p> </p>
+        <p class = "showtext">Quality waterproof cordura construction, with fully detachable, washable polyfil quilted inner lining.</p>
+        <p class = "showtext">YKK Waterproof zips on front pockets, removable CE armour to knees and hips, with elasticated knee and waist panels.</p>
+        <p class = "showtext">Two large front pockets & two cargo side pockets, adjustable waist belt, 11" zip ankles</p>
+        <p class = "showtext">Zip attachment to your jacket, strap over the ankle to tighten, reducing gap to reduce draft and water up spray.</p>
+    </ul>
+</div>

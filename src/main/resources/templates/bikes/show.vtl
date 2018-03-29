@@ -1,16 +1,23 @@
-<div class="stockItemImage">
-    <img src=$bike.getImageUrl()>
-</div>
-<div>
-    <p>Name: $bike.getName()</p>
-    <p>Price : £ $bike.getPrice()</p>
-    <p>Quantity : $bike.getQuantity()</p>
-    <p>Colour : $bike.getColour()</p>
-    <p>Capacity : $bike.getCapacity()</p>
-    <p>New ? : $bike.isNew()</p>
-</div>
 
-<!--<a href="/managers/$manager.getId()/edit" class="button center">Edit</a>-->
-<form action="/basket/$customer.getId()/add/$bike.getId()" method="post">
-    <input type="submit" value="Buy Now" class="button">
-</form>
+<div>
+    <ul class="show">
+        <img src=$bike.getImageUrl()>
+        <p class = "showtext">$bike.getName()</p>
+        <p class = "showtext">Price : £ $bike.getPrice()</p>
+        <p class = "showtext">In stock : $bike.getQuantity()</p>
+        <p class = "showtext">Colour : $bike.getColour()</p>
+        <p class = "showtext">Capacity : $bike.getCapacity()</p>
+        <p class = "showtext">New : $bike.isNew()</p>
+        <form action="/basket/$customer.getId()/add/$bike.getId()" method="post">
+            <input type="submit" value="Buy Now" class="button">
+        </form>
+    </ul>
+</div>
+<div class ="description">
+    <ul class="show">
+        <h3>INFO</h3>
+        <p> </p>
+        <p class = "showtext">This baby can get to a speed of 190 mph with its ultra light carbon fiber frame, mixed with aluminum and titanium.</p>
+        <p class = "showtext">A custom braking system, lots of high-tech gadgets and bragging rights its one of the most expensive and rarest bikes ever made!</p>
+    </ul>
+</div>

@@ -1,27 +1,28 @@
-<p class="pageHeader">New Bike</p>
+<ul class="show2">
+<h2>Enter bike information and save.</h2>
 
 <form action="/shops/stock" method="post">
-    <label for="name">Model name:</label>
-    <input class="inputbox" type="text" name="name" required="true">
+    <li class="create"><label for="name">Model name:</label>
+        <input class="inputbox" type="text" name="name" required="true"></li>
 
-    <label for="price">Price:</label>
-    <input class="inputbox" type="number" name="price" required="true">
+    <li class="create"><label for="price">Price (£):</label>
+    <input class="inputbox" type="number" name="price" required="true"><li>
 
-    <label for="quantity">Quantity:</label>
-    <input class="inputbox" type="number" name="quantity" required="true">
+    <li class="create"><label for="quantity">Quantity:</label>
+    <input class="inputbox" type="number" name="quantity" required="true"></li>
 
-    <label for="imageUrl">Image URL:</label>
-    <input class="inputbox" type="text" name="imageUrl" required="true">
+    <li class="create"><label for="imageUrl">Image URL:</label>
+    <input class="inputbox" type="text" name="imageUrl" required="true"></li>
 
-    <label for="colour">Colour:</label>
-    <input class="inputbox" type="text" name="colour" required="true">
+    <li class="create"><label for="colour">Colour:</label>
+    <input class="inputbox" type="text" name="colour" required="true"></li>
 
-    <label for="capacity">Capacity:</label>
-    <input class="inputbox" type="number" name="capacity" required="true">
+    <li class="create"><label for="capacity">Capacity:</label>
+    <input class="inputbox" type="number" name="capacity" required="true"></li>
 
-    <label for="isNew">Is new:</label>
-    <input class="inputbox" type="text" name="isNew" required="true">
-    <input type="submit" value="Save" class="button">
+    <li class="create"><label for="isNew">Is new:</label>
+    <input class="inputbox" type="text" name="isNew" required="true"></li>
+    <li class="create"><input type="submit" value="Save" class="button"></li>
 </form>
-
-<a href="/shops/stock" class="button center">Cancel</a>
+<li><a class="one" href="/shops/stock" class="button center">Cancel</a></li>
+</ul>

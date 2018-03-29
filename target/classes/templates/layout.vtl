@@ -12,26 +12,27 @@
 
     <div class="header">
          <header>
-           <img src="/images/coollogo_com-93491085.png" alt="logo" />
+           <img class="logo" src="/images/imageedit_14_7592117376.png" alt="logo" />
          </header>
     </div>
 
     <div class="nav">
         <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/bikes">Bikes</a></li>
-        <li><a href="/accessories">Accessories</a></li>
-        <li><a href="/clothing">Clothing</a></li>
-        </ul>
+            <li><a href="/">HOME</a></li>
+            <li><a href="/bikes">BIKES</a></li>
+            <li><a href="/accessories">ACCESSORIES</a></li>
+            <li><a href="/clothing">CLOTHING</a></li>
+            #if($user == "")
+            <li class="login"><a href="/login">LOGIN</a></li>
+            #else
+            <li><a href="basket">VIEW BASKET</a></li>
+            <li class="login">Welcome: $user </li>
+            <li class="login"><a href="/logout">LOGOUT</a></li>
+            #end
+        </ul >
     </div>
 
 <!-- begin inner template-->
-    #if($user == "")
-    <p><a href="/login">Login</a></p>
-    #else
-    <p>Logged in as: $user <a href="/logout">Logout</a></p>
-    #end
-
     <div class="container">
        #parse($template)
     </div>
