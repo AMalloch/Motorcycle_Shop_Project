@@ -3,6 +3,7 @@ package models;
 import db.CustomerDBHelper;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,8 +17,8 @@ public class Clothing extends StockItem {
     public Clothing() {
     }
 
-    public Clothing(String name, double price, int quantity, String imageUrl, String colour, String size, ClothingType type) {
-        super(name, price, quantity, imageUrl);
+    public Clothing(int id, String name, double price, int quantity, String imageUrl, ArrayList<Order> orderOfStockItem, String colour, String size, ClothingType type) {
+        super(id, name, price, quantity, imageUrl, orderOfStockItem);
         this.colour = colour;
         this.size = size;
         this.type = type;

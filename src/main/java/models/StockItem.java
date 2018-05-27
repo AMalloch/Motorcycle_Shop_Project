@@ -4,6 +4,7 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -17,18 +18,18 @@ public abstract class StockItem {
     private double price;
     private int quantity;
     private String imageUrl;
-    private Order order;
+    private ArrayList<Order> orderOfStockItem;
 
     public StockItem() {
     }
 
-    public StockItem(int id, String name, double price, int quantity, String imageUrl, Order order) {
+    public StockItem(int id, String name, double price, int quantity, String imageUrl, ArrayList<Order> orderOfStockItem) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.imageUrl = imageUrl;
-        this.order = order;
+        this.orderOfStockItem = orderOfStockItem;
     }
 
     @Id
@@ -78,12 +79,18 @@ public abstract class StockItem {
         this.imageUrl = imageUrl;
     }
 
-    public Order getOrder() {
-        return order;
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "StockItem_Order",
+            joinColumns = { @JoinColumn(name = "stockItem_id") },
+            inverseJoinColumns = { @JoinColumn(name = "order_id") }
+    )
+    public ArrayList<Order> getOrderOfStockItem() {
+        return orderOfStockItem;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrderOfStockItem(ArrayList<Order> orderOfStockItem) {
+        this.orderOfStockItem = orderOfStockItem;
     }
 
     @Override

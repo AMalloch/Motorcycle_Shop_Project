@@ -52,8 +52,7 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    @ManyToOne
-    @JoinColumn(name="stockItem_id", nullable = false)
+    @ManyToMany(mappedBy = "orders")
     public ArrayList<StockItem> getStockItems() {
         return stockItems;
     }
