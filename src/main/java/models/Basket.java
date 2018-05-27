@@ -13,7 +13,7 @@ import java.util.Set;
 public class Basket {
     private int id;
     private Customer customer;
-    private Set<StockItem> stockItems;
+    private Order order;
 
     public Basket() {
     }

@@ -7,8 +7,8 @@
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <!--<property name="hibernate.connection.username"></property>-->
-        <!--<property name="hibernate.connection.password"></property>-->
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">psql1234</property>
         <property name="hibernate.current_session_context_class">thread</property>
         <property name="hibernate.enable_lazy_load_no_trans">true</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/bikeshopdb</property>

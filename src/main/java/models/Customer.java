@@ -16,9 +16,7 @@ public class Customer {
     private String emailAddress;
     private String username;
     private Basket basket;
-    private Set<StockItem> pendingItems;
-
-    private Set<StockItem> purchasedItems;
+    private Order order;
 
     public Customer() {
     }
@@ -31,7 +29,6 @@ public class Customer {
         this.emailAddress = emailAddress;
         this.username = username;
 
-        this.purchasedItems = new HashSet<>();
     }
 
     @Id
