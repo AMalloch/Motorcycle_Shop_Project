@@ -23,13 +23,11 @@ public abstract class StockItem {
     public StockItem() {
     }
 
-    public StockItem(int id, String name, double price, int quantity, String imageUrl, ArrayList<Order> orderOfStockItem) {
-        this.id = id;
+    public StockItem(String name, double price, int quantity, String imageUrl) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.imageUrl = imageUrl;
-        this.orderOfStockItem = orderOfStockItem;
     }
 
     @Id

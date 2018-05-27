@@ -11,8 +11,7 @@ public class Accessory extends StockItem{
     public Accessory() {
     }
 
-    public Accessory(int id, String name, double price, int quantity, String imageUrl, ArrayList<Order> orderOfStockItem) {
-        super(id, name, price, quantity, imageUrl, orderOfStockItem);
+    public Accessory(String name, double price, int quantity, String imageUrl) {
+        super(name, price, quantity, imageUrl);
     }
-
 }

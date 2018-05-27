@@ -20,9 +20,8 @@ public class Bike extends StockItem{
     public Bike() {
     }
 
-
-    public Bike(int id, String name, double price, int quantity, String imageUrl, ArrayList<Order> orderOfStockItem, String colour, int capacity, boolean isNew) {
-        super(id, name, price, quantity, imageUrl, orderOfStockItem);
+    public Bike(String name, double price, int quantity, String imageUrl, String colour, int capacity, boolean isNew) {
+        super(name, price, quantity, imageUrl);
         this.colour = colour;
         this.capacity = capacity;
         this.isNew = isNew;

@@ -14,12 +14,8 @@ public class Shop {
     private ArrayList<Order> shopOrderHistory;
     Double totalCash = 0.00;
 
-    public Shop(int id, String name, ArrayList<Customer> customers, ArrayList<StockItem> stockItems, ArrayList<Order> shopOrderHistory, Double totalCash) {
-        this.id = id;
+    public Shop(String name, Double totalCash) {
         this.name = name;
-        this.customers = customers;
-        this.stockItems = stockItems;
-        this.shopOrderHistory = shopOrderHistory;
         this.totalCash = totalCash;
     }
 

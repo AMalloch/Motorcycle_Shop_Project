@@ -20,10 +20,8 @@ public class Basket {
     public Basket() {
     }
 
-    public Basket(Customer customer, Order order) {
+    public Basket(Customer customer) {
         this.customer = customer;
-        this.basketOrders = new ArrayList<>();
-        this.order = order;
     }
 
     @Id
