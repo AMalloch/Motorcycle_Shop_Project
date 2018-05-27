@@ -5,6 +5,7 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,14 +14,16 @@ import java.util.Set;
 public class Basket {
     private int id;
     private Customer customer;
+    private ArrayList<Order> basketOrders;
     private Order order;
 
     public Basket() {
     }
 
-    public Basket(Customer customer) {
+    public Basket(Customer customer, Order order) {
         this.customer = customer;
-        this.stockItems = new HashSet<>();
+        this.basketOrders = new ArrayList<>();
+        this.order = order;
     }
 
     @Id
@@ -44,37 +47,20 @@ public class Basket {
         this.customer = customer;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    @JoinTable(name = "basket_stockItem", joinColumns = @JoinColumn(name = "basket_id"),
-            inverseJoinColumns = @JoinColumn(name = "stockItem_id"))
-    @LazyCollection(LazyCollectionOption.FALSE)
-    public Set<StockItem> getStockItems() {
-        return stockItems;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setStockItems(Set<StockItem> stockItems) {
-        this.stockItems = stockItems;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
-    public int countItemsInBasket(){
-        if (stockItems == null){
-            return 0;
-        }
-        return stockItems.size();
+    public ArrayList<Order> getBasketOrders() {
+        return basketOrders;
     }
 
-    public void addItem(StockItem pendingItems, int pendingQuantity) {
-        if (availableStock(pendingItems, pendingQuantity)) {
-            pendingItems.setPendingPurchaseQuantity(pendingQuantity);
-            DBHelper.update(pendingItems);
-            stockItems.add(pendingItems);
-        }
-    }
-
-    public void deleteItem(StockItem item) {
-        item.setPendingPurchaseQuantity(0);
-        DBHelper.update(item);
-        stockItems.remove(item);
+    public void setBasketOrders(ArrayList<Order> basketOrders) {
+        this.basketOrders = basketOrders;
     }
 
     public boolean availableStock(StockItem requestedItem, int requestedQuantity){
