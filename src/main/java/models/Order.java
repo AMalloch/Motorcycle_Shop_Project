@@ -11,18 +11,21 @@ public class Order {
     private int id;
     private String name;
     private ArrayList<StockItem> stockItems;
-    private GregorianCalendar stockDate;
+    private GregorianCalendar orderDate;
 
-    public Order(int id, String name, ArrayList<StockItem> stockItems, GregorianCalendar stockDate) {
+    public Order(int id, String name, ArrayList<StockItem> stockItems, GregorianCalendar orderDate) {
         this.id = id;
         this.name = name;
         this.stockItems = stockItems;
-        this.stockDate = stockDate;
+        this.orderDate = orderDate;
     }
 
     public Order() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -31,6 +34,7 @@ public class Order {
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -39,14 +43,17 @@ public class Order {
         this.name = name;
     }
 
-    public GregorianCalendar getStockDate() {
-        return stockDate;
+    @Column(name = "order_date")
+    public GregorianCalendar getOrderDate() {
+        return orderDate;
     }
 
-    public void setStockDate(GregorianCalendar stockDate) {
-        this.stockDate = stockDate;
+    public void setOrderDate(GregorianCalendar orderDate) {
+        this.orderDate = orderDate;
     }
 
+    @ManyToOne
+    @JoinColumn(name="stockItem_id", nullable = false)
     public ArrayList<StockItem> getStockItems() {
         return stockItems;
     }

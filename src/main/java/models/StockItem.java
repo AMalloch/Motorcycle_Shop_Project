@@ -17,15 +17,18 @@ public abstract class StockItem {
     private double price;
     private int quantity;
     private String imageUrl;
+    private Order order;
 
     public StockItem() {
     }
 
-    public StockItem(String name, double price, int quantity, String imageUrl) {
+    public StockItem(int id, String name, double price, int quantity, String imageUrl, Order order) {
+        this.id = id;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.imageUrl = imageUrl;
+        this.order = order;
     }
 
     @Id
@@ -73,6 +76,14 @@ public abstract class StockItem {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     @Override
