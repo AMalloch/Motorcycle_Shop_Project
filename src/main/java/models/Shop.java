@@ -9,15 +9,18 @@ public class Shop {
 
     private int id;
     private String name;
-    private ArrayList<StockItem> stockItems;
     private ArrayList<Customer> customers;
+    private ArrayList<StockItem> stockItems;
+    private ArrayList<Order> shopOrderHistory;
     Double totalCash = 0.00;
 
-    public Shop(String name, Double totalCash) {
+    public Shop(int id, String name, ArrayList<Customer> customers, ArrayList<StockItem> stockItems, ArrayList<Order> shopOrderHistory, Double totalCash) {
+        this.id = id;
         this.name = name;
+        this.customers = customers;
+        this.stockItems = stockItems;
+        this.shopOrderHistory = shopOrderHistory;
         this.totalCash = totalCash;
-        this.stockItems = new ArrayList<>();
-        this.customers = new ArrayList<>();
     }
 
     public Shop() {
@@ -74,5 +77,21 @@ public class Shop {
 
     public void addCustomer(Customer customer) {
         this.customers.add(customer);
+    }
+
+    public ArrayList<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(ArrayList<Customer> customers) {
+        this.customers = customers;
+    }
+
+    public ArrayList<Order> getShopOrderHistory() {
+        return shopOrderHistory;
+    }
+
+    public void setShopOrderHistory(ArrayList<Order> shopOrderHistory) {
+        this.shopOrderHistory = shopOrderHistory;
     }
 }
