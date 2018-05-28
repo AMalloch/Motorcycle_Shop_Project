@@ -29,14 +29,14 @@ public class BasketController {
         get("/basket", (req, res) -> {
             String loggedInUser = LoginController.getLoggedInUserNameForBasket(req, res);
             Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
-            Set<StockItem> basketItems = DBHelper.findBasketItems(customer.getBasket());
-            Double totalBasketPrice = DBHelper.calculateTotalBasketPrice(basketItems);
+//            Set<StockItem> basketItems = DBHelper.findBasketItems(customer.getBasket());
+//            Double totalBasketPrice = DBHelper.calculateTotalBasketPrice(basketItems);
             DecimalFormat df =new DecimalFormat("#0.00");
             Map<String, Object> model = new HashMap<>();
             model.put("user", loggedInUser);
             model.put("customer", customer);
-            model.put("basketItems", basketItems);
-            model.put("totalBasketPrice", totalBasketPrice);
+//            model.put("basketItems", basketItems);
+//            model.put("totalBasketPrice", totalBasketPrice);
             model.put("df", df);
             model.put("template", "templates/basket/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
@@ -48,7 +48,7 @@ public class BasketController {
             String loggedInUser = LoginController.getLoggedInUserNameForBasket(req, res);
             Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
             StockItem stockItem = DBHelper.find(intItemId, StockItem.class);
-            DBHelper.addToBasket(stockItem, 1, customer);
+//            DBHelper.addToBasket(stockItem, 1, customer);
             res.redirect("/basket");
             return null;
         }, new VelocityTemplateEngine());
@@ -59,7 +59,7 @@ public class BasketController {
             String loggedInUser = LoginController.getLoggedInUserNameForBasket(req, res);
             Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
             StockItem stockItem = DBHelper.find(intItemId, StockItem.class);
-            DBHelper.deleteFromBasket(stockItem, customer);
+//            DBHelper.deleteFromBasket(stockItem, customer);
             res.redirect("/basket");
             return null;
         }, new VelocityTemplateEngine());
@@ -67,12 +67,12 @@ public class BasketController {
         post("/basket/buy", (req, res) -> {
             String loggedInUser = LoginController.getLoggedInUserNameForBasket(req, res);
             Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
-            Set<StockItem> purchasedItems = DBHelper.findBasketItems(customer.getBasket());
-            Shop shop = DBHelper.find(1, Shop.class);
-            DBHelper.addSaleToShopCash(DBHelper.calculateTotalBasketPrice(purchasedItems), shop);
-            for (StockItem purchasedItem : purchasedItems){
-                DBHelper.deleteFromBasket(purchasedItem, customer);
-            }
+//            Set<StockItem> purchasedItems = DBHelper.findBasketItems(customer.getBasket());
+//            Shop shop = DBHelper.find(1, Shop.class);
+//            DBHelper.addSaleToShopCash(DBHelper.calculateTotalBasketPrice(purchasedItems), shop);
+//            for (StockItem purchasedItem : purchasedItems){
+//                DBHelper.deleteFromBasket(purchasedItem, customer);
+//            }
             res.redirect("/");
             return null;
         }, new VelocityTemplateEngine());

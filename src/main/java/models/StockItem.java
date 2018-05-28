@@ -18,7 +18,7 @@ public abstract class StockItem {
     private double price;
     private int quantity;
     private String imageUrl;
-    private ArrayList<Order> orderOfStockItem;
+    private Set<Order> orderOfStockItem;
 
     public StockItem() {
     }
@@ -28,6 +28,7 @@ public abstract class StockItem {
         this.price = price;
         this.quantity = quantity;
         this.imageUrl = imageUrl;
+        this.orderOfStockItem = new HashSet<>();
     }
 
     @Id
@@ -77,19 +78,16 @@ public abstract class StockItem {
         this.imageUrl = imageUrl;
     }
 
-    @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(
-            name = "StockItem_Order",
-            joinColumns = { @JoinColumn(name = "stockItem_id") },
-            inverseJoinColumns = { @JoinColumn(name = "order_id") }
-    )
-    public ArrayList<Order> getOrderOfStockItem() {
+    @ManyToMany(cascade = CascadeType.REMOVE , mappedBy = "stockItems", fetch = FetchType.EAGER)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    public Set<Order> getOrderOfStockItem() {
         return orderOfStockItem;
     }
 
-    public void setOrderOfStockItem(ArrayList<Order> orderOfStockItem) {
+    public void setOrderOfStockItem(Set<Order> orderOfStockItem) {
         this.orderOfStockItem = orderOfStockItem;
     }
+
 
     @Override
     public boolean equals(Object obj) {

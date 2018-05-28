@@ -1,22 +1,27 @@
 package models;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "Order")
+@Table(name = "orders")
 public class Order {
 
     private int id;
     private String name;
-    private ArrayList<StockItem> stockItems;
+    private Set<StockItem> stockItems;
     private GregorianCalendar orderDate;
 
-    public Order(int id, String name, ArrayList<StockItem> stockItems, GregorianCalendar orderDate) {
+    public Order(int id, String name, GregorianCalendar orderDate) {
         this.id = id;
         this.name = name;
-        this.stockItems = stockItems;
+        this.stockItems = new HashSet<>();
         this.orderDate = orderDate;
     }
 
@@ -52,12 +57,15 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    @ManyToMany(mappedBy = "orders")
-    public ArrayList<StockItem> getStockItems() {
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JoinTable(name = "order_stockItem", joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "stockItem_id"))
+    @LazyCollection(LazyCollectionOption.FALSE)
+    public Set<StockItem> getStockItems() {
         return stockItems;
     }
 
-    public void setStockItems(ArrayList<StockItem> stockItems) {
+    public void setStockItems(Set<StockItem> stockItems) {
         this.stockItems = stockItems;
     }
 }

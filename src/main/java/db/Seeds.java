@@ -39,9 +39,9 @@ public class Seeds {
         DBHelper.save(clothing1);
 
 //        DBHelper.addToBasket(bike1, 1, customer1);
-        DBHelper.addToBasket(accessory1, 2, customer1);
-        DBHelper.addToBasket(clothing1, 1, customer1);
-        DBHelper.addToBasket(clothing2, 1, customer1);
+//        DBHelper.addToBasket(accessory1, 2, customer1);
+//        DBHelper.addToBasket(clothing1, 1, customer1);
+//        DBHelper.addToBasket(clothing2, 1, customer1);
 
 
 //        Testing Section

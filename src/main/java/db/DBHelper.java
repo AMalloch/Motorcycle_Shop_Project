@@ -161,40 +161,40 @@ public class DBHelper {
         return user;
     }
 
-    public static Set<StockItem> findBasketItems(Basket basket){
-        session = HibernateUtil.getSessionFactory().openSession();
-        session.refresh(basket);
-        Hibernate.initialize(basket.getStockItems());
-        session.close();
-        return basket.getStockItems();
-    }
-
-    public static void addToBasket(StockItem item, int ppQuantity, Customer customer){
-        session = HibernateUtil.getSessionFactory().openSession();
-        Basket basket = find(customer.getBasket().getId(), Basket.class);
-        basket.addItem(item, ppQuantity);
-        DBHelper.update(basket);
-    }
-
-    public static void deleteFromBasket(StockItem item, Customer customer) {
-        session = HibernateUtil.getSessionFactory().openSession();
-        Basket basket = find(customer.getBasket().getId(), Basket.class);
-        basket.deleteItem(item);
-        DBHelper.update(basket);
-    }
-
-    public static Double calculateTotalBasketPrice(Set<StockItem> basketItems) {
-        Double totalPrice = 0.00;
-        for (StockItem basketItem : basketItems){
-            totalPrice += (basketItem.getPrice() * basketItem.getPendingPurchaseQuantity());
-        }
-        return totalPrice;
-    }
-
     public static void addSaleToShopCash(Double saleTotal, Shop shop) {
         Double newCash = (shop.getTotalCash() + saleTotal);
         shop.setTotalCash(newCash);
         DBHelper.update(shop);
     }
+
+//    public static Set<StockItem> findBasketItems(Basket basket){
+//        session = HibernateUtil.getSessionFactory().openSession();
+//        session.refresh(basket);
+//        Hibernate.initialize(basket.getStockItems());
+//        session.close();
+//        return basket.getStockItems();
+//    }
+//
+//    public static void addToBasket(StockItem item, int ppQuantity, Customer customer){
+//        session = HibernateUtil.getSessionFactory().openSession();
+//        Basket basket = find(customer.getBasket().getId(), Basket.class);
+//        basket.addItem(item, ppQuantity);
+//        DBHelper.update(basket);
+//    }
+//
+//    public static void deleteFromBasket(StockItem item, Customer customer) {
+//        session = HibernateUtil.getSessionFactory().openSession();
+//        Basket basket = find(customer.getBasket().getId(), Basket.class);
+//        basket.deleteItem(item);
+//        DBHelper.update(basket);
+//    }
+//
+//    public static Double calculateTotalBasketPrice(Set<StockItem> basketItems) {
+//        Double totalPrice = 0.00;
+//        for (StockItem basketItem : basketItems){
+//            totalPrice += (basketItem.getPrice() * basketItem.getPendingPurchaseQuantity());
+//        }
+//        return totalPrice;
+//    }
 
 }
