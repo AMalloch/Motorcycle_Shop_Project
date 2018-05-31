@@ -45,6 +45,8 @@ public class Basket {
         this.customer = customer;
     }
 
+    @ManyToOne
+    @JoinColumn(name="basket_id", nullable=false)
     public Order getOrder() {
         return order;
     }
