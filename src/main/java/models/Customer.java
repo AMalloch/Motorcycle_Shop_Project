@@ -27,7 +27,6 @@ public class Customer {
         this.age = age;
         this.emailAddress = emailAddress;
         this.username = username;
-
     }
 
     @Id

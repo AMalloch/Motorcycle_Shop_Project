@@ -167,14 +167,14 @@ public class DBHelper {
         DBHelper.update(shop);
     }
 
-//    public static Set<StockItem> findBasketItems(Basket basket){
-//        session = HibernateUtil.getSessionFactory().openSession();
-//        session.refresh(basket);
-//        Hibernate.initialize(basket.getStockItems());
-//        session.close();
-//        return basket.getStockItems();
-//    }
-//
+     public static Set<StockItem> findBasketItems(Basket basket){
+        session = HibernateUtil.getSessionFactory().openSession();
+        session.refresh(basket);
+         Hibernate.initialize(basket.getStockItems());
+        session.close();
+        return basket.getStockItems();
+    }
+
 //    public static void addToBasket(StockItem item, int ppQuantity, Customer customer){
 //        session = HibernateUtil.getSessionFactory().openSession();
 //        Basket basket = find(customer.getBasket().getId(), Basket.class);
