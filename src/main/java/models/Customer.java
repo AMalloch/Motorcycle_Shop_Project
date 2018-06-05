@@ -16,7 +16,6 @@ public class Customer {
     private String emailAddress;
     private String username;
     private Basket basket;
-    private Order order;
 
     public Customer() {
     }
@@ -109,11 +108,4 @@ public class Customer {
         return getFirstName() + " " + getLastName();
     }
 
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
 }
