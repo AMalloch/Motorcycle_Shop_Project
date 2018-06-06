@@ -44,14 +44,6 @@ public class Shop {
         this.name = name;
     }
 
-    public Map<StockItem, Integer> getStockItemQuantity() {
-        return stockItemQuantity;
-    }
-
-    public void setStockItemQuantity(Map<StockItem, Integer> stockItemQuantity) {
-        this.stockItemQuantity = stockItemQuantity;
-    }
-
     @Column(name = "total_cash")
     public Double getTotalCash() {
         return totalCash;
@@ -65,7 +57,11 @@ public class Shop {
         return this.customers.size();
     }
 
-    public void createNewStock(StockItem stockItem, Integer quantity) {
+    public int getStockQuantity(StockItem stockItem) {
+        return this.stockItemQuantity.get(stockItem);
+    }
+
+    public void setStockQuantity(StockItem stockItem, Integer quantity) {
         this.stockItemQuantity.put(stockItem, quantity);
     }
 

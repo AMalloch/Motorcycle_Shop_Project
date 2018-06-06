@@ -63,10 +63,4 @@ public class Basket {
         this.basketOrders = basketOrders;
     }
 
-    public boolean availableStock(StockItem requestedItem, int requestedQuantity){
-        if (requestedItem.getQuantity() >= requestedQuantity){
-            return true;
-        }
-        return false;
-    }
 }
