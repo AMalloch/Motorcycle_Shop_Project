@@ -16,17 +16,15 @@ public abstract class StockItem {
     private int id;
     private String name;
     private double price;
-    private int quantity;
     private String imageUrl;
     private Set<Order> orderOfStockItem;
 
     public StockItem() {
     }
 
-    public StockItem(String name, double price, int quantity, String imageUrl) {
+    public StockItem(String name, double price, String imageUrl) {
         this.name = name;
         this.price = price;
-        this.quantity = quantity;
         this.imageUrl = imageUrl;
         this.orderOfStockItem = new HashSet<>();
     }
@@ -58,15 +56,6 @@ public abstract class StockItem {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    @Column(name = "quantity")
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     @Column(name = "image_url")

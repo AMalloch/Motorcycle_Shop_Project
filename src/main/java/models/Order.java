@@ -15,6 +15,7 @@ public class Order {
 
     private int id;
     private String name;
+    private StockItem stockItem;
     private Set<StockItem> stockItems;
     private GregorianCalendar orderDate;
 
@@ -68,4 +69,21 @@ public class Order {
     public void setStockItems(Set<StockItem> stockItems) {
         this.stockItems = stockItems;
     }
+
+    public StockItem getStockItem() {
+        return stockItem;
+    }
+
+    public void setStockItem(StockItem stockItem) {
+        this.stockItem = stockItem;
+    }
+
+    public void addStockItemToOrder(StockItem stockItem){
+        this.stockItems.add(stockItem);
+    }
+
+    public void removeStockItemFromOrder(){
+        this.stockItems.remove(stockItem);
+    }
+
 }
