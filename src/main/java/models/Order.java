@@ -16,13 +16,14 @@ public class Order {
     private int id;
     private String name;
     private StockItem stockItem;
-    private Set<StockItem> stockItems;
+    private Set<StockItem> currentOrder;
     private GregorianCalendar orderDate;
+    private int quantity;
 
     public Order(int id, String name, GregorianCalendar orderDate) {
         this.id = id;
         this.name = name;
-        this.stockItems = new HashSet<>();
+        this.currentOrder = new HashSet<>();
         this.orderDate = orderDate;
     }
 
@@ -62,12 +63,12 @@ public class Order {
     @JoinTable(name = "order_stockItem", joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "stockItem_id"))
     @LazyCollection(LazyCollectionOption.FALSE)
-    public Set<StockItem> getStockItems() {
-        return stockItems;
+    public Set<StockItem> getCurrentOrder() {
+        return currentOrder;
     }
 
-    public void setStockItems(Set<StockItem> stockItems) {
-        this.stockItems = stockItems;
+    public void setCurrentOrder(Set<StockItem> currentOrder) {
+        this.currentOrder = currentOrder;
     }
 
     public StockItem getStockItem() {
@@ -79,11 +80,11 @@ public class Order {
     }
 
     public void addStockItemToOrder(StockItem stockItem){
-        this.stockItems.add(stockItem);
+        this.currentOrder.add(stockItem);
     }
 
     public void removeStockItemFromOrder(){
-        this.stockItems.remove(stockItem);
+        this.currentOrder.remove(stockItem);
     }
 
 }

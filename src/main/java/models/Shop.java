@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.*;
 
 @Entity
@@ -10,13 +11,14 @@ public class Shop {
     private int id;
     private String name;
     private ArrayList<Customer> customers;
-    private ArrayList<StockItem> stockItems;
+    private Map<StockItem, Integer> stockItemQuantity;
     private ArrayList<Order> shopOrderHistory;
     Double totalCash = 0.00;
 
     public Shop(String name, Double totalCash) {
         this.name = name;
         this.totalCash = totalCash;
+        this.stockItemQuantity = new HashMap<StockItem, Integer>();
     }
 
     public Shop() {
@@ -42,12 +44,12 @@ public class Shop {
         this.name = name;
     }
 
-    public ArrayList<StockItem> getStockItems() {
-        return stockItems;
+    public Map<StockItem, Integer> getStockItemQuantity() {
+        return stockItemQuantity;
     }
 
-    public void setStockItems(ArrayList<StockItem> stockItems) {
-        this.stockItems = stockItems;
+    public void setStockItemQuantity(Map<StockItem, Integer> stockItemQuantity) {
+        this.stockItemQuantity = stockItemQuantity;
     }
 
     @Column(name = "total_cash")
@@ -59,16 +61,12 @@ public class Shop {
         this.totalCash = totalCash;
     }
 
-    public int countStock() {
-        return this.stockItems.size();
-    }
-
     public int countCustomers() {
         return this.customers.size();
     }
 
-    public void addToStock(StockItem stockItem) {
-        this.stockItems.add(stockItem);
+    public void createNewStock(StockItem stockItem, Integer quantity) {
+        this.stockItemQuantity.put(stockItem, quantity);
     }
 
     public void addCustomer(Customer customer) {

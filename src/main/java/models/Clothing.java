@@ -17,8 +17,8 @@ public class Clothing extends StockItem {
     public Clothing() {
     }
 
-    public Clothing(String name, double price, int quantity, String imageUrl, String colour, String size, ClothingType type) {
-        super(name, price, quantity, imageUrl);
+    public Clothing(String name, double price, String imageUrl, String colour, String size, ClothingType type) {
+        super(name, price, imageUrl);
         this.colour = colour;
         this.size = size;
         this.type = type;

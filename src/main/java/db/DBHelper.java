@@ -167,14 +167,6 @@ public class DBHelper {
         DBHelper.update(shop);
     }
 
-   public static void addStockToOrder(StockItem item, int ppQuantity, Customer customer){
-      session = HibernateUtil.getSessionFactory().openSession();
-       Basket basket = find(customer.getBasket().getId(), Basket.class);
-       basket.addItem(item, ppQuantity);
-       DBHelper.update(basket);
- }
-
-
 // /  public static Set<StockItem> findBasketItems(Basket basket){
 //  session = HibernateUtil.getSessionFactory().openSession();
 //  session.refresh(basket);
