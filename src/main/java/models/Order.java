@@ -15,10 +15,8 @@ public class Order {
 
     private int id;
     private String name;
-    private StockItem stockItem;
     private Set<StockItem> currentOrder;
     private GregorianCalendar orderDate;
-    private int quantity;
 
     public Order(int id, String name, GregorianCalendar orderDate) {
         this.id = id;
@@ -71,20 +69,12 @@ public class Order {
         this.currentOrder = currentOrder;
     }
 
-    public StockItem getStockItem() {
-        return stockItem;
+    public void addStockItemToOrder(StockItem orderItem){
+        this.currentOrder.add(orderItem);
     }
 
-    public void setStockItem(StockItem stockItem) {
-        this.stockItem = stockItem;
-    }
-
-    public void addStockItemToOrder(StockItem stockItem){
-        this.currentOrder.add(stockItem);
-    }
-
-    public void removeStockItemFromOrder(){
-        this.currentOrder.remove(stockItem);
+    public void removeStockItemFromOrder(StockItem orderItem){
+        this.currentOrder.remove(orderItem);
     }
 
 }

@@ -67,7 +67,7 @@ public abstract class StockItem {
         this.imageUrl = imageUrl;
     }
 
-    @ManyToMany(cascade = CascadeType.REMOVE , mappedBy = "stockItems", fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.REMOVE , mappedBy = "currentOrder", fetch = FetchType.EAGER)
     @LazyCollection(LazyCollectionOption.FALSE)
     public Set<Order> getOrderOfStockItem() {
         return orderOfStockItem;

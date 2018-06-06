@@ -36,8 +36,9 @@ public class Seeds {
         DBHelper.save(clothing1);
 
         Shop shop = new Shop("Jurassic Motorcycles", 0.00);
-        shop.setStockQuantity(bike1, 1);
         DBHelper.save(shop);
+        shop.setStockQuantity(bike1, 1);
+        DBHelper.update(shop);
 
 //        DBHelper.addToBasket(bike1, 1, customer1);
 //        DBHelper.addToBasket(accessory1, 2, customer1);
