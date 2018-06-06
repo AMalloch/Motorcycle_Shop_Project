@@ -15,7 +15,7 @@ public class ClothingTest {
 
     @Before
     public void setUp() {
-        clothing = new Clothing("Alpinestars Summer Gloves", 59.99, 3, null, "black", "large", ClothingType.GLOVES);
+        clothing = new Clothing("Alpinestars Summer Gloves", 59.99, null, "black", "large", ClothingType.GLOVES);
         DBHelper.save(clothing);
     }
 

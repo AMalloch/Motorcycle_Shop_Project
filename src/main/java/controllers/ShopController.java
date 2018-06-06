@@ -73,7 +73,7 @@ public class ShopController {
             int capacity = Integer.parseInt(req.queryParams("capacity"));
             Boolean isNew = Boolean.parseBoolean(req.queryParams("isNew"));
             String imageUrl = req.queryParams("imageUrl");
-            Bike bike = new Bike(name, price, quantity, imageUrl, colour, capacity, isNew);
+            Bike bike = new Bike(name, price, imageUrl, colour, capacity, isNew);
             DBHelper.save(bike);
             res.redirect("/shops/stock");
             return null;
@@ -92,7 +92,6 @@ public class ShopController {
             Boolean isNew = Boolean.parseBoolean(req.queryParams("isNew"));
             bike.setName(name);
             bike.setPrice(price);
-            bike.setQuantity(quantity);
             bike.setImageUrl(imageUrl);
             bike.setColour(colour);
             bike.setCapacity(capacity);
@@ -152,7 +151,7 @@ public class ShopController {
             String size = req.queryParams("size");
             String stringType = req.queryParams("type");
             ClothingType type = ClothingType.valueOf(stringType);
-            Clothing clothing = new Clothing(name, price, quantity, imageUrl, colour, size, type);
+            Clothing clothing = new Clothing(name, price, imageUrl, colour, size, type);
             DBHelper.save(clothing);
             res.redirect("/shops/stock");
             return null;
@@ -172,7 +171,6 @@ public class ShopController {
             ClothingType type = ClothingType.valueOf(stringType);
             clothing.setName(name);
             clothing.setPrice(price);
-            clothing.setQuantity(quantity);
             clothing.setImageUrl(imageUrl);
             clothing.setColour(colour);
             clothing.setSize(size);
@@ -221,7 +219,7 @@ public class ShopController {
             Double price = Double.parseDouble(req.queryParams("price"));
             int quantity = Integer.parseInt(req.queryParams("quantity"));
             String imageUrl = req.queryParams("imageUrl");
-            Accessory accessory = new Accessory(name, price, quantity, imageUrl);
+            Accessory accessory = new Accessory(name, price, imageUrl);
             DBHelper.save(accessory);
             res.redirect("/shops/stock");
             return null;
@@ -237,7 +235,6 @@ public class ShopController {
             String imageUrl = req.queryParams("imageUrl");
             accessory.setName(name);
             accessory.setPrice(price);
-            accessory.setQuantity(quantity);
             accessory.setImageUrl(imageUrl);
             DBHelper.update(accessory);
             res.redirect("/shops/stock");

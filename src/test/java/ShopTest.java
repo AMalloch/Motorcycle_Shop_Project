@@ -19,15 +19,15 @@ public class ShopTest {
     @Before
     public void setUp() throws Exception {
         shop = new Shop("Jurassic Motorcycles", 0.00);
-        bike = new Bike("Shredder", 99.9, 2, null, "Black", 900, true);
+        bike = new Bike("Shredder", 99.9,  null, "Black", 900, true);
         customer = new Customer("Jane", "Losi", "F", 26, "fortheducks@gmail.com", "jlosi");
 //        String firstName, String lastName, String gender, int age, String emailAddress, String username
     }
 
     @Test
     public void addToStock(){
-        shop.addToStock(bike);
-        assertEquals(1, shop.countStock());
+        shop.setStockQuantity(bike, 10);
+        assertEquals(10, shop.getStockQuantity(bike));
     }
 
     @Test
