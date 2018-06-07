@@ -22,6 +22,7 @@ public class Basket {
 
     public Basket(Customer customer) {
         this.customer = customer;
+        this.basketOrders = new ArrayList<>();
     }
 
     @Id
@@ -75,5 +76,8 @@ public class Basket {
         this.basketOrders.clear();
     }
 
+    public int countOrders() {
+        return this.basketOrders.size();
+    }
 
 }
