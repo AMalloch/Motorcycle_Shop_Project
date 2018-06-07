@@ -63,4 +63,17 @@ public class Basket {
         this.basketOrders = basketOrders;
     }
 
+    public void addOrderToBasket(Order order){
+        this.basketOrders.add(order);
+    }
+
+    public void removeOrderFromBasketOrders(Order order) {
+        this.basketOrders.remove(order);
+    }
+
+    public void removeAllOrders() {
+        this.basketOrders.clear();
+    }
+
+
 }
