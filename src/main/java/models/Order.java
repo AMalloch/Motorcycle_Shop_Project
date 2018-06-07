@@ -15,14 +15,16 @@ public class Order {
 
     private int id;
     private String name;
-    private Set<StockItem> currentOrder;
+    private StockItem cartItem;
     private GregorianCalendar orderDate;
+    private int quantity;
 
-    public Order(int id, String name, GregorianCalendar orderDate) {
+    public Order(String name, GregorianCalendar orderDate, StockItem cartItem, int quantity) {
         this.id = id;
         this.name = name;
-        this.currentOrder = new HashSet<>();
+        this.cartItem = cartItem;
         this.orderDate = orderDate;
+        this.quantity = quantity;
     }
 
     public Order() {
@@ -57,24 +59,21 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    @JoinTable(name = "order_stockItem", joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "stockItem_id"))
-    @LazyCollection(LazyCollectionOption.FALSE)
-    public Set<StockItem> getCurrentOrder() {
-        return currentOrder;
+    @ManyToOne(optional=false)
+    @JoinColumn(name="stockItem_id", referencedColumnName="id")
+    public StockItem getCartItem() {
+        return cartItem;
     }
 
-    public void setCurrentOrder(Set<StockItem> currentOrder) {
-        this.currentOrder = currentOrder;
+    public void setCartItem(StockItem cartItem) {
+        this.cartItem = cartItem;
     }
 
-    public void addStockItemToOrder(StockItem orderItem){
-        this.currentOrder.add(orderItem);
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void removeStockItemFromOrder(StockItem orderItem){
-        this.currentOrder.remove(orderItem);
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
-
 }

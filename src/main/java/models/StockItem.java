@@ -17,7 +17,6 @@ public abstract class StockItem {
     private String name;
     private double price;
     private String imageUrl;
-    private Set<Order> orderOfStockItem;
 
     public StockItem() {
     }
@@ -26,7 +25,6 @@ public abstract class StockItem {
         this.name = name;
         this.price = price;
         this.imageUrl = imageUrl;
-        this.orderOfStockItem = new HashSet<>();
     }
 
     @Id
@@ -65,16 +63,6 @@ public abstract class StockItem {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    @ManyToMany(cascade = CascadeType.REMOVE , mappedBy = "currentOrder", fetch = FetchType.EAGER)
-    @LazyCollection(LazyCollectionOption.FALSE)
-    public Set<Order> getOrderOfStockItem() {
-        return orderOfStockItem;
-    }
-
-    public void setOrderOfStockItem(Set<Order> orderOfStockItem) {
-        this.orderOfStockItem = orderOfStockItem;
     }
 
 
