@@ -27,6 +27,10 @@ public class Order {
         this.quantity = quantity;
     }
 
+    // order customer hash stock, quantity, orderdate,
+
+    //  shop orders
+
     public Order() {
     }
 

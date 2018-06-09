@@ -8,6 +8,8 @@ import java.util.Set;
 @Table(name = "customers")
 public class Customer {
 
+    //
+
     private int id;
     private String firstName;
     private String lastName;
@@ -28,6 +30,8 @@ public class Customer {
         this.emailAddress = emailAddress;
         this.username = username;
     }
+
+    // orders
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
