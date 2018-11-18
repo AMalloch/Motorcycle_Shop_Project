@@ -13,14 +13,14 @@ import java.util.Set;
 public class Basket {
     private int id;
     private Customer customer;
-    private Set<StockItem> stockItems;
+    private Set<CartItem> cartItems;
 
     public Basket() {
     }
 
     public Basket(Customer customer) {
         this.customer = customer;
-        this.stockItems = new HashSet<>();
+        this.cartItems = new HashSet<>();
     }
 
     @Id
@@ -48,40 +48,39 @@ public class Basket {
     @JoinTable(name = "basket_stockItem", joinColumns = @JoinColumn(name = "basket_id"),
             inverseJoinColumns = @JoinColumn(name = "stockItem_id"))
     @LazyCollection(LazyCollectionOption.FALSE)
-    public Set<StockItem> getStockItems() {
-        return stockItems;
+    public Set<CartItem> getcartItems() {
+        return cartItems;
     }
 
-    public void setStockItems(Set<StockItem> stockItems) {
-        this.stockItems = stockItems;
+    public void setcartItems(Set<CartItem> cartItems) {
+        this.cartItems = Basket.cartItems;
     }
 
     public int countItemsInBasket(){
-        if (stockItems == null){
+        if (cartItems == null){
             return 0;
         }
-        return stockItems.size();
+        return cartItems.size();
     }
 
-    public void addItem(StockItem pendingItems, int pendingQuantity) {
-        if (availableStock(pendingItems, pendingQuantity)) {
-            pendingItems.setPendingPurchaseQuantity(pendingQuantity);
-            DBHelper.update(pendingItems);
-            stockItems.add(pendingItems);
-        }
-    }
+//    public void addItem(cartItems pendingItems, int pendingQuantity) {
+//        if (availableStock(pendingItems, pendingQuantity)) {
+//            pendingItems.setPendingPurchaseQuantity(pendingQuantity);
+//            DBHelper.update(pendingItems);
+//            cartItems.add(pendingItems);
+//        }
+//    }
 
-    public void deleteItem(StockItem item) {
-        item.setPendingPurchaseQuantity(0);
-        DBHelper.update(item);
-        stockItems.remove(item);
-//        stockItems.clear();
-    }
+//    public void deleteItem(cartItems item) {
+//        item.setPendingPurchaseQuantity(0);
+//        DBHelper.update(item);
+//        cartItems.remove(item);
+//    }
 
-    public boolean availableStock(StockItem requestedItem, int requestedQuantity){
-        if (requestedItem.getQuantity() >= requestedQuantity){
-            return true;
-        }
-        return false;
-    }
+//    public boolean availableStock(cartItems requestedItem, int requestedQuantity){
+//        if (requestedItem.getQuantity() >= requestedQuantity){
+//            return true;
+//        }
+//        return false;
+//    }
 }
