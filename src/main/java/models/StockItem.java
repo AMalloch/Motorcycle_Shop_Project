@@ -21,7 +21,6 @@ public abstract class StockItem {
         this.price = price;
         this.quantity = quantity;
         this.imageUrl = imageUrl;
-        this.pendingPurchaseQuantity = 0;
     }
 
     @Id
@@ -69,15 +68,6 @@ public abstract class StockItem {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    @Column(name = "pp_quantity")
-    public int getPendingPurchaseQuantity() {
-        return pendingPurchaseQuantity;
-    }
-
-    public void setPendingPurchaseQuantity(int pendingPurchaseQuantity) {
-        this.pendingPurchaseQuantity = pendingPurchaseQuantity;
     }
 
     //    @ManyToOne(fetch = FetchType.EAGER)
