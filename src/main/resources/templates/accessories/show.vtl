@@ -7,7 +7,7 @@
         <p class = "showtext">Price : £ $accessory.getPrice()</p>
         <p class = "showtext">In stock  : $accessory.getQuantity()</p>
         #if($user != "")
-        <form action="/basket/add/$accessory.getId()" method="post">
+        <form action="/order/add/$accessory.getId()" method="post">
             <input type="submit" value="Buy Now" class="button">
         </form>
         #else

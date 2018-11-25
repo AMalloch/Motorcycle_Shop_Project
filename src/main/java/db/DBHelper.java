@@ -2,7 +2,6 @@ package db;
 
 import models.*;
 import org.hibernate.*;
-import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.ArrayList;
@@ -160,26 +159,26 @@ public class DBHelper {
         return user;
     }
 
-    public static Set<StockItem> findBasketItems(Basket basket){
+    public static Set<StockItem> findBasketItems(Order order){
         session = HibernateUtil.getSessionFactory().openSession();
-        session.refresh(basket);
-        Hibernate.initialize(basket.getStockItems());
+        session.refresh(order);
+        Hibernate.initialize(order.getStockItems());
         session.close();
-        return basket.getStockItems();
+        return order.getStockItems();
     }
 
     public static void addToBasket(StockItem item, int ppQuantity, Customer customer){
         session = HibernateUtil.getSessionFactory().openSession();
-        Basket basket = find(customer.getBasket().getId(), Basket.class);
-        basket.addItem(item, ppQuantity);
-        DBHelper.update(basket);
+        Order order = find(customer.getOrder().getId(), Order.class);
+        order.addItem(item, ppQuantity);
+        DBHelper.update(order);
     }
 
     public static void deleteFromBasket(StockItem item, Customer customer) {
         session = HibernateUtil.getSessionFactory().openSession();
-        Basket basket = find(customer.getBasket().getId(), Basket.class);
-        basket.deleteItem(item);
-        DBHelper.update(basket);
+        Order order = find(customer.getOrder().getId(), Order.class);
+        order.deleteItem(item);
+        DBHelper.update(order);
     }
 
 
@@ -198,19 +197,19 @@ public class DBHelper {
         DBHelper.update(shop);
     }
 
-//    public static List<Basket> findBasketItems(int custId){
+//    public static List<Order> findBasketItems(int custId){
 //        session = HibernateUtil.getSessionFactory().openSession();
-//        List<Basket> basketItems = null;
-//        Criteria criteria = session.createCriteria(Basket.class);
+//        List<Order> basketItems = null;
+//        Criteria criteria = session.createCriteria(Order.class);
 //        criteria.add(Restrictions.eq("customerId", custId));
 //        basketItems = getList(criteria);
 //        return basketItems;
 //    }
 
-//    public static void addToBasket(StockItem item, int ppQuantity, Customer customer, Basket basket){
+//    public static void addToBasket(StockItem item, int ppQuantity, Customer customer, Order basket){
 //        basket.addItem(item, ppQuantity);
-//        if (customer.getBasket() == null) {
-//            customer.setBasket(basket);
+//        if (customer.getOrder() == null) {
+//            customer.setOrder(basket);
 //            DBHelper.saveOrUpdate(customer);
 //        }
 //        DBHelper.save(basket);
@@ -219,7 +218,7 @@ public class DBHelper {
 //    public static long countItemsInBasket(int custId){
 //        session = HibernateUtil.getSessionFactory().openSession();
 //        long count = 0;
-//        Criteria criteria = session.createCriteria(Basket.class);
+//        Criteria criteria = session.createCriteria(Order.class);
 //        criteria.add(Restrictions.eq("customerId", custId));
 //        criteria.setProjection(Projections.count("customerId"));
 //        count = getUnique(criteria);

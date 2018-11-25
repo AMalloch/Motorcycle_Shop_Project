@@ -9,7 +9,7 @@
         <p class = "showtext">Capacity : $bike.getCapacity()</p>
         <p class = "showtext">New : $bike.isNew()</p>
         #if($user != "")
-        <form action="/basket/add/$bike.getId()" method="post">
+        <form action="/order/add/$bike.getId()" method="post">
             <input type="submit" value="Buy Now" class="button">
         </form>
         #else

@@ -1,18 +1,16 @@
-import db.DBHelper;
-import models.Basket;
+import models.Order;
 import org.junit.Before;
-import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class BasketTest {
+public class OrderTest {
 
-    private Basket basket;
+    private Order order;
 
     @Before
     public void setUp() throws Exception {
-//        basket = new Basket(2, 3);
-//        DBHelper.save(basket);
+//        order = new Order(2, 3);
+//        DBHelper.save(order);
     }
 
 //    @Test

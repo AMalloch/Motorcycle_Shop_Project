@@ -1,15 +1,10 @@
 package controllers;
 
-import db.CustomerDBHelper;
-import db.DBHelper;
 import db.Seeds;
-import models.Bike;
-import models.Customer;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static spark.Spark.get;
@@ -29,7 +24,7 @@ public class MainController {
         ClothingController clothingController = new ClothingController();
         AccessoriesController accessoriesController = new AccessoriesController();
         LoginController loginController = new LoginController();
-        BasketController basketController = new BasketController();
+        OrderController orderController = new OrderController();
 
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();

@@ -9,15 +9,15 @@ import java.util.Set;
 
 @Entity
 @Table(name = "baskets")
-public class Basket {
+public class Order {
     private int id;
     private Customer customer;
     private Set<CartItem> cartItems;
 
-    public Basket() {
+    public Order() {
     }
 
-    public Basket(Customer customer) {
+    public Order(Customer customer) {
         this.customer = customer;
         this.cartItems = new HashSet<>();
     }

@@ -17,9 +17,9 @@ public class Seeds {
         Shop shop = new Shop("Jurassic Motorcycles", 0.00);
         DBHelper.save(shop);
 
-        Basket basket1 = new Basket(customer1);
-        DBHelper.save(basket1);
-        customer1.setBasket(basket1);
+        Order order1 = new Order(customer1);
+        DBHelper.save(order1);
+        customer1.setOrder(order1);
         DBHelper.update(customer1);
 
         Bike bike1 = new Bike("Neiman Marcus Limited Edition Fighter", 11000000, 1, "/images/neiman_marcus.jpeg", "Clockwork Metal", 120, true);
@@ -35,10 +35,10 @@ public class Seeds {
         Clothing clothing1 = new Clothing("All Black Waterproof Armoured Motorcycle Trousers", 44, 3, "/images/black_trousers.jpeg", "Black", "All Sizes", ClothingType.TROUSER);
         DBHelper.save(clothing1);
 
-//        DBHelper.addToBasket(bike1, 1, customer1, basket1);
-//        DBHelper.addToBasket(accessory1, 2, customer1, basket1);
-//        DBHelper.addToBasket(clothing1, 1, customer1, basket1);
-//        DBHelper.addToBasket(clothing2, 1, customer1, basket1);
+//        DBHelper.addToBasket(bike1, 1, customer1, order1);
+//        DBHelper.addToBasket(accessory1, 2, customer1, order1);
+//        DBHelper.addToBasket(clothing1, 1, customer1, order1);
+//        DBHelper.addToBasket(clothing2, 1, customer1, order1);
 //
 //        DBHelper.addToBasket(bike1, 1, customer1);
         DBHelper.addToBasket(accessory1, 2, customer1);
@@ -48,13 +48,13 @@ public class Seeds {
 
 //        StockItem stockItemToDelete = DBHelper.find(5, StockItem.class);
 //
-//        Basket baskettest = DBHelper.find(customer1.getBasket().getId(), Basket.class);
+//        Order baskettest = DBHelper.find(customer1.getOrder().getId(), Order.class);
 //
 //        DBHelper.deleteFromBasket(stockItemToDelete, customer1);
 ////        Customer testCust = DBHelper.findCustomerByUsername(customer1.getUsername());
 ////
 ////
-//        Set<StockItem> testBasketCust1 = DBHelper.findBasketItems(customer1.getBasket());
+//        Set<StockItem> testBasketCust1 = DBHelper.findBasketItems(customer1.getOrder());
 
 //        Shop testshop = DBHelper.find(1, Shop.class);
 //        DBHelper.addSaleToShopCash(100.00, testshop);

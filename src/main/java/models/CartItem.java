@@ -1,18 +1,35 @@
 package models;
 
+import javax.persistence.*;
 import java.util.Set;
 
+@Entity
+@Table(name = "cart_items")
 public class CartItem {
 
+    private int id;
     private Set<StockItem> stockItems;
     private int quantity;
-    private Basket basket;
+    private Order order;
 
-    public CartItem(Set<StockItem> stockItems, int quantity, Basket basket) {
+    public CartItem(int id, Set<StockItem> stockItems, int quantity, Order order) {
+        this.id = id;
         this.stockItems = stockItems;
         this.quantity = quantity;
-        this.basket = basket;
+        this.order = order;
     }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 
     public Set<StockItem> getStockItems() {
         return stockItems;
@@ -22,6 +39,7 @@ public class CartItem {
         this.stockItems = stockItems;
     }
 
+    @Column(name = "quantity")
     public int getQuantity() {
         return quantity;
     }
@@ -30,11 +48,11 @@ public class CartItem {
         this.quantity = quantity;
     }
 
-    public Basket getBasket() {
-        return basket;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setBasket(Basket basket) {
-        this.basket = basket;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }

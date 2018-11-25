@@ -1,14 +1,13 @@
 import db.DBHelper;
 import models.Accessory;
-import models.Basket;
-import models.Shop;
+import models.Order;
 import org.junit.Before;
 import org.junit.Test;
 
 public class AccessoryTest {
 
     private Accessory accessory;
-    private Basket basket;
+    private Order order;
 
     @Before
     public void setUp() throws Exception {

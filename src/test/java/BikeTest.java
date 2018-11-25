@@ -1,7 +1,6 @@
 import db.DBHelper;
-import models.Basket;
+import models.Order;
 import models.Bike;
-import models.Shop;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 public class BikeTest {
 
     private Bike bike;
-    private Basket basket;
+    private Order order;
 
     @Before
     public void setUp() {

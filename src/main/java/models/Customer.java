@@ -1,12 +1,7 @@
 package models;
 
-import db.CustomerDBHelper;
-import db.DBHelper;
-
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -20,7 +15,7 @@ public class Customer {
     private int age;
     private String emailAddress;
     private String username;
-    private Basket basket;
+    private Order order;
     private Set<StockItem> pendingItems;
 
     private Set<StockItem> purchasedItems;
@@ -107,12 +102,12 @@ public class Customer {
     }
 
     @OneToOne(fetch = FetchType.LAZY)
-    public Basket getBasket() {
-        return basket;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setBasket(Basket basket) {
-        this.basket = basket;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     //    @Column(name = "purchased_items")
@@ -128,10 +123,10 @@ public class Customer {
         return getFirstName() + " " + getLastName();
     }
 
-//    public static void addToBasket(StockItem item, Basket basket){
-//        basket.addItem(item);
-//        item.setBaskets(basket);
-//        DBHelper.saveOrUpdate(basket);
+//    public static void addToBasket(StockItem item, Order order){
+//        order.addItem(item);
+//        item.setBaskets(order);
+//        DBHelper.saveOrUpdate(order);
 //        DBHelper.saveOrUpdate(item);
 //    }
 

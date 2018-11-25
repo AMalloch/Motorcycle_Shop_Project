@@ -9,7 +9,7 @@
         <p class = "showtext">Size : $clothing.getSize()</p>
         <p class = "showtext">Type : $clothing.getType()</p>
         #if($user != "")
-        <form action="/basket/add/$clothing.getId()" method="post">
+        <form action="/order/add/$clothing.getId()" method="post">
             <input type="submit" value="Buy Now" class="button">
         </form>
         #else
