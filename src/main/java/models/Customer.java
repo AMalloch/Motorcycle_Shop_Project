@@ -1,7 +1,6 @@
 package models;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -20,17 +19,15 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String firstName, String lastName, String gender, int age, String emailAddress, String username) {
+    public Customer(int id, String firstName, String lastName, String gender, int age, String emailAddress, String username, Set<Order> order) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.age = age;
         this.emailAddress = emailAddress;
         this.username = username;
-
-//        this.pendingItems = new Set<>();
-//        this.purchasedItems = new HashSet<>();
-//        this.shop = shop;
+        this.order = order;
     }
 
     @Id
@@ -98,12 +95,12 @@ public class Customer {
         this.username = username;
     }
 
-    @OneToOne(fetch = FetchType.LAZY)
-    public Order getOrder() {
+    @OneToMany(mappedBy = "orders", fetch = FetchType.EAGER)
+    public Set<Order> getOrder() {
         return order;
     }
 
-    public void setOrder(Order order) {
+    public void setOrder(Set<Order> order) {
         this.order = order;
     }
 
