@@ -30,8 +30,8 @@ public class Order {
         this.id = id;
     }
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "basket", cascade = CascadeType.ALL)
-    @JoinColumn(name = "username")
+    @ManyToOne
+    @JoinColumn(name="order_id", nullable = true)
     public Customer getCustomer() {
         return customer;
     }
