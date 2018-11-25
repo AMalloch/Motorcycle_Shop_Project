@@ -1,6 +1,5 @@
 package models;
 
-import db.DBHelper;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -53,7 +52,7 @@ public class Basket {
     }
 
     public void setcartItems(Set<CartItem> cartItems) {
-        this.cartItems = Basket.cartItems;
+        this.cartItems = cartItems;
     }
 
     public int countItemsInBasket(){
