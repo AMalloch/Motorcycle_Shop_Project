@@ -15,10 +15,7 @@ public class Customer {
     private int age;
     private String emailAddress;
     private String username;
-    private Order order;
-    private Set<StockItem> pendingItems;
-
-    private Set<StockItem> purchasedItems;
+    private Set<Order> order;
 
     public Customer() {
     }
@@ -32,7 +29,7 @@ public class Customer {
         this.username = username;
 
 //        this.pendingItems = new Set<>();
-        this.purchasedItems = new HashSet<>();
+//        this.purchasedItems = new HashSet<>();
 //        this.shop = shop;
     }
 

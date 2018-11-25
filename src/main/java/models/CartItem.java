@@ -1,22 +1,31 @@
 package models;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "cart_items")
 public class CartItem {
 
     private int id;
-    private Set<StockItem> stockItems;
+    private StockItem stockItem;
     private int quantity;
     private Order order;
 
-    public CartItem(int id, Set<StockItem> stockItems, int quantity, Order order) {
+    public CartItem(int id, StockItem stockItem, int quantity, Order order) {
         this.id = id;
-        this.stockItems = stockItems;
+        this.stockItem = stockItem;
         this.quantity = quantity;
         this.order = order;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="stockItem_id", nullable = true)
+    public StockItem getStockItem() {
+        return stockItem;
+    }
+
+    public void setStockItem(StockItem stockItem) {
+        this.stockItem = stockItem;
     }
 
     @Id
@@ -30,15 +39,6 @@ public class CartItem {
         this.id = id;
     }
 
-
-    public Set<StockItem> getStockItems() {
-        return stockItems;
-    }
-
-    public void setStockItems(Set<StockItem> stockItems) {
-        this.stockItems = stockItems;
-    }
-
     @Column(name = "quantity")
     public int getQuantity() {
         return quantity;
@@ -47,6 +47,7 @@ public class CartItem {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
 
     public Order getOrder() {
         return order;

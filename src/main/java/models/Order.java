@@ -1,8 +1,5 @@
 package models;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -43,11 +40,8 @@ public class Order {
         this.customer = customer;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    @JoinTable(name = "basket_stockItem", joinColumns = @JoinColumn(name = "basket_id"),
-            inverseJoinColumns = @JoinColumn(name = "stockItem_id"))
-    @LazyCollection(LazyCollectionOption.FALSE)
-    public Set<CartItem> getcartItems() {
+
+    public Set<CartItem> getcardItems() {
         return cartItems;
     }
 
@@ -55,12 +49,12 @@ public class Order {
         this.cartItems = cartItems;
     }
 
-    public int countItemsInBasket(){
-        if (cartItems == null){
-            return 0;
-        }
-        return cartItems.size();
-    }
+//    public int countItemsInBasket(){
+//        if (cartItems == null){
+//            return 0;
+//        }
+//        return cartItems.size();
+//    }
 
 //    public void addItem(cartItems pendingItems, int pendingQuantity) {
 //        if (availableStock(pendingItems, pendingQuantity)) {

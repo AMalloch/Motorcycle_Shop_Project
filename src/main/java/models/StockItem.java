@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -11,16 +12,18 @@ public abstract class StockItem {
     private double price;
     private int quantity;
     private String imageUrl;
-    private int pendingPurchaseQuantity;
+    private Set<CartItem> cartItem;
 
     public StockItem() {
     }
 
-    public StockItem(String name, double price, int quantity, String imageUrl) {
+    public StockItem(int id, String name, double price, int quantity, String imageUrl, Set<CartItem> cartItem) {
+        this.id = id;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.imageUrl = imageUrl;
+        this.cartItem = cartItem;
     }
 
     @Id
@@ -70,6 +73,14 @@ public abstract class StockItem {
         this.imageUrl = imageUrl;
     }
 
+    @OneToMany(mappedBy = "stockItem", fetch = FetchType.EAGER)
+    public Set<CartItem> getCartItem() {
+        return cartItem;
+    }
+
+    public void setCartItem(Set<CartItem> cartItem) {
+        this.cartItem = cartItem;
+    }
     //    @ManyToOne(fetch = FetchType.EAGER)
 //    @JoinColumn(name = "shop_id", nullable = false)
 //    public Shop getShop() {
