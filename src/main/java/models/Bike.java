@@ -15,7 +15,7 @@ public class Bike extends StockItem{
     private String colour;
     private int capacity;
     private boolean isNew;
-//    private Basket basket;
+//    private Order basket;
 
     public Bike() {
     }

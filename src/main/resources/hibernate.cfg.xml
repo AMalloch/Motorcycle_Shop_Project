@@ -22,6 +22,6 @@
         <mapping class = "models.Clothing"/>
         <mapping class = "models.Bike"/>
         <mapping class = "models.Accessory"/>
-        <mapping class = "models.Basket"/>
+        <mapping class = "models.Order"/>
     </session-factory>
 </hibernate-configuration>

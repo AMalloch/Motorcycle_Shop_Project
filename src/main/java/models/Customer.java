@@ -1,12 +1,6 @@
 package models;
 
-import db.CustomerDBHelper;
-import db.DBHelper;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -20,25 +14,20 @@ public class Customer {
     private int age;
     private String emailAddress;
     private String username;
-    private Basket basket;
-    private Set<StockItem> pendingItems;
-
-    private Set<StockItem> purchasedItems;
+    private Set<Order> order;
 
     public Customer() {
     }
 
-    public Customer(String firstName, String lastName, String gender, int age, String emailAddress, String username) {
+    public Customer(int id, String firstName, String lastName, String gender, int age, String emailAddress, String username, Set<Order> order) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.age = age;
         this.emailAddress = emailAddress;
         this.username = username;
-
-//        this.pendingItems = new Set<>();
-        this.purchasedItems = new HashSet<>();
-//        this.shop = shop;
+        this.order = order;
     }
 
     @Id
@@ -106,13 +95,13 @@ public class Customer {
         this.username = username;
     }
 
-    @OneToOne(fetch = FetchType.LAZY)
-    public Basket getBasket() {
-        return basket;
+    @OneToMany(mappedBy = "orders", fetch = FetchType.EAGER)
+    public Set<Order> getOrder() {
+        return order;
     }
 
-    public void setBasket(Basket basket) {
-        this.basket = basket;
+    public void setOrder(Set<Order> order) {
+        this.order = order;
     }
 
     //    @Column(name = "purchased_items")
@@ -128,10 +117,10 @@ public class Customer {
         return getFirstName() + " " + getLastName();
     }
 
-//    public static void addToBasket(StockItem item, Basket basket){
-//        basket.addItem(item);
-//        item.setBaskets(basket);
-//        DBHelper.saveOrUpdate(basket);
+//    public static void addToBasket(StockItem item, Order order){
+//        order.addItem(item);
+//        item.setBaskets(order);
+//        DBHelper.saveOrUpdate(order);
 //        DBHelper.saveOrUpdate(item);
 //    }
 

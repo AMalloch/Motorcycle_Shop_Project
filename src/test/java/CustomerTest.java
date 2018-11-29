@@ -1,8 +1,6 @@
 import db.DBHelper;
-import models.Basket;
+import models.Order;
 import models.Customer;
-import models.Shop;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,13 +9,13 @@ import static org.junit.Assert.assertEquals;
 public class CustomerTest {
 
     private Customer customer;
-    private Basket basket;
+    private Order order;
 
     @Before
     public void setUp() throws Exception {
 
-        basket = new Basket();
-        DBHelper.save(basket);
+        order = new Order();
+        DBHelper.save(order);
         customer = new Customer("First", "Customer", "M", 49, "me@me.com", "wibble");
         DBHelper.save(customer);
     }

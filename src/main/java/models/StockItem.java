@@ -1,11 +1,6 @@
 package models;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -17,19 +12,18 @@ public abstract class StockItem {
     private double price;
     private int quantity;
     private String imageUrl;
-    private int pendingPurchaseQuantity;
-    private Set<Basket> baskets;
+    private Set<CartItem> cartItem;
 
     public StockItem() {
     }
 
-    public StockItem(String name, double price, int quantity, String imageUrl) {
+    public StockItem(int id, String name, double price, int quantity, String imageUrl, Set<CartItem> cartItem) {
+        this.id = id;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.imageUrl = imageUrl;
-        this.pendingPurchaseQuantity = 0;
-        this.baskets = new HashSet<>();
+        this.cartItem = cartItem;
     }
 
     @Id
@@ -79,41 +73,14 @@ public abstract class StockItem {
         this.imageUrl = imageUrl;
     }
 
-    @Column(name = "pp_quantity")
-    public int getPendingPurchaseQuantity() {
-        return pendingPurchaseQuantity;
+    @OneToMany(mappedBy = "stockItem", fetch = FetchType.EAGER)
+    public Set<CartItem> getCartItem() {
+        return cartItem;
     }
 
-    public void setPendingPurchaseQuantity(int pendingPurchaseQuantity) {
-        this.pendingPurchaseQuantity = pendingPurchaseQuantity;
+    public void setCartItem(Set<CartItem> cartItem) {
+        this.cartItem = cartItem;
     }
-
-    @ManyToMany(cascade = CascadeType.REMOVE , mappedBy = "stockItems", fetch = FetchType.EAGER)
-    @LazyCollection(LazyCollectionOption.FALSE)
-    public Set<Basket> getBaskets() {
-        return baskets;
-    }
-
-    public void setBaskets(Set<Basket> baskets) {
-        this.baskets = baskets;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        StockItem otherItem = (StockItem) obj;
-
-        if(otherItem.getId() == this.getId()){
-            return true;
-        }
-
-        return false;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
     //    @ManyToOne(fetch = FetchType.EAGER)
 //    @JoinColumn(name = "shop_id", nullable = false)
 //    public Shop getShop() {

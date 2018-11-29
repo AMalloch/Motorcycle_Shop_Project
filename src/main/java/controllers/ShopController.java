@@ -67,7 +67,7 @@ public class ShopController {
 
         post ("/shops/stock", (req, res) -> {
 //            int basketId = Integer.parseInt(req.queryParams("basket"));
-//            Basket basket = DBHelper.find(basketId, Basket.class);
+//            Order basket = DBHelper.find(basketId, Order.class);
             String name = req.queryParams("name");
             Double price = Double.parseDouble(req.queryParams("price"));
             int quantity = Integer.parseInt(req.queryParams("quantity"));
@@ -144,8 +144,8 @@ public class ShopController {
         }, new VelocityTemplateEngine());
 
         post ("/shops/clothing", (req, res) -> {
-            int basketId = Integer.parseInt(req.queryParams("basket"));
-            Basket basket = DBHelper.find(basketId, Basket.class);
+            int basketId = Integer.parseInt(req.queryParams("order"));
+            Order order = DBHelper.find(basketId, Order.class);
             String name = req.queryParams("name");
             Double price = Double.parseDouble(req.queryParams("price"));
             int quantity = Integer.parseInt(req.queryParams("quantity"));

@@ -13,12 +13,12 @@ import java.util.Set;
 import static spark.Spark.get;
 import static spark.Spark.post;
 
-public class BasketController {
+public class OrderController {
 
-    private Basket basket;
+    private Order order;
 
 
-    public BasketController() {
+    public OrderController() {
         this.setupEndpoints();
     }
 
@@ -26,10 +26,10 @@ public class BasketController {
 
         LoginController loginController = new LoginController();
 
-        get("/basket", (req, res) -> {
+        get("/order", (req, res) -> {
             String loggedInUser = LoginController.getLoggedInUserNameForBasket(req, res);
             Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
-            Set<StockItem> basketItems = DBHelper.findBasketItems(customer.getBasket());
+            Set<StockItem> basketItems = DBHelper.findBasketItems(customer.getOrder());
             Double totalBasketPrice = DBHelper.calculateTotalBasketPrice(basketItems);
             DecimalFormat df =new DecimalFormat("#0.00");
             Map<String, Object> model = new HashMap<>();
@@ -42,32 +42,32 @@ public class BasketController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-        post("/basket/add/:stockItemId", (req, res) -> {
+        post("/order/add/:stockItemId", (req, res) -> {
             String strItemId = req.params(":stockItemId");
             Integer intItemId = Integer.parseInt(strItemId);
             String loggedInUser = LoginController.getLoggedInUserNameForBasket(req, res);
             Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
             StockItem stockItem = DBHelper.find(intItemId, StockItem.class);
             DBHelper.addToBasket(stockItem, 1, customer);
-            res.redirect("/basket");
+            res.redirect("/order");
             return null;
         }, new VelocityTemplateEngine());
 
-        post("/basket/delete/:stockItemId", (req, res) -> {
+        post("/order/delete/:stockItemId", (req, res) -> {
             String strItemId = req.params(":stockItemId");
             Integer intItemId = Integer.parseInt(strItemId);
             String loggedInUser = LoginController.getLoggedInUserNameForBasket(req, res);
             Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
             StockItem stockItem = DBHelper.find(intItemId, StockItem.class);
             DBHelper.deleteFromBasket(stockItem, customer);
-            res.redirect("/basket");
+            res.redirect("/order");
             return null;
         }, new VelocityTemplateEngine());
 
-        post("/basket/buy", (req, res) -> {
+        post("/order/buy", (req, res) -> {
             String loggedInUser = LoginController.getLoggedInUserNameForBasket(req, res);
             Customer customer = DBHelper.findCustomerByUsername(loggedInUser);
-            Set<StockItem> purchasedItems = DBHelper.findBasketItems(customer.getBasket());
+            Set<StockItem> purchasedItems = DBHelper.findBasketItems(customer.getOrder());
             Shop shop = DBHelper.find(1, Shop.class);
             for (StockItem purchasedItem : purchasedItems){
                 DBHelper.deleteFromBasket(purchasedItem, customer);
@@ -79,7 +79,7 @@ public class BasketController {
 
 
 
-////  addToBasket(StockItem item, int ppQuanity, Customer customer, Basket basket)
+////  addToBasket(StockItem item, int ppQuanity, Customer customer, Order order)
 //
 //
 //            String strCustId = req.params(":custId");
@@ -87,25 +87,25 @@ public class BasketController {
 //            Integer intCustId = Integer.parseInt(strCustId);
 //            Integer intItemId = Integer.parseInt(strItemId);
 //            Customer customer = DBHelper.find(intCustId, Customer.class);
-////            Basket basket = null; //DBHelper.findBasket(intCustId);
+////            Order order = null; //DBHelper.findBasket(intCustId);
 //            StockItem stockItem = DBHelper.find(intItemId, StockItem.class);
 //            Map<String, Object> model = new HashMap<>();
 //            String loggedInUser = LoginController.getLoggedInUserNameForBasket(req, res);
 //            model.put("user", loggedInUser);
 //            model.put("customer", customer);
-//            model.put("basket", basket);
+//            model.put("order", order);
 //            model.put("stockItem", stockItem);
-//            model.put("template", "templates/basket/add.vtl");
+//            model.put("template", "templates/order/add.vtl");
 //            return new ModelAndView(model, "templates/layout.vtl");
-//            if (basket.getId() <= 1){
-//                basket = new Basket();
+//            if (order.getId() <= 1){
+//                order = new Order();
 //            }
-//            basket.setCustomerId(customer.getId());
-//            basket.setStockItemId(stockItem.getId());
-//            Basket basket = new Basket(customer.getId(), stockItem.getId());
-//            Basket newBasket = new Basket(1, 1);
+//            order.setCustomerId(customer.getId());
+//            order.setStockItemId(stockItem.getId());
+//            Order order = new Order(customer.getId(), stockItem.getId());
+//            Order newBasket = new Order(1, 1);
 //            DBHelper.save(newBasket);
-//            res.redirect("/basket/" + customer.getId());
+//            res.redirect("/order/" + customer.getId());
 //            return null;
 //        }, new VelocityTemplateEngine());
     }
